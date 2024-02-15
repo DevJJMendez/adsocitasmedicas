@@ -78,9 +78,41 @@ class DetailSeeder extends Seeder
         ]);
         Detail::create([
             'id_header' => 4,
-            'value'=>'Telefono',
+            'value'=>'Celular',
             'nomenclature' => null,
         ]);
-        // TODO: check
+
+        Detail::create([
+            'id_header' => 5,
+            'value'=>'EPS',
+            'nomenclature' => null,
+        ]);
+        Detail::create([
+            'id_header' => 5,
+            'value'=>'IPS',
+            'nomenclature' => null,
+        ]);
+
+        Detail::create([
+            'id_header' => 6,
+            'value'=>'Personal',
+            'nomenclature' => null,
+        ]);
+        Detail::create([
+            'id_header' => 6,
+            'value'=>'Profesional',
+            'nomenclature' => null,
+        ]);
+
+        Detail::create([
+            'id_header' => 7,
+            'value'=>'Alta',
+            'nomenclature' => null,
+        ]);
+        Detail::create([
+            'id_header' => 7,
+            'value'=>'Baja',
+            'nomenclature' => null,
+        ]);
     }
 }
