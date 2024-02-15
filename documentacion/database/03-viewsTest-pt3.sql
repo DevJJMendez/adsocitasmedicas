@@ -112,9 +112,10 @@ CREATE VIEW vista_prioridad AS
     WHERE
         `e`.`pk_id_encabezado` = '8';
         
-select * from vista_prioridad;
-SELECT * FROM vista_estado;
-SELECT * FROM vista_genero;
-SELECT * FROM vista_tipoDocumento;
-select * from vista_tipoContacto;
-select * from vista_tipoCorreo;
+select * from status_view;
+select * from priorities_view;
+select * from mailtypes_view;
+select * from genders_view;
+select * from entitytypes_view;
+select * from documenttypes_view;
+select * from contacttypes_view;
