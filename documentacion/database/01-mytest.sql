@@ -19,7 +19,6 @@ VALUES
     ('1','Estado'),
     ('2','Genero'),
     ('3','Tipo de Documento'),
-    ('4','Rol'),
     ('5','Tipo de Contacto'),
     ('6','Tipo de Entidad'),
     ('7','Tipo de Correo'),
