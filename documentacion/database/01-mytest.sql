@@ -68,3 +68,18 @@ FROM
     encabezado AS d
         INNER JOIN
     detalle AS e ON d.pk_id_encabezado = e.fk_id_encabezado
+
+-- ------------------------------------------------------------------
+use adsocitasmedicas;
+
+select * from headers;
+select * from details;
+
+SELECT 
+    h.header_id AS ID, h.key AS clave, d.value AS valor
+FROM
+    headers AS h
+        INNER JOIN
+    details AS d ON h.header_id = d.id_header;
+    
+select h.header_id as id, h.key as llave from headers as h;

@@ -22,7 +22,7 @@ return new class extends Migration
                             ->onUpdate('cascade');
                             
             $table->string('value',40);
-            $table->string('nomenclature',4);
+            $table->string('nomenclature',4)->nullable();
             $table->timestamps();
         });
     }
