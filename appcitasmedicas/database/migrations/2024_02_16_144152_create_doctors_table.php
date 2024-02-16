@@ -17,8 +17,8 @@ return new class extends Migration
             $table->smallInteger('third_data_id')->unsigned();
             $table->foreign('third_data_id')->references('data_id')->on('thirddatas');
 
-            $table->tinyInteger('specialty')->unsigned();
-            $table->foreign('specialty')->references('specialty_id')->on('specialties');
+            $table->tinyInteger('profession')->unsigned();
+            $table->foreign('profession')->references('profession_id')->on('professions');
             
             $table->timestamps();
         });
