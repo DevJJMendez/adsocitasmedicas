@@ -26,12 +26,16 @@ return new class extends Migration
             $table->string('number_phone',30)->nullable();
             $table->string('mail',100)->unique();
             $table->dateTime('birth_date')->nullable();
+
             $table->tinyInteger('gender_id',false,true)->nullable();
             $table->foreign('gender_id')->references('detail_id')->on('details');
+
             $table->string('business_name',50)->nullable();
             $table->string('address',100);
+
             $table->tinyInteger('statu_id')->unsigned();
             $table->foreign('statu_id')->references('detail_id')->on('details');
+            
             $table->timestamps();
         });
     }
