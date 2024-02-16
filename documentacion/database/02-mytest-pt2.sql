@@ -75,7 +75,6 @@ CREATE TABLE medico (
     fk_genero CHAR(2) NOT NULL,
     FOREIGN KEY (fk_genero)
         REFERENCES `detalle` (pk_id_detalle),
-    fecha_nacimiento DATE NOT NULL,
     PRIMARY KEY (id_medico)
 );
 
