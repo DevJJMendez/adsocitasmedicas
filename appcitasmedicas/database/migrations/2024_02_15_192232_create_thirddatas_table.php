@@ -18,12 +18,13 @@ return new class extends Migration
             $table->foreign('document_id')->references('detail_id')->on('details');
 
             $table->string('identification_number',12)->unique()->nullable();
-            $table->string('nit',9)->nullable();
+            $table->string('nit',9)->nullable()->unique();
             $table->string('first_name',30);
             $table->string('second_name',30)->nullable();
             $table->string('sur_name',30);
             $table->string('second_sur_name',30)->nullable();
             $table->string('number_phone',30)->nullable();
+            $table->string('mail',100)->unique();
             $table->dateTime('birth_date')->nullable();
             $table->tinyInteger('gender_id',false,true)->nullable();
             $table->foreign('gender_id')->references('detail_id')->on('details');
