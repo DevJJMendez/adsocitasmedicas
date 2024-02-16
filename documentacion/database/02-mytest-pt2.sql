@@ -116,7 +116,6 @@ CREATE TABLE cita (
     FOREIGN KEY (fk_medico)
         REFERENCES `medico` (id_medico),
     valoracion_medica TEXT,
-    comentarios_paciente TEXT,
     fecha_cita TIMESTAMP,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_cita)

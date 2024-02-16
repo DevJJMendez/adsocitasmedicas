@@ -12,22 +12,17 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->unsignedSmallInteger('user_id',true);
-            $table->string('name');
+            $table->string('user_name');
+            $table->smallInteger('third_data_id',false,true);
+            $table->foreign('third_data_id')->references('data_id')->on('thirddatas');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('cedula', 10);
-            $table->string('address', 244);
-            $table->string('number_phone', 30);
             $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');

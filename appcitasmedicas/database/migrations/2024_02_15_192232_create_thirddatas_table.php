@@ -15,27 +15,25 @@ return new class extends Migration
             $table->smallIncrements('data_id')->unsigned();
 
             $table->tinyInteger('document_id')->unsigned();
-            $table->foreign('document_id')->references('detail_id')->on('documenttypes_view');
+            $table->foreign('document_id')->references('detail_id')->on('details');
 
-            $table->string('idnumber',12)->unique()->nullable();
+            $table->string('identification_number',12)->unique()->nullable();
             $table->string('nit',9)->nullable();
-            $table->string('firstName',30);
-            $table->string('secondName',30)->nullable();
-            $table->string('surName',30);
-            $table->string('secondSurName',30)->nullable();
-            $table->string('secondSurName',30)->nullable();
-            $table->dateTime('birthDate')->nullable();
-            $table->string('businessName',50)->nullable();
+            $table->string('first_name',30);
+            $table->string('second_name',30)->nullable();
+            $table->string('sur_name',30);
+            $table->string('second_sur_name',30)->nullable();
+            $table->string('number_phone',30)->nullable();
+            $table->dateTime('birth_date')->nullable();
+            $table->tinyInteger('gender_id',false,true)->nullable();
+            $table->foreign('gender_id')->references('detail_id')->on('details');
+            $table->string('business_name',50)->nullable();
             $table->string('address',100);
             $table->tinyInteger('statu_id')->unsigned();
-            $table->foreign('statu_id')->references('detail_id')->on('status_view');
+            $table->foreign('statu_id')->references('detail_id')->on('details');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('thirddatas');
