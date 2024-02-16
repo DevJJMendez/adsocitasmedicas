@@ -15,11 +15,7 @@ return new class extends Migration
             $table->tinyInteger('detail_id',true,true);
 
             $table->tinyInteger('id_header',false,true);
-            $table->foreign('id_header')
-                ->references('header_id')
-                    ->on('headers')
-                        ->onDelete('cascade')
-                            ->onUpdate('cascade');
+            $table->foreign('id_header')->references('header_id')->on('headers');
                             
             $table->string('value',40);
             $table->string('nomenclature',4)->nullable();
