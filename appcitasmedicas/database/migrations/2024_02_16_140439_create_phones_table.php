@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -17,10 +16,10 @@ return new class extends Migration
             $table->smallInteger('third_data_id')->unsigned();
             $table->foreign('third_data_id')->references('data_id')->on('thirddatas');
 
-            $table->tinyInteger('contact_type',false,true);
+            $table->tinyInteger('contact_type', false, true);
             $table->foreign('contact_type')->references('detail_id')->on('details');
 
-            $table->tinyInteger('priority_id',false,true);
+            $table->tinyInteger('priority_id', false, true);
             $table->foreign('priority_id')->references('detail_id')->on('details');
 
             $table->timestamps();
