@@ -10,10 +10,6 @@ class Specialty extends Model
 {
     use HasFactory;
     protected $table = 'specialties';
-    public function doctor(): BelongsTo
-    {
-        return $this->belongsTo(Doctor::class);
-    }
     public function appointment(): BelongsTo
     {
         return $this->belongsTo(Appointment::class);

@@ -27,6 +27,7 @@
                                 <h2>Ingresa tu datos</h2>
                             </div>
                         @endif
+
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
                             {{-- Nombre --}}
@@ -75,6 +76,7 @@
                                 <button type="submit" class="btn btn-primary mt-4">Crear nueva cuenta</button>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>

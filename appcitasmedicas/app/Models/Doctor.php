@@ -14,9 +14,9 @@ class Doctor extends Model
     {
         return $this->hasOne(Thirddata::class);
     }
-    public function specialty(): HasOne
+    public function profession(): HasOne
     {
-        return $this->hasOne(Specialty::class);
+        return $this->hasOne(Profession::class);
     }
     public function appointment(): HasOne
     {
