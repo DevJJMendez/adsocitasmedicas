@@ -119,3 +119,69 @@ select * from genders_view;
 select * from entitytypes_view;
 select * from documenttypes_view;
 select * from contacttypes_view;
+
+
+
+
+
+
+
+
+use sys;
+drop database adsocitasmedicas;
+
+create DATABASE adsocitasmedicas;
+use adsocitasmedicas;
+
+SELECT 
+    data_id,
+    nit,
+    number_phone,
+    business_name,
+    mail,
+    entity_type_id,
+    address,
+    statu_id
+FROM
+    thirddatas;
+select * from users;
+select * from headers;
+select * from details;
+select * from medical_entities;
+select * from professions;
+SELECT 
+    t.data_id AS id,
+    t.document_id AS document_id,
+    d.`value` AS document_type,
+    t.identification_number AS document_number,
+    t.first_name AS `name`,
+    t.second_name AS `last_name`,
+    t.sur_name AS `second_name`,
+    t.second_sur_name AS `second_sur_name`,
+    t.number_phone AS phone,
+    t.mail AS mail,
+    t.gender_id AS gender_id,
+    d.`value` AS gender,
+    t.address AS address,
+    t.statu_id AS statu_id,
+    d.`value` AS statu_name
+FROM
+    thirddatas AS t, details AS d
+WHERE
+    t.data_id = d.id_header;
+
+
+use adsocitasmedicas;
+
+
+select * from headers;
+select * from details;
+
+SELECT 
+    h.header_id AS ID, h.key AS clave, d.value AS valor
+FROM
+    headers AS h
+        INNER JOIN
+    details AS d ON h.header_id = d.id_header;
+    
+select h.header_id as id, h.key as llave from headers as h;
