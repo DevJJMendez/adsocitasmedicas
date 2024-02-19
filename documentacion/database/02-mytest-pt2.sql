@@ -23,9 +23,6 @@ CREATE TABLE usuario (
     FOREIGN KEY (fk_tercero)
         REFERENCES `datos_terceros` (id_tercero),
     contraseña VARCHAR(12) NOT NULL,
-    fk_rol CHAR(2) NOT NULL,
-    FOREIGN KEY (fk_rol)
-        REFERENCES detalle (pk_id_detalle),
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_usuario)
 );
@@ -72,9 +69,6 @@ CREATE TABLE medico (
     fk_especialidad TINYINT UNSIGNED NOT NULL,
     FOREIGN KEY (fk_especialidad)
         REFERENCES `especialidad` (id_especialidad),
-    fk_genero CHAR(2) NOT NULL,
-    FOREIGN KEY (fk_genero)
-        REFERENCES `detalle` (pk_id_detalle),
     PRIMARY KEY (id_medico)
 );
 
