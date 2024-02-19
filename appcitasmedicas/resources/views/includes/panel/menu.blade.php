@@ -23,6 +23,11 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link " href="{{ route('get.calendar') }}">
+            <i class="fas fa-bed text-warning"></i>Citas
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="#"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
             <i class="fas fa-sign-in-alt"></i> Cerrar Sesión

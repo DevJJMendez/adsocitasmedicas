@@ -26,6 +26,10 @@ class RegisterController extends Controller
         $genders = Gender::all();
         return view('auth.register', compact('documenttypes', 'genders'));
     }
+    public function getCalendar()
+    {
+        return view('citas.calendar');
+    }
     public function getMedicalEntities(Request $request){
 
         // $entityType = $request->entityType;
