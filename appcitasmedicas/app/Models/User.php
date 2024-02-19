@@ -22,7 +22,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'third_data_id',
-        'mail',
+        'email',
         'password',
         'role'
     ];

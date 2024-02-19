@@ -16,7 +16,7 @@
         </div>
         <div class="card-body">
 
-            <form action="{{ route('specialty.update', ['specialty'=>$specialty->id]) }}" method="POST">
+            <form action="#" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -26,7 +26,7 @@
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="name" value="{{ old('name', $specialty->name) }}">
+                    <input class="form-control" type="text" name="name" value="">
 
                 </div>
 
@@ -39,7 +39,7 @@
                     @enderror
 
                     <input class="form-control" type="text" name="description"
-                        value="{{ old('description', $specialty->description) }}">
+                        value="">
 
                 </div>
 

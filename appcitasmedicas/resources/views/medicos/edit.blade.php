@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
         </div>
     </div>
     <div class="card-body">
-        <form action="{{ route('update.medico', [$medicos->id]) }}" method="POST">
+        <form action="" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -25,35 +25,35 @@ use Illuminate\Support\Str;
                 @error('cedula')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="cedula" value="{{old('cedula',$medicos->cedula)}}">
+                <input class="form-control" type="text" name="cedula" value="">
             </div>
             <div class="form-group">
                 <label for="name">Nombre del médico</label>
                 @error('name')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="name" value="{{old('name',$medicos->name)}}">
+                <input class="form-control" type="text" name="name" value="">
             </div>
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 @error('email')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="email" value="{{old('email',$medicos->email)}}">
+                <input class="form-control" type="text" name="email" value="">
             </div>
             <div class="form-group">
                 <label for="address">Dirección</label>
                 @error('address')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="address" value="{{old('address',$medicos->address)}}">
+                <input class="form-control" type="text" name="address" value="">
             </div>
             <div class="form-group">
                 <label for="cedula">Teléfono / Móvil</label>
                 @error('number_phone')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="number_phone" value="{{old('number_phone',$medicos->number_phone)}}">
+                <input class="form-control" type="text" name="number_phone" value="">
             </div>
             <div class="form-group">
                 <label for="cedula">Contraseña</label>

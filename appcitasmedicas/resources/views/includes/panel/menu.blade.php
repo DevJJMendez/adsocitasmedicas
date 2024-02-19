@@ -8,22 +8,22 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ route('specialtyView') }}">
+        <a class="nav-link " href="#">
             <i class="ni ni-briefcase-24 text-blue"></i> Especialidades
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ route('medico.view') }}">
+        <a class="nav-link " href="#">
             <i class="fas fa-stethoscope text-info"></i> Médicos
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ route('paciente.view') }}">
+        <a class="nav-link " href="#">
             <i class="fas fa-bed text-warning"></i> Pacientes
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('logout') }}"
+        <a class="nav-link" href="#"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
             <i class="fas fa-sign-in-alt"></i> Cerrar Sesión
         </a>

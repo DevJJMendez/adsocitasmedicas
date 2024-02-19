@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($medicos as $medico)
+                    {{-- @forelse ($medicos as $medico)
                         <tr>
                             
                             <td>
@@ -58,7 +58,7 @@
                                 </span>
                             </th>
                         </tr>
-                    @endforelse
+                    @endforelse --}}
                 </tbody>
             </table>
             {{$medicos->links()}}

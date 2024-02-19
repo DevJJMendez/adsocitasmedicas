@@ -33,8 +33,9 @@ return new class extends Migration
             $table->tinyInteger('entity_type_id')->unsigned()->nullable();
             $table->foreign('entity_type_id')->references('detail_id')->on('details');
             
+            $table->string('mail',100)->nullable();
             $table->string('business_name',100)->nullable();
-            $table->string('address',100);
+            $table->string('address',100)->nullable();
 
             $table->tinyInteger('statu_id')->unsigned();
             $table->foreign('statu_id')->references('detail_id')->on('details');

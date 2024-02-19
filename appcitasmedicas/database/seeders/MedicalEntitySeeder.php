@@ -25,14 +25,6 @@ class MedicalEntitySeeder extends Seeder
             'address'=>'Cr 65 11-50, Piso 2, Lc 2-87 y 2-88
             Plaza Central',
             'statu_id'=>1,
-        ],[
-            'nit'=>$nitAleatorio,
-            'number_phone'=>'018000 962 780',
-            'mail'=>'atencioninicialdeurgencias@epsianaswayuu.com',
-            'entity_type_id'=>14,
-            'business_name'=>'ANASWAYUU',
-            'address'=>'Carrera 16 No. 16 - 31',
-            'statu_id'=>1,
         ]);
 
         $data_id = $thirddata->data_id;

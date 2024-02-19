@@ -70,48 +70,14 @@ class DetailSeeder extends Seeder
             'value'=>'Cédula de Extranjería',
             'nomenclature' => 'CE',
         ]);
-
         Detail::create([
             'id_header' => 4,
-            'value'=>'Telefono',
-            'nomenclature' => null,
-        ]);
-        Detail::create([
-            'id_header' => 4,
-            'value'=>'Celular',
-            'nomenclature' => null,
-        ]);
-
-        Detail::create([
-            'id_header' => 5,
             'value'=>'EPS',
             'nomenclature' => null,
         ]);
         Detail::create([
-            'id_header' => 5,
+            'id_header' => 4,
             'value'=>'IPS',
-            'nomenclature' => null,
-        ]);
-
-        Detail::create([
-            'id_header' => 6,
-            'value'=>'Personal',
-            'nomenclature' => null,
-        ]);
-        Detail::create([
-            'id_header' => 6,
-            'value'=>'Profesional',
-            'nomenclature' => null,
-        ]);
-
-        Detail::create([
-            'id_header' => 7,
-            'value'=>'Alta',
-            'nomenclature' => null,
-        ]);
-        Detail::create([
-            'id_header' => 7,
-            'value'=>'Baja',
             'nomenclature' => null,
         ]);
     }

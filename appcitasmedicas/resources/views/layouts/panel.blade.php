@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        {{config('app.name')}}
+        {{-- {{config('app.name')}} --}}
+        Usuario
     </title>
     @notifyCss
     <!-- Favicon -->
@@ -118,7 +119,7 @@
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
                                     <span class="mb-0 text-sm  font-weight-bold" style="text-transform: uppercase">
-                                        {{auth()->user()->name}}
+                                        {{-- {{auth()->user()->name}} --}}
                                     </span>
                                 </div>
                             </div>
