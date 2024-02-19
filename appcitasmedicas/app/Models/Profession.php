@@ -10,8 +10,9 @@ class Profession extends Model
 {
     use HasFactory;
     protected $table = 'professions';
-    public function doctor(): BelongsTo
+    protected $guarded = [];
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(User::class);
     }
 }

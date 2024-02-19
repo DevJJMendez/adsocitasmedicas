@@ -10,16 +10,16 @@ class Appointment extends Model
 {
     use HasFactory;
     protected $table = 'appointments';
-    public function patient(): HasOne
-    {
-        return $this->hasOne(Patient::class);
-    }
     public function specialty(): HasOne
     {
         return $this->hasOne(Specialty::class);
     }
     public function doctor(): HasOne
     {
-        return $this->hasOne(Doctor::class);
+        return $this->hasOne(User::class);
+    }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
     }
 }

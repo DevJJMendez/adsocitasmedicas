@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,7 +17,12 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
 // specialty route
+Route::group(['prefix' => 'newusers'], function () {
+    Route::get('/get-medical-entities', [RegisterController::class,'getMedicalEntities']);
+    Route::post('/createnewuser', [UserController::class, 'createUserWithThirdData'])->name('createnewuser');
+});
 Route::group(['prefix' => 'specialties'], function () {
     Route::get('', [SpecialtyController::class, 'index'])->name('specialtyView');
     Route::get('/create', [SpecialtyController::class, 'create'])->name('createSpecialty');

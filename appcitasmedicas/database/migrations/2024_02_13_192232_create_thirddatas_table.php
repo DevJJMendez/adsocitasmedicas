@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('thirddatas', function (Blueprint $table) {
             $table->smallIncrements('data_id')->unsigned();
 
-            $table->tinyInteger('document_id')->unsigned();
-            $table->foreign('document_id')->references('detail_id')->on('details');
+            $table->tinyInteger('document_type')->unsigned()->nullable();
+            $table->foreign('document_type')->references('detail_id')->on('details');
 
-            $table->string('identification_number',12)->unique()->nullable();
-            $table->string('nit',9)->nullable()->unique();
-            $table->string('first_name',30);
+            $table->string('identification_number',12)->nullable();
+            $table->string('nit',9)->nullable();
+            $table->string('first_name',30)->nullable();
             $table->string('second_name',30)->nullable();
-            $table->string('sur_name',30);
+            $table->string('sur_name',30)->nullable();
             $table->string('second_sur_name',30)->nullable();
             $table->string('number_phone',30)->nullable();
             $table->string('mail',100)->unique();
@@ -30,11 +30,14 @@ return new class extends Migration
             $table->tinyInteger('gender_id',false,true)->nullable();
             $table->foreign('gender_id')->references('detail_id')->on('details');
 
-            $table->string('business_name',50)->nullable();
+            $table->tinyInteger('entity_type_id')->unsigned()->nullable();
+            $table->foreign('entity_type_id')->references('detail_id')->on('details');
+            $table->string('business_name',100)->nullable();
             $table->string('address',100);
 
             $table->tinyInteger('statu_id')->unsigned();
             $table->foreign('statu_id')->references('detail_id')->on('details');
+            
             
             $table->timestamps();
         });

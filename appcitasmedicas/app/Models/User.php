@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,12 +21,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'third_data_id',
+        'mail',
         'password',
-        'cedula',
-        'address',
-        'number_phone',
         'role'
     ];
 
@@ -56,8 +54,28 @@ class User extends Authenticatable
     // {
     //     return $query->where('role', 'medico');
     // }
-    public function thirddata(): HasOne
+    public function thirddataDoctor(): HasOne
     {
-        return $this->hasOne(Thirddata::class);
+        return $this->hasOne(Thirddata::class,'third_data_id','data_id');
+    }
+    public function thirddataUser(): HasOne
+    {
+        return $this->hasOne(Thirddata::class,'third_data_id','data_id');
+    }
+    public function profession(): HasOne
+    {
+        return $this->hasOne(Profession::class);
+    }
+    public function appointmentDoctor(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class);
+    }
+    public function appointmentPatient(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class);
+    }
+    public function medicalentity(): HasOne
+    {
+        return $this->hasOne(MedicalEntity::class);
     }
 }

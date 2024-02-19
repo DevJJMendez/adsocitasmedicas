@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Thirddata extends Model
 {
     use HasFactory;
+    protected $guarded = [];
     protected $table = 'thirddatas';
     public function document(): HasOne
     {
@@ -25,7 +26,7 @@ class Thirddata extends Model
     }
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'third_data_id','data_id');
     }
     public function phone(): BelongsTo
     {
@@ -37,7 +38,7 @@ class Thirddata extends Model
     }
     public function doctor(): BelongsTo
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(User::class);
     }
     public function medicalentity(): BelongsTo
     {
@@ -45,6 +46,6 @@ class Thirddata extends Model
     }
     public function patient(): BelongsTo
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(User::class);
     }
 }

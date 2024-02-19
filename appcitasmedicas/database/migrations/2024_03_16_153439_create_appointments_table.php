@@ -15,17 +15,17 @@ return new class extends Migration
             $table->smallIncrements('appointment_id')->unsigned();
 
             $table->smallInteger('patient')->unsigned();
-            $table->foreign('patient')->references('patient_id')->on('patients');
+            $table->foreign('patient')->references('user_id')->on('users');
 
             
             $table->tinyInteger('specialty')->unsigned();
             $table->foreign('specialty')->references('specialty_id')->on('specialties');
 
-            $table->tinyInteger('doctor')->unsigned();
-            $table->foreign('doctor')->references('doctor_id')->on('doctors');
+            $table->smallInteger('doctor')->unsigned();
+            $table->foreign('doctor')->references('user_id')->on('users');
 
-            $table->text('medical_evaluation');
             $table->dateTime('appointment_date');
+            $table->text('medical_evaluation');
             $table->timestamps();
         });
     }
