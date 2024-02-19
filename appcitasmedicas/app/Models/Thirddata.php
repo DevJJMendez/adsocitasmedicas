@@ -28,14 +28,8 @@ class Thirddata extends Model
     {
         return $this->belongsTo(User::class,'third_data_id','data_id');
     }
-    public function phone(): BelongsTo
-    {
-        return $this->belongsTo(Phone::class);
-    }
-    public function mail(): BelongsTo
-    {
-        return $this->belongsTo(Mail::class);
-    }
+    
+    
     public function doctor(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -24,14 +24,15 @@ return new class extends Migration
             $table->string('sur_name',30)->nullable();
             $table->string('second_sur_name',30)->nullable();
             $table->string('number_phone',30)->nullable();
-            $table->string('mail',100)->unique();
             $table->dateTime('birth_date')->nullable();
 
             $table->tinyInteger('gender_id',false,true)->nullable();
             $table->foreign('gender_id')->references('detail_id')->on('details');
 
+            
             $table->tinyInteger('entity_type_id')->unsigned()->nullable();
             $table->foreign('entity_type_id')->references('detail_id')->on('details');
+            
             $table->string('business_name',100)->nullable();
             $table->string('address',100);
 

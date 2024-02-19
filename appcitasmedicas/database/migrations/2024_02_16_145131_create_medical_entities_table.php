@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('medical_entities', function (Blueprint $table) {
             $table->tinyIncrements('medical_entity_id');
-
             $table->smallInteger('third_data_id')->unsigned()->nullable();
             $table->foreign('third_data_id')->references('data_id')->on('thirddatas');
-                   
             $table->timestamps();
         });
     }

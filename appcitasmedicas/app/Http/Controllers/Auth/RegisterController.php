@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentType;
 use App\Models\Gender;
+use App\Models\MedicalEntity;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Request;
-use App\Models\MedicalEntity;
 
 class RegisterController extends Controller
 {
@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
         // $entityType = $request->entityType;
         // // Obtener las entidades médicas correspondientes al tipo de entidad seleccionado
-        // $medicalEntities= MedicalEntity::where('')
+        // $medicalEntities= MedicalEntity::where('medical_entity_type', $entityType);
     }
     protected function validator(array $data)
     {
