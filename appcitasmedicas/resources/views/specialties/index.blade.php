@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @forelse ($specialties as $specialty)
+                    @forelse ($specialties as $specialty)
                         <tr>
                             
                             <th scope="row">
@@ -53,7 +53,7 @@
                                 </span>
                             </th>
                         </tr>
-                    @endforelse --}}
+                    @endforelse
                 </tbody>
             </table>
         </div>

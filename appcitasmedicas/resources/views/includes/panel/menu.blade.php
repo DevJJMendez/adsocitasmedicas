@@ -8,27 +8,22 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{{ route('specialtyView') }}">
             <i class="ni ni-briefcase-24 text-blue"></i> Especialidades
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{{ route('medico.view') }}">
             <i class="fas fa-stethoscope text-info"></i> Médicos
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{{ route('paciente.view') }}">
             <i class="fas fa-bed text-warning"></i> Pacientes
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ route('get.calendar') }}">
-            <i class="fas fa-bed text-warning"></i>Citas
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#"
+        <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
             <i class="fas fa-sign-in-alt"></i> Cerrar Sesión
         </a>

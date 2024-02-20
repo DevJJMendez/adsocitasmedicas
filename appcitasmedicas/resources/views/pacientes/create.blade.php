@@ -17,49 +17,49 @@ use Illuminate\Support\Str;
         </div>
     </div>
     <div class="card-body">
-        <form action="#" method="POST">
+        <form action="{{ route('create.new.paciente') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="cedula">Cedula</label>
                 @error('cedula')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="cedula" value="#">
+                <input class="form-control" type="text" name="cedula" value="{{old('cedula')}}">
             </div>
             <div class="form-group">
                 <label for="name">Nombre del paciente</label>
                 @error('name')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="name" value="#">
+                <input class="form-control" type="text" name="name" value="{{old('name')}}">
             </div>
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 @error('email')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="email" value="#">
+                <input class="form-control" type="text" name="email" value="{{old('email')}}">
             </div>
             <div class="form-group">
                 <label for="address">Dirección</label>
                 @error('address')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="address" value="#">
+                <input class="form-control" type="text" name="address" value="{{old('address')}}">
             </div>
             <div class="form-group">
                 <label for="number_phone">Teléfono / Móvil</label>
                 @error('number_phone')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="number_phone" value="#">
+                <input class="form-control" type="text" name="number_phone" value="{{old('number_phone')}}">
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
                 @error('password')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input class="form-control" type="text" name="password" value="">
+                <input class="form-control" type="text" name="password" value="{{old('password',Str::random(8))}}">
             </div>
             <button type="submit" class="btn btn-sm btn-primary">Crear paciente</button>
         </form>

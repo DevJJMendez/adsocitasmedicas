@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @forelse ($pacientes as $paciente)
+                    @forelse ($pacientes as $paciente)
                         <tr>
                             
                             <td>
@@ -58,12 +58,12 @@
                                 </span>
                             </th>
                         </tr>
-                    @endforelse --}}
+                    @endforelse
                 </tbody>
             </table>
         </div>
         <div class="card-body">
-            {{-- {{$pacientes->links()}} --}}
+            {{$pacientes->links()}}
         </div>
     </div>
 @endsection
