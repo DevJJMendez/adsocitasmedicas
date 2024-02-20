@@ -40,3 +40,7 @@ Route::group(['prefix' => 'pacientes'], function () {
     Route::put('/updatePaciente/{paciente}', [PacienteController::class, 'updatePaciente'])->name('update.paciente');
     Route::delete('/deletePaciente/{paciente}', [PacienteController::class, 'deletePaciente'])->name('delete.paciente');
 });
+// citas route
+Route::group(['prefix' => 'citas'], function () {
+    Route::get('', [PacienteController::class, 'showAppointmentView'])->name('citas.view');
+});

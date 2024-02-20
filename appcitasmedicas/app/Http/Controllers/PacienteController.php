@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class PacienteController extends Controller
 {
@@ -12,6 +11,10 @@ class PacienteController extends Controller
     {
         $pacientes = User::pacientes()->select('id', 'cedula', 'name', 'email')->paginate(10);
         return view('pacientes.index', compact('pacientes'));
+    }
+    public function showAppointmentView()
+    {
+        return view('citas.citas');
     }
     public function create()
     {
