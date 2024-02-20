@@ -129,6 +129,8 @@
             });
     </script>
     <!--   Core   -->
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

@@ -15,7 +15,7 @@
         </div>
         <div class="card-body px-lg-5 py-lg-5">
           {{-- Alerts --}}
-          {{-- @if ($errors->any())
+          @if ($errors->any())
           <div class="text-center text-muted mb-2">
             <h3>Se encontro el siguiente error:</h3>
           </div>
@@ -23,7 +23,7 @@
             {{ $errors->first() }}
           </div>
           @else
-          @endif --}}
+          @endif
           <div class="text-center text-muted mb-4">
             <h2>Ingresa tu datos</h2>
           </div>
@@ -38,7 +38,7 @@
               <div class="form-group">
                 <label for="document_type">Tipo de Documento</label>
                 <select name="document_type" class="form-control" required>
-                  @forelse ($documenttypes as $documenttype)
+                  @forelse ($document as $documenttype)
                   <option value="{{$documenttype->detail_id}}">{{$documenttype->name}}</option>
                   @empty
                   <option value="">No data found</option>
@@ -137,7 +137,7 @@
                   <div class="alert alert-danger">{{$message}}</div>
                   @enderror
                   <select id="gender_id" name="gender_id" class="form-control">
-                    @forelse ($genders as $gender)
+                    @forelse ($gende as $gender)
                     <option value="{{$gender->detail_id}}">{{$gender->name}}</option>
                     @empty
                     <option value="#">No data found</option>

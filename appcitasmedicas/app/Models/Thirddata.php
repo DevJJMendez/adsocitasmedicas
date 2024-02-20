@@ -10,8 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Thirddata extends Model
 {
     use HasFactory;
-    protected $guarded = [];
     protected $table = 'thirddatas';
+    protected $guarded = [];
+    protected $attributes = [
+        'statu_id'=>1,
+    ];
+
     public function document(): HasOne
     {
         return $this->hasOne(DocumentType::class);

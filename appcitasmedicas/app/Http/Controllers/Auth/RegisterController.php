@@ -15,27 +15,28 @@ use Request;
 class RegisterController extends Controller
 {
     use RegistersUsers;
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
     protected $redirectTo = '/home';
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('guest');
     }
-    public function showRegistrationForm()
-    {
-        $documenttypes = DocumentType::all();
-        $genders = Gender::all();
-        return view('auth.register', compact('documenttypes', 'genders'));
-    }
-    public function getCalendar()
-    {
-        return view('citas.calendar');
-    }
-    public function getMedicalEntities(Request $request){
-
-        // $entityType = $request->entityType;
-        // // Obtener las entidades médicas correspondientes al tipo de entidad seleccionado
-        // $medicalEntities= MedicalEntity::where('medical_entity_type', $entityType);
-    }
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -58,5 +59,25 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function showDocumentType()
+    {
+        $documetTypes = DocumentType::all();
+        return view('auth.register', compact('documetTypes'));
+    }
+    public function showGenders()
+    {
+        $genders = Gender::all();
+        return view('auth.register', compact('genders'));
+    }
+    public function getCalendar()
+    {
+        return view('citas.calendar');
+    }
+    public function getMedicalEntities(Request $request){
+
+        // $entityType = $request->entityType;
+        // // Obtener las entidades médicas correspondientes al tipo de entidad seleccionado
+        // $medicalEntities= MedicalEntity::where('medical_entity_type', $entityType);
     }
 }

@@ -2,16 +2,11 @@
 namespace App\Services;
 
 use App\Models\Thirddata;
-use Hash;
+use Illuminate\Support\Arr;
 
 class UserService{
-  public function createUserWithThirdData(array $thirddataAttributes,array $userAttributes)
+  public function createUserWithThirdData(array $thirddataAttributes):Thirddata
   {
-    $thirddata=Thirddata::create($thirddataAttributes);
-
-    $userAttributes['third_data_id'] = $thirddata->data_id;
-
-    // TODO: FIXME: This
-    // $userAttributes['password'] = Hash:;
+    return Thirddata::create($thirddataAttributes);
   }
 }

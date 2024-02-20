@@ -18,7 +18,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'newusers'], function () {
     Route::get('/get-medical-entities', [RegisterController::class,'getMedicalEntities']);
     Route::get('', [RegisterController::class,'getCalendar'])->name('get.calendar');
-    Route::post('/createnewuser', [UserController::class, 'createUserWithThirdData'])->name('createnewuser');
+    Route::post('/createnewuser', [UserController::class, 'createUser'])->name('createnewuser');
 });
 
 // Route::group(['prefix' => 'specialties'], function () {
