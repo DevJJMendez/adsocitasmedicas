@@ -30,7 +30,7 @@
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
                             {{-- Nombre --}}
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
@@ -38,7 +38,7 @@
                                     <input class="form-control" placeholder="Nombre" type="text" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- Email --}}
                             <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
