@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentType;
 use App\Models\Gender;
-use App\Models\MedicalEntity;
+
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -42,7 +42,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'password' => ['required', 'string', 'min:4'],
         ]);
     }
 
@@ -63,12 +63,12 @@ class RegisterController extends Controller
     public function showDocumentType()
     {
         $documetTypes = DocumentType::all();
-        return view('auth.register', compact('documetTypes'));
+        return view('Test.register')->with(['documetTypes'=>$documetTypes]);
     }
     public function showGenders()
     {
         $genders = Gender::all();
-        return view('auth.register', compact('genders'));
+        return view('Test.register')->with(['genders'=>$genders]);
     }
     public function getCalendar()
     {

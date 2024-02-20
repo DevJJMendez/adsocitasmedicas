@@ -38,7 +38,7 @@
               <div class="form-group">
                 <label for="document_type">Tipo de Documento</label>
                 <select name="document_type" class="form-control" required>
-                  @forelse ($document as $documenttype)
+                  @forelse ($documentType as $documenttype)
                   <option value="{{$documenttype->detail_id}}">{{$documenttype->name}}</option>
                   @empty
                   <option value="">No data found</option>
@@ -113,11 +113,11 @@
               {{-- correo electronico --}}
               <div class="form-group">
                 <label for="mail">Correo Electrónico</label>
-                @error('mail')
+                @error('email')
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input type="email" id="mail" name="mail" class="form-control"
-                  placeholder="Ingrese su correo electrónico" value="{{old('mail')}}">
+                <input type="email" id="email" name="email" class="form-control"
+                  placeholder="Ingrese su correo electrónico" value="{{old('email')}}">
               </div>
               {{-- Fecha de Nacimiento --}}
               <div class="form-row">
@@ -137,7 +137,7 @@
                   <div class="alert alert-danger">{{$message}}</div>
                   @enderror
                   <select id="gender_id" name="gender_id" class="form-control">
-                    @forelse ($gende as $gender)
+                    @forelse ($genders as $gender)
                     <option value="{{$gender->detail_id}}">{{$gender->name}}</option>
                     @empty
                     <option value="#">No data found</option>

@@ -20,7 +20,7 @@ class UserRequest extends FormRequest
             'first_name' => 'required|min:2|max:30|regex:/^[a-zA-Z\s]+$/',
             'sur_name' => 'required|min:2|max:30|regex:/^[a-zA-Z\s]+$/',
             'number_phone' => 'required',
-            'mail' => 'required|email',
+            'email' => 'required|email',
             'birth_date' => 'required|date_format:Y-m-d',
             'address' => 'required|min:3|max:100',
         ];
@@ -42,8 +42,8 @@ class UserRequest extends FormRequest
             'number_phone.required' => 'Debe ingresar un número telefonico',
             'number_phone.numeric' => 'El número telefonico no debe contener letras ni caracteres especiales',
 
-            'mail.required' => 'Debe ingresar un correo electronico valido',
-            'mail.email' => 'Debe ingresar un correo electronico valido',
+            'email.required' => 'Debe ingresar un correo electronico valido',
+            'email.email' => 'Debe ingresar un correo electronico valido',
 
             'birth_date.required' => 'Debe seleccionar la fecha de nacimiento',
             'birth_date.date_format' => 'Debe ingresar un correo electronico valido',

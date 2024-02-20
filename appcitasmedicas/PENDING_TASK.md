@@ -1,3 +1,5 @@
 # Tareas pendientes:
 
-- Establecer relaciones entre modelos (Eloquent).
+-   fix login
+-   fix register
+-   implement ajax
