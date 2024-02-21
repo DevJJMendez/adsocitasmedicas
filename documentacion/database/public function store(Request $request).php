@@ -37,6 +37,3 @@ public function store(Request $request)
             ->with('success', 'Personal creado con éxito')
             ->with('title', 'Guardado');
     }
-// la tabla thirddatas esta relacionada con la tabla Users , al momento de enviar los datos a la tabla Thirddata debo crear automaticamente los registros de la tabla users, el campo third_data_id de la tabla users debe ser igual al campo data_id de la tabla thirddatas, al igual que el email, el campo password de la tabla users sera el campo identification_number de la tabla thirddatas, ¿como puedo lograr esto?  
-
-// ademas, apartir de estos requisitos me surge dudas, ¿puedo usar algun patron de diseño o servicio para que el controlador no tenga tantas responsabilidades?
