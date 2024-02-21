@@ -1,0 +1,39 @@
+Ten en cuenta lo siguiente de la tabla third_data
+
+los siguientes datos son para la creacion del usuario:
+document_type_id
+identification_number
+first_name
+second_name
+sur_name
+second_sur_name
+number_phone
+birth_date
+gender_type_id
+address
+statu_type_id
+
+los siguientes datos son para la creacion del doctor:
+document_type_id
+identification_number
+first_name
+second_name
+sur_name
+second_sur_name
+number_phone
+birth_date
+gender_type_id
+address
+statu_type_id
+id_profession
+
+los siguientes datos son para la creacion de la entidad medica:
+nit
+number_phone
+entity_type_id
+email
+business_name
+address
+statu_type_id
+
+

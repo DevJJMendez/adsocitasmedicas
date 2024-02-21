@@ -28,6 +28,11 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link " href="{{ route('medical.entities.view') }}">
+            <i class="fas fa-bed text-warning"></i> Entidades Médicas
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('citas.view') }}"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
             <i class="fas fa-sign-in-alt"></i> Cerrar Sesión

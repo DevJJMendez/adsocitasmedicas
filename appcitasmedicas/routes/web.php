@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MedicalEntityController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\SpecialtyController;
@@ -13,6 +14,18 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::group(['prefix'=>'users'],function(){
+    Route::post('')->name('new.user');
+});
+// Medical Entity Route
+Route::group(['prefix' => 'medical-entities'], function () {
+    Route::get('', [MedicalEntityController::class, 'showMedicalEntitiesView'])->name('medical.entities.view');
+    Route::get('/create', [MedicalEntityController::class, 'showNewMecicalEntitiesView'])->name('create.new.medical.entity');
+    Route::post('createNewSpecialty', [SpecialtyController::class, 'createNewSpecialty'])->name('createNewSpecialty');
+    Route::get('{specialty}/edit', [SpecialtyController::class, 'especialtyEdit'])->name('specialty.edit');
+    Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
+    Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
+});
 // specialty route
 Route::group(['prefix' => 'specialties'], function () {
     Route::get('', [SpecialtyController::class, 'index'])->name('specialtyView');
