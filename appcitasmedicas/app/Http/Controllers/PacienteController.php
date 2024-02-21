@@ -9,7 +9,7 @@ class PacienteController extends Controller
 {
     public function index()
     {
-        $pacientes = User::pacientes()->select('id', 'cedula', 'name', 'email')->paginate(10);
+        $pacientes = User::pacientes()->select('id','email')->paginate(10);
         return view('pacientes.index', compact('pacientes'));
     }
     public function showAppointmentView()
@@ -23,11 +23,7 @@ class PacienteController extends Controller
     public function createNewPaciente(PacienteRequest $pacienteRequest)
     {
         User::create([
-            'cedula' => $pacienteRequest->cedula,
-            'name' => $pacienteRequest->name,
             'email' => $pacienteRequest->email,
-            'address' => $pacienteRequest->address,
-            'number_phone' => $pacienteRequest->number_phone,
             'role' => 'paciente',
             'password' => bcrypt($pacienteRequest->password),
         ]);
@@ -43,11 +39,7 @@ class PacienteController extends Controller
     {
         $pacientes = User::pacientes()->findOrFail($id);
         $pacientes->update([
-            'cedula' => $pacienteRequest->cedula,
-            'name' => $pacienteRequest->name,
             'email' => $pacienteRequest->email,
-            'address' => $pacienteRequest->address,
-            'number_phone' => $pacienteRequest->number_phone,
             'role' => 'paciente',
             'password' => $pacienteRequest->password ? bcrypt($pacienteRequest->password) : $pacientes->password,
         ]);

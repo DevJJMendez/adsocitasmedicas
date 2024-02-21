@@ -9,7 +9,7 @@ class MedicoController extends Controller
 {
     public function index()
     {
-        $medicos = User::medicos()->select('id', 'cedula', 'name', 'email')->paginate(10);
+        $medicos = User::medicos()->select('id', 'email')->paginate(10);
         return view('medicos.index', compact('medicos'));
     }
     public function create()
@@ -19,11 +19,7 @@ class MedicoController extends Controller
     public function createNewMedico(MedicoRequest $medicoRequest)
     {
         User::create([
-            'cedula' => $medicoRequest->cedula,
-            'name' => $medicoRequest->name,
             'email' => $medicoRequest->email,
-            'address' => $medicoRequest->address,
-            'number_phone' => $medicoRequest->number_phone,
             'role' => 'medico',
             'password' => bcrypt($medicoRequest->password),
         ]);
@@ -39,11 +35,7 @@ class MedicoController extends Controller
     {
         $medicos = User::medicos()->findOrFail($id);
         $medicos->update([
-            'cedula' => $medicoRequest->cedula,
-            'name' => $medicoRequest->name,
             'email' => $medicoRequest->email,
-            'address' => $medicoRequest->address,
-            'number_phone' => $medicoRequest->number_phone,
             'role' => 'medico',
             'password' => $medicoRequest->password ? bcrypt($medicoRequest->password) : $medicos->password,
         ]);

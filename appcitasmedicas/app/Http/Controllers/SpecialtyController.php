@@ -13,7 +13,7 @@ class SpecialtyController extends Controller
     }
     public function index()
     {
-        $specialties = Specialty::get(['id', 'name', 'description']);
+        $specialties = Specialty::get(['specialty_id', 'name']);
         return view('specialties.index', compact('specialties'));
     }
     public function create()
@@ -24,7 +24,6 @@ class SpecialtyController extends Controller
     {
         Specialty::create([
             'name' => $specialtyRequest->name,
-            'description' => $specialtyRequest->description
         ]);
         notify()->success('Especialidad agregada correctamente', 'Agregar');
         return redirect()->route('specialtyView');
