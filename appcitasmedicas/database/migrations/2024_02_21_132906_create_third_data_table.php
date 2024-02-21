@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('number_phone',30)->nullable();
             $table->dateTime('birth_date')->nullable();
 
-            $table->tinyInteger('gender_id',false,true)->nullable();
-            $table->foreign('gender_id')->references('detail_id')->on('details');
+            $table->tinyInteger('gender_type_id',false,true)->nullable();
+            $table->foreign('gender_type_id')->references('detail_id')->on('details');
 
             
             $table->tinyInteger('entity_type_id')->unsigned()->nullable();
@@ -37,8 +37,8 @@ return new class extends Migration
             $table->string('business_name',100)->nullable();
             $table->string('address',100)->nullable();
 
-            $table->tinyInteger('statu_id')->unsigned();
-            $table->foreign('statu_id')->references('detail_id')->on('details');
+            $table->tinyInteger('statu_type_id')->unsigned();
+            $table->foreign('statu_type_id')->references('detail_id')->on('details');
             
             $table->tinyInteger('id_profession')->unsigned();
             $table->foreign('id_profession')->references('profession_id')->on('professions');
