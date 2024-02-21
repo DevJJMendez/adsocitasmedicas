@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreign('id_patient')->references('id')->on('users');
 
             
-            $table->tinyInteger('specialty')->unsigned();
-            $table->foreign('specialty')->references('specialty_id')->on('specialties');
+            $table->tinyInteger('id_specialty')->unsigned();
+            $table->foreign('id_specialty')->references('specialty_id')->on('specialties');
 
             $table->smallInteger('id_doctor')->unsigned();
             $table->foreign('id_doctor')->references('id')->on('users');

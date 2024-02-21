@@ -1,0 +1,2 @@
+-   Establecer relaciones : Header - Details
+-   Establecer relaciones : Vistas

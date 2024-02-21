@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('third_data', function (Blueprint $table) {
             $table->smallIncrements('data_id')->unsigned();
 
-            $table->tinyInteger('document_type')->unsigned()->nullable();
-            $table->foreign('document_type')->references('detail_id')->on('details');
+            $table->tinyInteger('document_type_id')->unsigned()->nullable();
+            $table->foreign('document_type_id')->references('detail_id')->on('details');
 
             $table->string('identification_number',12)->nullable();
             $table->string('nit',9)->nullable();

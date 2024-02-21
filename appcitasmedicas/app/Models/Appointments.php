@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Appointments extends Model
@@ -11,17 +12,15 @@ class Appointments extends Model
     use HasFactory;
     protected $table = 'appointments';
     protected $guarded = [];
-
-    public function specialty(): HasOne
+    public function patient(): BelongsTo
     {
-        return $this->hasOne(Specialty::class);
+        return $this->belongsTo(User::class,'id_patient');
     }
-    public function doctor(): HasOne
+    public function doctor(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class,'id_doctor');
     }
-    public function user(): HasOne
-    {
-        return $this->hasOne(User::class);
+    public function specialty():HasOne{
+        return $this->hasOne(Specialty::class, 'id_specialty');
     }
 }
