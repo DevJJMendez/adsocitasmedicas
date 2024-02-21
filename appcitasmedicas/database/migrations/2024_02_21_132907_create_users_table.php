@@ -21,8 +21,8 @@ return new class extends Migration {
             $table->tinyInteger('profession')->unsigned()->nullable();
             $table->foreign('profession')->references('profession_id')->on('professions');
 
-            // $table->tinyInteger('entity_id')->unsigned()->nullable();
-            // $table->foreign('entity_id')->references('medical_entity_id')->on('medical_entities');
+            $table->tinyInteger('entity_id')->unsigned()->nullable();
+            $table->foreign('entity_id')->references('medical_entity_id')->on('medical_entities');
 
             $table->rememberToken();
             $table->timestamps();
