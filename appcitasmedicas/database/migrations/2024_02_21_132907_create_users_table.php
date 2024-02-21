@@ -11,18 +11,6 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            // $table->id();
-            // $table->string('name');
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
-            // $table->string('cedula', 10)->nullable();
-            // $table->string('address', 244)->nullable();
-            // $table->string('number_phone', 30)->nullable();
-            // $table->string('role')->nullable();
-            // $table->rememberToken();
-            // $table->timestamps();
-
             $table->unsignedSmallInteger('id', true);
             $table->smallInteger('third_data_id', false, true)->nullable();
             $table->foreign('third_data_id')->references('data_id')->on('third_data');

@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('specialties', function (Blueprint $table) {
-            $table->tinyIncrements('specialty_id')->unsigned();
-            $table->string('name',100);
+        Schema::create('medical_entities', function (Blueprint $table) {
+            $table->tinyIncrements('medical_entity_id');
+            $table->smallInteger('third_data_id')->unsigned()->nullable();
+            $table->foreign('third_data_id')->references('data_id')->on('third_data');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('specialties');
+        Schema::dropIfExists('medical_entities');
     }
 };
