@@ -18,12 +18,10 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->nullable();
-            $table->tinyInteger('profession')->unsigned()->nullable();
-            $table->foreign('profession')->references('profession_id')->on('professions');
 
-            $table->tinyInteger('entity_id')->unsigned()->nullable();
-            $table->foreign('entity_id')->references('medical_entity_id')->on('medical_entities');
-
+            $table->tinyInteger('id_entity')->unsigned();
+            $table->foreign('id_entity')->references('medical_entity_id')->on('medical_entities');
+            
             $table->rememberToken();
             $table->timestamps();
         });

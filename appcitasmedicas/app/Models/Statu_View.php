@@ -9,4 +9,5 @@ class Statu_View extends Model
 {
     use HasFactory;
     protected $table='statu_views';
+    protected $guarded = [];
 }

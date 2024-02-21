@@ -9,4 +9,5 @@ class Gender_View extends Model
 {
     use HasFactory;
     protected $table='gender_views';
+    protected $guarded = [];
 }

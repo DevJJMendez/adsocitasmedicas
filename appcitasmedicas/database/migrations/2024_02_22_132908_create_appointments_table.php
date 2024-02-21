@@ -14,18 +14,21 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->smallIncrements('appointment_id')->unsigned();
 
-            $table->smallInteger('patient')->unsigned();
-            $table->foreign('patient')->references('id')->on('users');
+            $table->smallInteger('id_patient')->unsigned();
+            $table->foreign('id_patient')->references('id')->on('users');
 
             
             $table->tinyInteger('specialty')->unsigned();
             $table->foreign('specialty')->references('specialty_id')->on('specialties');
 
-            $table->smallInteger('doctor')->unsigned();
-            $table->foreign('doctor')->references('id')->on('users');
+            $table->smallInteger('id_doctor')->unsigned();
+            $table->foreign('id_doctor')->references('id')->on('users');
 
             $table->dateTime('appointment_date');
             $table->text('medical_evaluation');
+
+            $table->tinyInteger('statu_id')->unsigned();
+            $table->foreign('statu_id')->references('detail_id')->on('details');
             $table->timestamps();
         });
     }

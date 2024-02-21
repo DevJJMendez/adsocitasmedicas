@@ -9,6 +9,7 @@ class Detail extends Model
 {
     use HasFactory;
     protected $table='details';
+    protected $guarded = [];
     public function header(){
         return $this->belongsTo(Header::class);
     }

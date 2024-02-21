@@ -7,8 +7,11 @@ use App\Models\Third_Data;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Medcial_Entity_Seeder extends Seeder
+class Medical_Entity_Seeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
         $nitAleatorio=rand(100000000, 999999999);
