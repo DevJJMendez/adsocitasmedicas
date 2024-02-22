@@ -12,6 +12,7 @@ class Third_Data extends Model
     use HasFactory;
     protected $table = 'third_data';
     protected $fillable = [
+        'data_id',
         'nit',
         'number_phone',
         'entity_type_id',
@@ -19,7 +20,6 @@ class Third_Data extends Model
         'business_name',
         'address',
         'statu_type_id',
-
     ];
     public function profession(): HasOne
     {

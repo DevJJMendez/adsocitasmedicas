@@ -19,6 +19,10 @@ use Illuminate\Support\Str;
         <div class="card-body">
             <form action="{{ route('create.new.medical.entity') }}" method="POST">
                 @csrf
+                <div class="form-group">
+                    <label for="data_id">Id</label>
+                    <input class="form-control" type="number" name="data_id" value="{{old('data_id')}}">
+                </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="entity_type_id">Tipo de entidad médica</label>
@@ -45,7 +49,7 @@ use Illuminate\Support\Str;
                     @error('nit')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="nit" value="{{ old('nit') }}">
+                    <input class="form-control" type="number" name="nit" value="{{ old('nit') }}">
                 </div>
                 <div class="form-group">
                     <label for="number_phone">Número de contacto</label>

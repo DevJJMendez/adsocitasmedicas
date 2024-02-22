@@ -19,6 +19,7 @@ class ThirdDataService
     }
     public function createThirdDataForMedicalEntity(array $ThirdData): Third_Data
     {
+        
         return Third_Data::create($ThirdData);
     }
 }

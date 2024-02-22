@@ -170,7 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // models
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        // Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         // services
         App\Providers\ThirdDataServiceProvider::class,

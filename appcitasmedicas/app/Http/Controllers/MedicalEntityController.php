@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MedicalEntityRequest;
 use App\Http\Requests\ThirdDataRequest;
-use App\Models\Entity_Type_View;
-use App\Models\Statu_View;
-use App\Services\EntityDataService;
+use App\Models\Medical_Entities;
 use App\Services\ThirdDataService;
 use Illuminate\View\View;
-
-use function Laravel\Prompts\select;
-
 class MedicalEntityController extends Controller
 {
     protected $thirdDataService;
@@ -32,6 +26,10 @@ class MedicalEntityController extends Controller
     public function createNewMedicalEntity(ThirdDataRequest $thirdDataRequest)
     {
         $this->thirdDataService->createThirdDataForMedicalEntity($thirdDataRequest->all());
+        
+        Medical_Entities::create([
+            'third_data_id' => $thirdDataRequest->data_id
+        ]);
 
         notify()->success('Entidad médica agregada correctamente', 'Agregar entidad médica');
         return redirect()->route('medical.entities.view');

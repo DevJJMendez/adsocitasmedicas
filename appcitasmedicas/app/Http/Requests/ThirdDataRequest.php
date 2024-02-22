@@ -15,7 +15,7 @@ class ThirdDataRequest extends FormRequest
         return [
             'business_name' => 'required|min:4',
             'nit' => 'required|numeric',
-            'number_phone' => 'required|min:10|max:12',
+            'number_phone' => 'required|min:8|max:30',
             'email' => 'required|email',
             'address' => 'required',
             'statu_type_id' => 'required',
