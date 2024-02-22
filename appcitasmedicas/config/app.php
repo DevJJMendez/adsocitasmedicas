@@ -168,6 +168,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // models
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        // services
+        App\Providers\EntityDataServiceProvider::class,
     ])->toArray(),
 
     /*

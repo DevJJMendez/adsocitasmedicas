@@ -1,2 +1,1 @@
--   Establecer relaciones : Header - Details
--   Establecer relaciones : Vistas
+-   fix service for MedicalEntityController
