@@ -173,7 +173,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         // services
-        App\Providers\EntityDataServiceProvider::class,
+        App\Providers\ThirdDataServiceProvider::class,
+
     ])->toArray(),
 
     /*

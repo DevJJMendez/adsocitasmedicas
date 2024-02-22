@@ -2,21 +2,20 @@
 
 namespace App\Providers;
 
-use App\Services\EntityDataService;
+use App\Services\ThirdDataService;
 use Illuminate\Support\ServiceProvider;
 
-class EntityDataServiceProvider extends ServiceProvider
+class ThirdDataServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
      */
     public function register(): void
     {
-        $this->app->bind('EntityDataService', function ($app) {
-        return new EntityDataService(/* Argumentos opcionales si los hay */);
-    });
+        $this->app->bind('ThirdDataService', function ($app) {
+            return new ThirdDataService(/* Argumentos opcionales si los hay */);
+        });
     }
-
     /**
      * Bootstrap services.
      */

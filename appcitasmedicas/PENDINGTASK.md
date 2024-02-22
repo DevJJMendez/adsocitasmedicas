@@ -1,1 +1,1 @@
--   fix CONTROLLER for MedicalEntityController
+-   create a trigger

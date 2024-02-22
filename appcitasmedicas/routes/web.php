@@ -14,7 +14,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'users'],function(){
+Route::group(['prefix' => 'users'], function () {
     Route::post('')->name('new.user');
 });
 // Medical Entity Route
@@ -23,8 +23,8 @@ Route::group(['prefix' => 'medical-entities'], function () {
     Route::get('/create', [MedicalEntityController::class, 'showNewMecicalEntitiesView'])->name('create.view');
 
     // TODO: FIXME - CREATE FUNCTION
-    Route::post('createnewentity', [SpecialtyController::class, 'createNewMedicalEntity'])->name('create.new.medical.entity');
-    
+    Route::post('createnewentity', [MedicalEntityController::class, 'createNewMedicalEntity'])->name('create.new.medical.entity');
+
     Route::get('{specialty}/edit', [SpecialtyController::class, 'especialtyEdit'])->name('specialty.edit');
     Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
     Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');

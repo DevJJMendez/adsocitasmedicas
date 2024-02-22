@@ -3,34 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicalEntityRequest;
+use App\Http\Requests\ThirdDataRequest;
 use App\Models\Entity_Type_View;
 use App\Models\Statu_View;
 use App\Services\EntityDataService;
+use App\Services\ThirdDataService;
 use Illuminate\View\View;
 
 use function Laravel\Prompts\select;
 
 class MedicalEntityController extends Controller
 {
-    protected $entityDataService;
-    public function __construct(EntityDataService $entityDataService){
-        $this->entityDataService = $entityDataService;
+    protected $thirdDataService;
+    public function __construct(ThirdDataService $thirdDataService)
+    {
+        $this->thirdDataService = $thirdDataService;
     }
-    public function showMedicalEntitiesView():view
+    public function showMedicalEntitiesView(): view
     {
         return view('medicalentities.index');
     }
-    public function showNewMecicalEntitiesView():view
+    public function showNewMecicalEntitiesView(): view
     {
-        $entitiesType = $this->entityDataService->getEntityTypes();
-        $statuType = $this->entityDataService->getStatusTypes();
-        return view('medicalentities.create',compact('entitiesType','statuType'));
+        $entitiesType = $this->thirdDataService->getEntityTypes();
+        $statuType = $this->thirdDataService->getStatusTypes();
+        return view('medicalentities.create', compact('entitiesType', 'statuType'));
     }
-    public function createNewMedicalEntity(MedicalEntityRequest $medicalEntityRequest)
+    public function createNewMedicalEntity(ThirdDataRequest $thirdDataRequest)
     {
-        $thirdData = $this->entityDataService->createThirdDataForMedicalEntity($medicalEntityRequest->all());
+        $this->thirdDataService->createThirdDataForMedicalEntity($thirdDataRequest->all());
 
-        // TODO: FIXME - REDIRECTO TO VIEW
-        // return redirect()->route();
+        notify()->success('Entidad médica agregada correctamente', 'Agregar entidad médica');
+        return redirect()->route('medical.entities.view');
     }
 }
