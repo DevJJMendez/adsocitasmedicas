@@ -28,6 +28,9 @@ class MedicalEntityController extends Controller
     }
     public function createNewMedicalEntity(MedicalEntityRequest $medicalEntityRequest)
     {
-        
+        $thirdData = $this->entityDataService->createThirdDataForMedicalEntity($medicalEntityRequest->all());
+
+        // TODO: FIXME - REDIRECTO TO VIEW
+        // return redirect()->route();
     }
 }

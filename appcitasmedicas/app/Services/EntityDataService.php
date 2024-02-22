@@ -16,13 +16,15 @@ class EntityDataService{
   {
       return Statu_View::select('detail_id','name')->whereIn('detail_id',[1,2])->get();
   }
-  public function createThirdDataForMedicalEntity(array $thirddata):Third_Data
+  public function createThirdDataForMedicalEntity(array $thirdDataAttributes):Third_Data
   {
-    return Third_Data::create($thirddata);
+    $thirdData = Third_Data::create($thirdDataAttributes);
+    $this->createMedicalEntityWithThirdData(['data_id' => $thirdData->data_id]);
+    return $thirdData;
   }
-  public function createMedicalEntityWithThirdData(array $medicalentity):Medical_Entities{
+  public function createMedicalEntityWithThirdData(array $medicalEntityAttributes):Medical_Entities{
     return Medical_Entities::create([
-      'third_data_id'=>$medicalentity['data_id'],
+      'third_data_id'=>$medicalEntityAttributes['data_id'],
     ]);
   }
 }

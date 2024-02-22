@@ -7,7 +7,7 @@
                 <h3 class="mb-0">Entidades Médicas</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('create.new.medical.entity') }}" class="btn btn-sm btn-primary">Agregar nueva entidad
+                <a href="{{ route('create.view') }}" class="btn btn-sm btn-primary">Agregar nueva entidad
                     médica</a>
             </div>
         </div>

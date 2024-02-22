@@ -17,13 +17,8 @@ use Illuminate\Support\Str;
         </div>
     </div>
     <div class="card-body">
-        <form action="#" method="POST">
+        <form action="{{ route('create.new.medical.entity') }}" method="POST">
             @csrf
-            {{-- @error('cedula')
-            <div class="alert alert-danger">{{$message}}</div>
-            @enderror --}}
-
-            {{-- --}}
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="entity_type_id">Tipo de entidad médica</label>
