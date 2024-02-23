@@ -18,20 +18,6 @@ class ThirdDataService
     {
         return Statu_View::select('detail_id', 'name')->whereIn('detail_id', [1, 2])->get();
     }
-    public function getAllMedicalEntities():Collection{
-        return Medical_Entities::select('
-        medical_entities.third_data_id as Id',
-        'td.nit as Nit',
-        'td.number_phone as Telefono',
-        'etv.name as Tipo',
-        'td.email as Email',
-        'td.business_name as Nombre',
-        'td.address as Dirección',
-        'sv.name as Estado')->join('third_data as td', 'td.data_id', '=', 'medical_entities.third_data_id')
-                                ->join('entity_type_views as etv', 'etv.detail_id', '=', 'td.entity_type_id')
-                                    ->join('statu_views as sv', 'sv.detail_id', '=', 'td.statu_id')
-                                        ->get();
-    }
     public function createThirdDataForMedicalEntity(array $ThirdData):void
     {
         Third_Data::create($ThirdData);
@@ -39,5 +25,23 @@ class ThirdDataService
         Medical_Entities::create([
             'third_data_id'=>$latestDataId,
         ]);
+    }
+    public function getAllMedicalEntities()
+    {
+        return Medical_Entities::select
+        (
+        'td.data_id',
+        'medical_entities.third_data_id',
+        'td.nit as nit',
+        'td.number_phone as telefono',
+        'etv.name as tipo',
+        'td.email as email',
+        'td.business_name as nombre',
+        'td.address as direccion',
+        'sv.name as estado'
+        )->join('third_data as td', 'td.data_id', '=', 'medical_entities.third_data_id')
+                ->join('entity_type_views as etv', 'etv.detail_id', '=', 'td.entity_type_id')
+                    ->join('statu_views as sv', 'sv.detail_id', '=', 'td.statu_type_id')
+                        ->paginate(6);
     }
 }

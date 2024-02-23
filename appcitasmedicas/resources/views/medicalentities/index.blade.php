@@ -17,24 +17,49 @@
         <table class="table align-items-center table-flush" style="text-transform: uppercase">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Opciones</th>
+                    {{-- <th scope="col">ID</th> --}}
+                    <th scope="col">Nit</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Estado</th>
 
+                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @forelse ($pacientes as $paciente)
+                @forelse ($medicalEntities as $medicalEntity)
                 <tr>
                     <td>
-                        {{ $paciente->email }}
+                        {{ $medicalEntity->nit }}
                     </td>
                     <td>
-
-                        <form action="{{ route('delete.paciente', ['paciente'=>$paciente->id]) }}" method="POST">
+                        {{ $medicalEntity->tipo }}
+                    </td>
+                    <td>
+                        {{ $medicalEntity->nombre }}
+                    </td>
+                    <td>
+                        {{ $medicalEntity->email }}
+                    </td>
+                    <td>
+                        {{ $medicalEntity->direccion }}
+                    </td>
+                    <td>
+                        {{ $medicalEntity->telefono }}
+                    </td>
+                    <td>
+                        {{ $medicalEntity->estado }}
+                    </td>
+                    <td>
+                        {{-- {{ route('delete.paciente', ['paciente'=>$medicalEntity->id]) }} --}}
+                        <form action="" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('edit.paciente.view', ['paciente' => $paciente->id]) }}"
-                                class="btn btn-sm btn-primary">
+                            {{-- {{ route('edit.paciente.view', ['paciente' => $medicalEntity->id]) }} --}}
+                            <a href="" class="btn btn-sm btn-primary">
                                 Editar
                             </a>
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
@@ -50,12 +75,12 @@
                         </span>
                     </th>
                 </tr>
-                @endforelse --}}
+                @endforelse
             </tbody>
         </table>
     </div>
     <div class="card-body">
-        {{-- {{$pacientes->links()}} --}}
+        {{$medicalEntities->links()}}
     </div>
 </div>
 @endsection
