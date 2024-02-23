@@ -14,10 +14,10 @@ class Medical_Entity_Seeder extends Seeder
      */
     public function run(): void
     {
-        $nitAleatorio=rand(100000000, 999999999);
+        
         // EPS
-        // $thirddata = Third_Data::create([
-        //     'data_id'=>15,
+        // $nitAleatorio=rand(100000000, 999999999);
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'01 8000 123703​',
         //     'email'=>'aliansalud@gemail.com',
@@ -27,26 +27,26 @@ class Medical_Entity_Seeder extends Seeder
         //     Plaza Central',
         //     'statu_type_id'=>1,
         // ]);
-        // $data_id=$thirddata['data_id'];
-
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
 
-        $thirddata = Third_Data::create([
-            'nit'=>$nitAleatorio,
-            'number_phone'=>'018000 962 780',
-            'email'=>'atencioninicialdeurgencias@epsianaswayuu.com',
-            'entity_type_id'=>12,
-            'business_name'=>'ANASWAYUU',
-            'address'=>'Carrera 16 No. 16 - 31',
-            'statu_type_id'=>1,
-        ]);
-        Medical_Entities::create([
-            'third_data_id' => $thirddata->data_id
-        ]);
+        // Third_Data::create([
+        //     'nit'=>$nitAleatorio,
+        //     'number_phone'=>'018000 962 780',
+        //     'email'=>'atencioninicialdeurgencias@epsianaswayuu.com',
+        //     'entity_type_id'=>12,
+        //     'business_name'=>'ANASWAYUU',
+        //     'address'=>'Carrera 16 No. 16 - 31',
+        //     'statu_type_id'=>1,
+        // ]);
+        // $latestDataId = Third_Data::latest()->first()->data_id;
+        // Medical_Entities::create([
+        //     'third_data_id'=>$latestDataId,
+        // ]);
 
-        // $thirddata = Third_Data::create([
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000-930135',
         //     'email'=>'notificacionesjudiciales@aicsalud.org.co',
@@ -55,26 +55,26 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Calle 1 # 4-66, Barrio Vasquez',
         //     'statu_type_id'=>1,
         // ]);
-        
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
-        //     'nit'=>$nitAleatorio,
-        //     'number_phone'=>'018000116882',
-        //     'email'=>'afiliacion@mutualser.com',
-        //     'entity_type_id'=>12,
-        //     'business_name'=>'ASOCIACION MUTUAL SER EMPRESA SOLIDARIA DE SALUD EPS',
-        //     'address'=>'Carretera. Troncal No. 71B – 105',
-        //     'statu_type_id'=>1,
-        // ]);
-       
-        
-        // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
-        // ]);
-        // $thirddata = Third_Data::create([
+
+    //     Third_Data::create([
+    //         'nit'=>$nitAleatorio,
+    //         'number_phone'=>'018000116882',
+    //         'email'=>'afiliacion@mutualser.com',
+    //         'entity_type_id'=>12,
+    //         'business_name'=>'ASOCIACION MUTUAL SER EMPRESA SOLIDARIA DE SALUD EPS',
+    //         'address'=>'Carretera. Troncal No. 71B – 105',
+    //         'statu_type_id'=>1,
+    //     ]);
+    //    $latestDataId = Third_Data::latest()->first()->data_id;
+    //     Medical_Entities::create([
+    //         'third_data_id'=>$latestDataId,
+    //     ]);
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000913202',
         //     'email'=>'compensar@gemail.com',
@@ -83,12 +83,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Avenida 68 # 49A-47',
         //     'statu_type_id'=>1,
         // ]);
-        
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000117636',
         //     'email'=>'sanitas@gemail.com',
@@ -97,12 +97,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Carretera. Troncal No. 32B – 172',
         //     'statu_type_id'=>1,
         // ]);
-        
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000938777',
         //     'email'=>'notificacionesjudiciales@sos.com.co',
@@ -111,12 +111,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Calle 23 AN 3N-57',
         //     'statu_type_id'=>1,
         // ]);
-        
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000519519',
         //     'email'=>'notificacionesjudiciales@suramericana.com.co',
@@ -125,12 +125,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Carrera 49 C # 80 - 176',
         //     'statu_type_id'=>1,
         // ]);
-        
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000980001',
         //     'email'=>'contacto@saludmia.org',
@@ -139,12 +139,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Carrera 49 C # 23-22',
         //     'statu_type_id'=>1,
         // ]);
-        
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000930100',
         //     'email'=>'nuevaeps@gemail.org',
@@ -153,12 +153,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Carrera 85K No. 46A-66',
         //     'statu_type_id'=>1,
         // ]);
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
         
-        // $thirddata = Third_Data::create([
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000 112524',
         //     'email'=>'saludtotal@gemail.org',
@@ -167,12 +167,13 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Carrera 100a No. 63A-92',
         //     'statu_type_id'=>1,
         // ]);
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
 
-        // // IPS
-        // $thirddata = Third_Data::create([
+        //IPS
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000765874​',
         //     'email'=>'santafe@gemail.com',
@@ -181,11 +182,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Cr 65 11-50',
         //     'statu_type_id'=>1,
         // ]);
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
-        // $thirddata = Third_Data::create([
+
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'0180006547830',
         //     'email'=>'hpablotobon@epsianaswayuu.com',
@@ -194,12 +196,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Carrera 16 No. 16 - 31',
         //     'statu_type_id'=>1,
         // ]);
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
 
-        // $thirddata = Third_Data::create([
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000234563',
         //     'email'=>'clinicashaio@org.co',
@@ -208,12 +210,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Calle 1 # 4-66-727',
         //     'statu_type_id'=>1,
         // ]);
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
 
-        // $thirddata = Third_Data::create([
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'0180009874566',
         //     'email'=>'clinica@colsanitas.com',
@@ -222,12 +224,12 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Troncal No. 22B – 105',
         //     'statu_type_id'=>1,
         // ]);
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
 
-        // $thirddata = Third_Data::create([
+        // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000625341',
         //     'email'=>'sanjose@gemail.com',
@@ -236,9 +238,9 @@ class Medical_Entity_Seeder extends Seeder
         //     'address'=>'Avenida 68 # 49A-47',
         //     'statu_type_id'=>1,
         // ]);
-        
+        // $latestDataId = Third_Data::latest()->first()->data_id;
         // Medical_Entities::create([
-        //     'third_data_id' => $thirddata->data_id
+        //     'third_data_id'=>$latestDataId,
         // ]);
     }
 }

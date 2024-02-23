@@ -13,9 +13,9 @@ class ThirdDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'business_name' => 'required|min:4',
+            'business_name' => 'required|min:4|max:30',
             'nit' => 'required|numeric',
-            'number_phone' => 'required|min:8|max:30',
+            'number_phone' => 'required|min:7|max:30',
             'email' => 'required|email',
             'address' => 'required',
             'statu_type_id' => 'required',

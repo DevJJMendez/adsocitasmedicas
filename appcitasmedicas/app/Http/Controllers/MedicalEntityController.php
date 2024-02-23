@@ -15,7 +15,8 @@ class MedicalEntityController extends Controller
     }
     public function showMedicalEntitiesView(): view
     {
-        return view('medicalentities.index');
+        $medicalEntities = $this->thirdDataService->getAllMedicalEntities();
+        return view('medicalentities.index',compact('medicalEntities'));
     }
     public function showNewMecicalEntitiesView(): view
     {
@@ -26,11 +27,6 @@ class MedicalEntityController extends Controller
     public function createNewMedicalEntity(ThirdDataRequest $thirdDataRequest)
     {
         $this->thirdDataService->createThirdDataForMedicalEntity($thirdDataRequest->all());
-        
-        Medical_Entities::create([
-            'third_data_id' => $thirdDataRequest->data_id
-        ]);
-
         notify()->success('Entidad médica agregada correctamente', 'Agregar entidad médica');
         return redirect()->route('medical.entities.view');
     }
