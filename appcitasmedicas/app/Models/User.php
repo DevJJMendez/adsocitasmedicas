@@ -27,7 +27,7 @@ class User extends Authenticatable
     ];
     public function thirdDataUser(): BelongsTo
     {
-        return $this->belongsTo(Third_Data::class, 'third_data_id');
+        return $this->belongsTo(Third_Data::class, 'third_data_id', 'data_id');
     }
     public function patientAppointments(): HasMany
     {

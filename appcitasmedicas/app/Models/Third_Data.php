@@ -25,7 +25,7 @@ class Third_Data extends Model
     ];
     public function userThirdData(): HasOne
     {
-        return $this->hasOne(User::class, 'third_data_id');
+        return $this->hasOne(User::class, 'third_data_id', 'data_id');
     }
     public function medicalEntity(): HasOne
     {
