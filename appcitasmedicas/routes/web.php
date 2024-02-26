@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicalEntityController;
 use App\Http\Controllers\MedicoController;
@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
+
+    // Route calendar
+Route::get('/citas', [EventoController::class, 'index']);
+
 });
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -60,3 +64,4 @@ Route::group(['prefix' => 'pacientes'], function () {
 Route::group(['prefix' => 'citas'], function () {
     Route::get('', [PacienteController::class, 'showAppointmentView'])->name('citas.view');
 });
+
