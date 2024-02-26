@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -17,7 +16,7 @@ return new class extends Migration
             $table->smallInteger('id_patient')->unsigned();
             $table->foreign('id_patient')->references('id')->on('users');
 
-            
+
             $table->tinyInteger('id_specialty')->unsigned();
             $table->foreign('id_specialty')->references('specialty_id')->on('specialties');
 

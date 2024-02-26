@@ -18,30 +18,25 @@ class ThirdDataService
     {
         return Statu_View::select('detail_id', 'name')->whereIn('detail_id', [1, 2])->get();
     }
-    public function createThirdDataForMedicalEntity(array $ThirdData):void
+    public function createThirdDataForMedicalEntity(array $ThirdData): void
     {
         Third_Data::create($ThirdData);
+
         $latestDataId = Third_Data::latest()->first()->data_id;
+
         Medical_Entities::create([
-            'third_data_id'=>$latestDataId,
+            'third_data_id' => $latestDataId,
         ]);
     }
     public function getAllMedicalEntities()
     {
-        return Medical_Entities::select
-        (
-        'td.data_id',
-        'medical_entities.third_data_id',
-        'td.nit as nit',
-        'td.number_phone as telefono',
-        'etv.name as tipo',
-        'td.email as email',
-        'td.business_name as nombre',
-        'td.address as direccion',
-        'sv.name as estado'
-        )->join('third_data as td', 'td.data_id', '=', 'medical_entities.third_data_id')
-                ->join('entity_type_views as etv', 'etv.detail_id', '=', 'td.entity_type_id')
-                    ->join('statu_views as sv', 'sv.detail_id', '=', 'td.statu_type_id')
-                        ->paginate(6);
+        $medicalEntity = Medical_Entities::with('medicalEntitythirdData')->get();
+        return $medicalEntity;
     }
+    public function getMedicalEntity(int $third_data_id)
+    {
+        $third_data_id = Third_Data::findOrFail($third_data_id);
+        return $third_data_id;
+    }
+
 }

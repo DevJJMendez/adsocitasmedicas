@@ -17,7 +17,7 @@
     <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
-   
+
 </head>
 
 <body class="">
@@ -37,8 +37,8 @@
             <!-- User -->
             <ul class="nav align-items-center d-md-none">
                 <li class="nav-item dropdown">
-                    <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <i class="ni ni-bell-55"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
@@ -81,10 +81,8 @@
                         </div>
                     </div>
                 </div>
-
                 {{-- Menu --}}
                 @include('includes.panel.menu')
-
             </div>
         </div>
     </nav>
@@ -110,8 +108,8 @@
                 <!-- User -->
                 <ul class="navbar-nav align-items-center d-none d-md-flex">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <div class="media align-items-center">
                                 <span class="avatar avatar-sm rounded-circle">
                                     <img alt="Image placeholder" src="{{ asset('img/theme/team-4-800x800.jpg') }}">
@@ -123,8 +121,8 @@
                                 </div>
                             </div>
                         </a>
-                       {{--  dropdown menu --}}
-                       @include('includes.panel.userOptions')
+                        {{-- dropdown menu --}}
+                        @include('includes.panel.userOptions')
                     </li>
                 </ul>
             </div>
@@ -246,8 +244,8 @@
                 application: "argon-dashboard-free"
             });
     </script>
-   <x-notify::notify />
-   @notifyJs
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

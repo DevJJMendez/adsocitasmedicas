@@ -11,7 +11,8 @@ class Entity_Type_View extends Model
     use HasFactory;
     protected $table = 'entity_type_views';
     protected $guarded = [];
-    public function thirddataentitytype():BelongsTo{
-        return $this->belongsTo(Third_Data::class,'entity_id','entity_type_id');
+    public function thirddataentitytype():BelongsTo
+    {
+        return $this->belongsTo(Third_Data::class,'entity_type_id','entity_id');
     }
 }
