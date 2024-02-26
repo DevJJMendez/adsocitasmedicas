@@ -12,11 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
-
-    // Route calendar
-Route::get('/citas', [EventoController::class, 'index']);
-
 });
+// Route calendar
+Route::get('/citas', [EventoController::class, 'index']);
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -32,7 +30,7 @@ Route::group(['prefix' => 'medical-entities'], function () {
     Route::get('', [MedicalEntityController::class, 'showMedicalEntitiesView'])->name('medical.entities.view');
     Route::get('/create', [MedicalEntityController::class, 'showNewMecicalEntitiesView'])->name('create.view');
     Route::post('createnewentity', [MedicalEntityController::class, 'createNewMedicalEntity'])->name('create.new.medical.entity');
-    Route::get('{third_data_id}/edit', [MedicalEntityController::class, 'showEditMedicalEntitiesView'])->name('edit.view');
+    Route::get('{id}/edit', [MedicalEntityController::class, 'showEditMedicalEntitiesView'])->name('edit.view');
     Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
     Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
 });
