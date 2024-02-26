@@ -9,9 +9,6 @@ class vs_tipo_documento extends Model
 {
     use HasFactory;
     protected $table = 'vs_tipo_documento';
-    /**
-       * @return \Illuminate\Database\Eloquent\Relations\HasOne
-       */
       
       public function personal()
       {

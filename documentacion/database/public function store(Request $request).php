@@ -1,4 +1,4 @@
-<?php 
+
 public function store(Request $request)
     {
         // Validación de datos
