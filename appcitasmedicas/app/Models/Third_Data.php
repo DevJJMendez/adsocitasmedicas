@@ -21,7 +21,7 @@ class Third_Data extends Model
         'email',
         'business_name',
         'address',
-        'statu_type_id',
+        'statu_type_id' => 1,
     ];
     public function userThirdData(): HasOne
     {
@@ -37,24 +37,24 @@ class Third_Data extends Model
     }
 
     // Relaciones con las vistas
-    public function document(): HasOne
+    public function documentType(): HasOne
     {
         // PK View - FK Thirdata
-        return $this->hasOne(Document_Type_View::class, 'document_id', 'document_type_id');
+        return $this->hasOne(Document_Type_View::class, 'detail_id', 'document_type_id');
     }
     public function gender(): HasOne
     {
         // PK View - FK Thirdata
-        return $this->hasOne(Gender_View::class, 'gender_id', 'gender_type_id');
+        return $this->hasOne(Gender_View::class, 'detail_id', 'gender_type_id');
     }
     public function medicalentitytype(): HasOne
     {
         // PK View - FK Thirdata
-        return $this->hasOne(Entity_Type_View::class, 'entity_id', 'entity_type_id');
+        return $this->hasOne(Entity_Type_View::class, 'detail_id', 'entity_type_id');
     }
     public function statutype(): HasOne
     {
         // PK View - FK Thirdata
-        return $this->hasOne(Statu_View::class, 'statu_id', 'statu_type_id');
+        return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
     }
 }
