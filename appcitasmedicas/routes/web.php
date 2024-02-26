@@ -4,6 +4,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicalEntityController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecialtyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -64,5 +66,20 @@ Route::group(['prefix' => 'pacientes'], function () {
 // citas route
 Route::group(['prefix' => 'citas'], function () {
     Route::get('', [PacienteController::class, 'showAppointmentView'])->name('citas.view');
+});
+
+Route::group(['prefix' => 'roles'], function () {
+    Route::get('/roles', [RoleController::class , 'index'])->name('roles.view');
+    Route::post('/newRol', [RoleController::class, 'createNewRol'])->name('create.new.rol');
+    Route::get('/editRol/{rol}', [RoleController::class, 'edit'])->name('edit.rol.view');
+    Route::put('/updateRol/{rol}', [RoleController::class, 'updateRol'])->name('update.rol');
+    Route::delete('/deleteRol/{rol}', [RoleController::class, 'deleteRol'])->name('delete.rol');
+});
+
+Route::group(['prefix' => 'permisos'], function () {
+    Route::get('/permisos', [PermisoController::class , 'index'])->name('permisos.view');
+    Route::post('/newPermiso', [PermisoController::class, 'createNewPermiso'])->name('create.new.permiso');
+    Route::get('/editPermiso/{permiso}', [PermisoController::class, 'edit'])->name('edit.permiso.view');
+    Route::delete('/deletePermiso/{permiso}', [PermisoController::class, 'deletePermiso'])->name('delete.permiso');
 });
 

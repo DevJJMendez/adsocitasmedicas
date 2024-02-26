@@ -1,4 +1,21 @@
 <!-- Heading -->
+
+<h6 class="navbar-heading text-muted">Usuarios</h6>
+<ul class="navbar-nav">
+    <li class="nav-item  active ">
+        <a class="nav-link  active " href="{{ route('roles.view') }}">
+            <i class="fas fa-user-shield"></i> Roles
+        </a>
+    </li>
+    <li class="nav-item  active ">
+        <a class="nav-link  active " href="{{ route('permisos.view') }}">
+            <i class="fas fa-key"></i> Permisos
+        </a>
+    </li>
+
+
+</ul>
+
 <h6 class="navbar-heading text-muted">Opciones</h6>
 <!-- Navigation -->
 <ul class="navbar-nav">
@@ -42,6 +59,8 @@
         </form>
     </li>
 </ul>
+
+
 <!-- Divider -->
 <hr class="my-3">
 <!-- Heading -->

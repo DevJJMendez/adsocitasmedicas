@@ -174,6 +174,8 @@ return [
 
         // services
         App\Providers\ThirdDataServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
     ])->toArray(),
 
