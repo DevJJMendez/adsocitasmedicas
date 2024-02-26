@@ -16,7 +16,7 @@
     <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
-    <link href="{{ asset('css/auth/form-register.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/argon/form-register.css') }}" rel="stylesheet" />
 </head>
 
 <body class="bg-default">
@@ -55,7 +55,7 @@
                         <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="{{ route('register') }}">
                                 <i class="ni ni-circle-08"></i>
-                                <span class="nav-link-inner--text">Registrate</span>
+                                <span class="nav-link-inner--text" style="">Registrate</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -93,7 +93,7 @@
 
         {{-- FOOTER --}}
         <footer class="py-5">
-            <div class="container">
+            {{-- <div class="container">
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
                         <div class="copyright text-center text-xl-left text-muted">
@@ -109,7 +109,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </footer>
         {{-- FOOTER --}}
     </div>

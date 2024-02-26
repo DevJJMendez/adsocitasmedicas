@@ -9,9 +9,7 @@ class vs_genero extends Model
 {
     use HasFactory;
     protected $table = 'vs_genero';
-    /**
-       * @return \Illuminate\Database\Eloquent\Relations\HasOne
-       */
+  
       
       public function personal()
       {

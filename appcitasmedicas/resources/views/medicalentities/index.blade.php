@@ -10,6 +10,9 @@
                 <a href="{{ route('create.view') }}" class="btn btn-sm btn-primary">Agregar nueva entidad
                     médica</a>
             </div>
+            <div class="col text-right">
+                <a href="{{ route('show.test.view') }}" class="btn btn-sm btn-primary">Testear relaciones</a>
+            </div>
         </div>
     </div>
     <div class="table-responsive">
@@ -17,49 +20,57 @@
         <table class="table align-items-center table-flush" style="text-transform: uppercase">
             <thead class="thead-light">
                 <tr>
-                    {{-- <th scope="col">ID</th> --}}
+                    <th scope="col">DataID</th>
+                    {{-- <th scope="col">ThirdDataID</th> --}}
                     <th scope="col">Nit</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Dirección</th>
                     <th scope="col">Telefono</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dirección</th>
                     <th scope="col">Estado</th>
 
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($medicalEntities as $medicalEntity)
+                {{-- @forelse ($medicalEntities as $medicalEntity)
+                @foreach ($medicalEntity->thirddata as $thirddataformedicalentity)
                 <tr>
                     <td>
-                        {{ $medicalEntity->nit }}
+                        {{ $thirddataformedicalentity->data_id }}
+                    </td> --}}
+                    {{-- <td>
+                        {{ $medicalEntity->third_data_id }}
+                    </td> --}}
+                    {{-- <td>
+                        {{ $thirddataformedicalentity->nit }}
                     </td>
                     <td>
-                        {{ $medicalEntity->tipo }}
+                        {{ $thirddataformedicalentity->number_phone }}
                     </td>
                     <td>
-                        {{ $medicalEntity->nombre }}
+                        {{ $thirddataformedicalentity->medicalentitytype->name }}
                     </td>
                     <td>
-                        {{ $medicalEntity->email }}
+                        {{ $thirddataformedicalentity->email }}
                     </td>
                     <td>
-                        {{ $medicalEntity->direccion }}
+                        {{ $thirddataformedicalentity->business_name }}
                     </td>
                     <td>
-                        {{ $medicalEntity->telefono }}
+                        {{ $thirddataformedicalentity->address }}
                     </td>
                     <td>
-                        {{ $medicalEntity->estado }}
+                        {{ $thirddataformedicalentity->statutype->name }}
                     </td>
-                    <td>
+                    <td> --}}
                         {{-- {{ route('delete.paciente', ['paciente'=>$medicalEntity->id]) }} --}}
-                        <form action="" method="POST">
+                        {{-- <form action="" method="POST">
                             @csrf
                             @method('DELETE')
-                            {{-- {{ route('edit.paciente.view', ['paciente' => $medicalEntity->id]) }} --}}
-                            <a href="" class="btn btn-sm btn-primary">
+                            <a href="{{ route('edit.view',['third_data_id'=>$medicalEntity->data_id]) }}"
+                                class="btn btn-sm btn-primary">
                                 Editar
                             </a>
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
@@ -67,6 +78,7 @@
 
                     </td>
                 </tr>
+                @endforeach
                 @empty
                 <tr>
                     <th>
@@ -75,12 +87,12 @@
                         </span>
                     </th>
                 </tr>
-                @endforelse
+                @endforelse --}}
             </tbody>
         </table>
     </div>
     <div class="card-body">
-        {{$medicalEntities->links()}}
+        {{-- {{$medicalEntities->links()}} --}}
     </div>
 </div>
 @endsection

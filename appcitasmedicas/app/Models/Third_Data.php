@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Third_Data extends Model
 {
     use HasFactory;
+
     protected $table = 'third_data';
+    protected $primaryKey = 'data_id';
     protected $fillable = [
         'data_id',
         'nit',
@@ -21,13 +23,17 @@ class Third_Data extends Model
         'address',
         'statu_type_id',
     ];
+    public function userThirdData(): HasOne
+    {
+        return $this->hasOne(User::class, 'third_data_id', 'data_id');
+    }
+    public function medicalEntity(): HasOne
+    {
+        return $this->hasOne(Medical_Entities::class, 'third_data_id', 'data_id');
+    }
     public function profession(): HasOne
     {
         return $this->hasOne(Profession::class, 'profession_id');
-    }
-    public function medicalEntity(): BelongsTo
-    {
-        return $this->belongsTo(Medical_Entities::class, 'third_data_id');
     }
 
     // Relaciones con las vistas
@@ -46,7 +52,7 @@ class Third_Data extends Model
         // PK View - FK Thirdata
         return $this->hasOne(Entity_Type_View::class, 'entity_id', 'entity_type_id');
     }
-    public function statu(): HasOne
+    public function statutype(): HasOne
     {
         // PK View - FK Thirdata
         return $this->hasOne(Statu_View::class, 'statu_id', 'statu_type_id');

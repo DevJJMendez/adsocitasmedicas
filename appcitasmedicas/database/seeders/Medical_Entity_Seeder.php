@@ -14,23 +14,23 @@ class Medical_Entity_Seeder extends Seeder
      */
     public function run(): void
     {
-        
+
         // EPS
-        // $nitAleatorio=rand(100000000, 999999999);
-        // Third_Data::create([
-        //     'nit'=>$nitAleatorio,
-        //     'number_phone'=>'01 8000 123703​',
-        //     'email'=>'aliansalud@gemail.com',
-        //     'entity_type_id'=>12,
-        //     'business_name'=>'ALIANSALUD ENTIDAD PROMOTORA DE SALUD S.A.',
-        //     'address'=>'Cr 65 11-50, Piso 2, Lc 2-87 y 2-88
-        //     Plaza Central',
-        //     'statu_type_id'=>1,
-        // ]);
-        // $latestDataId = Third_Data::latest()->first()->data_id;
-        // Medical_Entities::create([
-        //     'third_data_id'=>$latestDataId,
-        // ]);
+        $nitAleatorio = rand(100000000, 999999999);
+        Third_Data::create([
+            'nit' => $nitAleatorio,
+            'number_phone' => '01 8000 123703​',
+            'email' => 'aliansalud@gemail.com',
+            'entity_type_id' => 12,
+            'business_name' => 'ALIANSALUD ENTIDAD PROMOTORA DE SALUD S.A.',
+            'address' => 'Cr 65 11-50, Piso 2, Lc 2-87 y 2-88
+            Plaza Central',
+            'statu_type_id' => 1,
+        ]);
+        $latestDataId = Third_Data::latest()->first()->data_id;
+        Medical_Entities::create([
+            'third_data_id' => $latestDataId,
+        ]);
 
         // Third_Data::create([
         //     'nit'=>$nitAleatorio,
@@ -60,19 +60,19 @@ class Medical_Entity_Seeder extends Seeder
         //     'third_data_id'=>$latestDataId,
         // ]);
 
-    //     Third_Data::create([
-    //         'nit'=>$nitAleatorio,
-    //         'number_phone'=>'018000116882',
-    //         'email'=>'afiliacion@mutualser.com',
-    //         'entity_type_id'=>12,
-    //         'business_name'=>'ASOCIACION MUTUAL SER EMPRESA SOLIDARIA DE SALUD EPS',
-    //         'address'=>'Carretera. Troncal No. 71B – 105',
-    //         'statu_type_id'=>1,
-    //     ]);
-    //    $latestDataId = Third_Data::latest()->first()->data_id;
-    //     Medical_Entities::create([
-    //         'third_data_id'=>$latestDataId,
-    //     ]);
+        //     Third_Data::create([
+        //         'nit'=>$nitAleatorio,
+        //         'number_phone'=>'018000116882',
+        //         'email'=>'afiliacion@mutualser.com',
+        //         'entity_type_id'=>12,
+        //         'business_name'=>'ASOCIACION MUTUAL SER EMPRESA SOLIDARIA DE SALUD EPS',
+        //         'address'=>'Carretera. Troncal No. 71B – 105',
+        //         'statu_type_id'=>1,
+        //     ]);
+        //    $latestDataId = Third_Data::latest()->first()->data_id;
+        //     Medical_Entities::create([
+        //         'third_data_id'=>$latestDataId,
+        //     ]);
 
         // Third_Data::create([
         //     'nit'=>$nitAleatorio,
@@ -157,7 +157,7 @@ class Medical_Entity_Seeder extends Seeder
         // Medical_Entities::create([
         //     'third_data_id'=>$latestDataId,
         // ]);
-        
+
         // Third_Data::create([
         //     'nit'=>$nitAleatorio,
         //     'number_phone'=>'018000 112524',

@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Medical_Entities extends Model
 {
     use HasFactory;
     protected $table = 'medical_entities';
+    protected $primaryKey = 'medical_entity_id';
     protected $fillable = [
         'third_data_id'
     ];
-    public function thirddata(): HasOne
+    public function medicalEntitythirdData(): BelongsTo
     {
-        return $this->hasOne(Third_Data::class, 'third_data_id');
+        return $this->belongsTo(Third_Data::class, 'third_data_id', 'data_id');
     }
     public function user(): BelongsTo
     {

@@ -1,5 +1,5 @@
 <!-- Heading -->
-<h6 class="navbar-heading text-muted">Gestion</h6>
+<h6 class="navbar-heading text-muted">Opciones</h6>
 <!-- Navigation -->
 <ul class="navbar-nav">
     <li class="nav-item  active ">

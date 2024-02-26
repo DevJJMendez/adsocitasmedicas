@@ -11,17 +11,17 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->unsignedSmallInteger('id', true);
-            $table->smallInteger('third_data_id', false, true)->nullable();
+            $table->unsignedSmallInteger('id')->autoIncrement();
+            $table->smallInteger('third_data_id')->nullable()->unsigned();
             $table->foreign('third_data_id')->references('data_id')->on('third_data');
-            $table->string('email',100);
+            $table->string('email', 100);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->nullable();
 
             $table->tinyInteger('id_entity')->unsigned()->nullable();
             $table->foreign('id_entity')->references('medical_entity_id')->on('medical_entities');
-            
+
             $table->rememberToken();
             $table->timestamps();
         });
