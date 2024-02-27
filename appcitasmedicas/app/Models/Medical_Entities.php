@@ -13,7 +13,12 @@ class Medical_Entities extends Model
     protected $table = 'medical_entities';
     protected $primaryKey = 'medical_entity_id';
     protected $fillable = [
-        'third_data_id'
+        'nit',
+        'number_phone',
+        'email',
+        'entity_type_id',
+        'business_name',
+        'address',
     ];
     public function medicalEntitythirdData(): BelongsTo
     {

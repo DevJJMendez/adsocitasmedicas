@@ -14,7 +14,7 @@ class PacienteController extends Controller
     }
     public function showAppointmentView()
     {
-        return view('citas.citas',['name' => 'ola']);
+        return view('citas.citas');
     }
     public function create()
     {

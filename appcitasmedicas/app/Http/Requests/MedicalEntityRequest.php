@@ -18,7 +18,6 @@ class MedicalEntityRequest extends FormRequest
             'number_phone' => 'required|min:7|max:30',
             'email' => 'required|email',
             'address' => 'required',
-            'statu_type_id' => 'required',
         ];
     }
     public function messages()
@@ -38,7 +37,7 @@ class MedicalEntityRequest extends FormRequest
             'email.email' => 'Debe ingresar un correo electronico valido',
 
             'address.required' => 'Debe ingresar una dirección',
-            'statu_type_id.required' => 'Debe elegir un estado (Activo ó Inactivo)',
         ];
     }
+
 }
