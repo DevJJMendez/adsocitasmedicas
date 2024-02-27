@@ -14,28 +14,50 @@
       <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
+                  <h5 class="modal-title">Informacion cita</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
               </div>
               <div class="modal-body">
                   <form action="">
+
                     <div class="form-group">
-                      <label for="">Cita</label>
-                      <input type="text" class="form-control" name="" id="title" aria-describedby="helpId" placeholder="Escribe lo que se te de la gana">
+                      <label for="id">ID</label>
+                      <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
                     <div class="form-group">
-                      <label for="">Descripcion</label>
+                      <label for="">Nombre</label>
+                      <input type="text" class="form-control" name="name" id="title" aria-describedby="helpId" placeholder="Escribe lo que se te de la gana" value="{{$name}}">
+                      <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">Especialidad/ informacion</label>
                       <textarea class="form-control" name="" id="" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="start">fecha / hora inicial </label>
+                      <input type="text"
+                        class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
+                      <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="end">Fecha/hora final</label>
+                      <input type="text" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder="">
+                      <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
                   </form>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
+                <button type="button" class="btn btn-warning" id="btn_modify">Modificar</button>
+                  <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
               </div>
           </div>
       </div>

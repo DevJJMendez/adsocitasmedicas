@@ -226,7 +226,7 @@
                 </div>
             </div> --}}
         </div>
-        <div class="container-fluid mt--7">
+        <div class="container-fluid">
             @yield('content')
         </div>
         {{-- Footer --}}

@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
-// Route calendar
-Route::get('/citas', [EventoController::class, 'index']);
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
