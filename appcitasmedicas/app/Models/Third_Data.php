@@ -39,22 +39,14 @@ class Third_Data extends Model
     // Relaciones con las vistas
     public function documentType(): HasOne
     {
-        // PK View - FK Thirdata
         return $this->hasOne(Document_Type_View::class, 'detail_id', 'document_type_id');
     }
     public function gender(): HasOne
     {
-        // PK View - FK Thirdata
         return $this->hasOne(Gender_View::class, 'detail_id', 'gender_type_id');
-    }
-    public function medicalentitytype(): HasOne
-    {
-        // PK View - FK Thirdata
-        return $this->hasOne(Entity_Type_View::class, 'detail_id', 'entity_type_id');
     }
     public function statutype(): HasOne
     {
-        // PK View - FK Thirdata
         return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
     }
 }

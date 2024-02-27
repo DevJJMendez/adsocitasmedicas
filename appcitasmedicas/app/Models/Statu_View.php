@@ -15,4 +15,8 @@ class Statu_View extends Model
     {
         return $this->belongsTo(Third_Data::class, 'statu_type_id', 'statu_id');
     }
+    public function medicalEntity(): BelongsTo
+    {
+        return $this->belongsTo(Third_Data::class, 'statu_type_id', 'statu_id');
+    }
 }
