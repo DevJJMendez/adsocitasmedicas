@@ -1,8 +1,9 @@
 @extends('layouts.panel')
 @section('content')
-<div class="container">
-    <div id="calendar">
-        
-    </div>
-</div>
+<div id="calendar"></div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/calendario.js') }}"></script>
+
 @endsection
