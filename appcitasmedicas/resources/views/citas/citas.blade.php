@@ -3,12 +3,12 @@
 
 <div id="calendar" style="width: 50%; display: inline-block">
 </div>
-       
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evento">
     Launch
   </button>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="evento" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -24,13 +24,13 @@
 
                     <div class="form-group">
                       <label for="id">ID</label>
-                      <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
+                      <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="" value="{{Auth::User()->password}}" readonly="readonly">
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
                     <div class="form-group">
                       <label for="">Nombre</label>
-                      <input type="text" class="form-control" name="name" id="title" aria-describedby="helpId" placeholder="Escribe lo que se te de la gana" value="{{$name}}">
+                      <input type="text" class="form-control" name="name" id="title" aria-describedby="helpId" placeholder="" value="{{Auth::User()->email}}" readonly="readonly">
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
@@ -38,6 +38,8 @@
                       <label for="">Especialidad/ informacion</label>
                       <textarea class="form-control" name="" id="" rows="3"></textarea>
                     </div>
+
+                    b4-input
 
                     <div class="form-group">
                       <label for="start">fecha / hora inicial </label>

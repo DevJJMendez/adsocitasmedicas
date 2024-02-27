@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-let formulario= document.querySelector('form');
-
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
@@ -19,12 +16,5 @@ let formulario= document.querySelector('form');
 
     });
     calendar.render();
-
-    document.getElementById(btn_save).addEventListener('click', function() {
-
-      let datos = new FormData(formulario);
-      console.log(datos);
-    });
-
     
   });
