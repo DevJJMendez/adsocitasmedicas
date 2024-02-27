@@ -32,14 +32,9 @@ realizadas al paciente.
 - El usuario debe poder solicitar citas con médicos específicos, seleccionando
   fecha y hora disponibles.
 
-**Calificación de Atención**:
-
-- Permitir a los pacientes calificar la atención recibida después de cada cita
-  médica.
-
 **Visualización de Comentarios**:
 
-- Posibilidad de ver los comentarios y observaciones realizadas por los médicos
+- Posibilidad de ver las observaciones realizadas por los médicos
   después de cada cita.
 
 ---
@@ -53,11 +48,6 @@ realizadas al paciente.
 **Comentarios - Observaciones medicas**
 
 - Deben poder crear observaciones acerca del estado de salud del paciente.
-
-**Calificación o Comentarios por parte del paciente**
-
-- Los médicos deben poder observar la calificación recibida por parte del
-  paciente
 
 # Requerimientos No Funcionales:
 
@@ -80,11 +70,6 @@ realizadas al paciente.
 
 - El sistema debe manejar eficientemente un alto volumen de solicitudes de
   pacientes y médicos, manteniendo un rendimiento óptimo.
-
-**Compatibilidad Multiplataforma:**
-
-- Debe ser accesible desde dispositivos móviles y diversos navegadores web sin
-  comprometer la funcionalidad.
 
 **Mantenibilidad y Actualizaciones:**
 
