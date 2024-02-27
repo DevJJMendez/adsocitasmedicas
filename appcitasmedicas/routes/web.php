@@ -23,16 +23,12 @@ Route::group(['prefix' => 'users'], function () {
 });
 // Medical Entity Route
 Route::group(['prefix' => 'medical-entities'], function () {
-
-
-    Route::get('/show.test.view', [MedicalEntityController::class, 'showTestView'])->name('show.test.view');
-
-    Route::get('', [MedicalEntityController::class, 'showMedicalEntitiesView'])->name('medical.entities.view');
-    Route::get('/create', [MedicalEntityController::class, 'showNewMecicalEntitiesView'])->name('create.view');
-    Route::post('createnewentity', [MedicalEntityController::class, 'createNewMedicalEntity'])->name('create.new.medical.entity');
-    Route::get('{id}/edit', [MedicalEntityController::class, 'showEditMedicalEntitiesView'])->name('edit.view');
-    Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
-    Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
+    Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');
+    Route::get('/create', [MedicalEntityController::class, 'create'])->name('create.view');
+    Route::post('createnewentity', [MedicalEntityController::class, 'store'])->name('create');
+    Route::get('{id}/edit', [MedicalEntityController::class, 'edit'])->name('edit.view');
+    // Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
+    // Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
 });
 // specialty route
 Route::group(['prefix' => 'specialties'], function () {
@@ -67,7 +63,7 @@ Route::group(['prefix' => 'citas'], function () {
 });
 
 Route::group(['prefix' => 'roles'], function () {
-    Route::get('/roles', [RoleController::class , 'index'])->name('roles.view');
+    Route::get('/roles', [RoleController::class, 'index'])->name('roles.view');
     Route::post('/newRol', [RoleController::class, 'createNewRol'])->name('create.new.rol');
     Route::get('/editRol/{rol}', [RoleController::class, 'edit'])->name('edit.rol.view');
     Route::put('/updateRol/{rol}', [RoleController::class, 'updateRol'])->name('update.rol');
@@ -75,7 +71,7 @@ Route::group(['prefix' => 'roles'], function () {
 });
 
 Route::group(['prefix' => 'permisos'], function () {
-    Route::get('/permisos', [PermisoController::class , 'index'])->name('permisos.view');
+    Route::get('/permisos', [PermisoController::class, 'index'])->name('permisos.view');
     Route::post('/newPermiso', [PermisoController::class, 'createNewPermiso'])->name('create.new.permiso');
     Route::get('/editPermiso/{permiso}', [PermisoController::class, 'edit'])->name('edit.permiso.view');
     Route::delete('/deletePermiso/{permiso}', [PermisoController::class, 'deletePermiso'])->name('delete.permiso');

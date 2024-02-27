@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
             HeaderSeeder::class,
             DetailSeeder::class,
             Rolseeder::class,
-            // Medical_Entity_Seeder::class
+            Medical_Entity_Seeder::class
         ]);
     }
 }
