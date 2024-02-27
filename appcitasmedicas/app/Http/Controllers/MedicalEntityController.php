@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicalEntityRequest;
+use App\Http\Requests\ThirdDataRequest;
 use App\Models\Entity_Type_View;
 use App\Models\Medical_Entities;
 use App\Models\Statu_View;
@@ -25,7 +26,9 @@ class MedicalEntityController extends Controller
     public function store(MedicalEntityRequest $medicalEntityRequest)
     {
         $medicalEntity = $medicalEntityRequest->all();
+
         Medical_Entities::create($medicalEntity);
+
         notify()->success('Entidad médica agregada correctamente', 'Agregar entidad médica');
         return redirect()->route('medical.entities.view');
     }

@@ -29,14 +29,25 @@
                         @endif
                         {{-- form register --}}
                         <div class="container">
-
                             <h1>Formulario de Datos Personales</h1>
                             <form class="form-width" action="" method="POST">
                                 @csrf
-
                                 {{-- tipo de documento --}}
+                                {{-- @dd($medicalEntity) --}}
                                 <div class="form-group">
                                     <label for="document_type">Tipo de Documento</label>
+                                    <select name="document_type" class="form-control" required>
+                                        @forelse ($medicalEntity as $medicalEntities)
+                                            <option value="{{ $medicalEntities->documentType->detail_id }}">
+                                                {{ $thirdData->documentType->name }}
+                                            </option>
+                                        @empty
+                                            <option value="">No data found</option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="document_type">Entidad Médica</label>
                                     <select name="document_type" class="form-control" required>
                                         {{-- @forelse ($documentType as $documenttype)
                                             <option value="{{ $documenttype->detail_id }}">{{ $documenttype->name }}
@@ -132,7 +143,15 @@
                                         <input type="date" id="birth_date" name="birth_date" class="form-control"
                                             value="{{ old('birth_date') }}">
                                     </div>
-
+                                    {{-- direccion --}}
+                                    <div class="form-group">
+                                        <label for="address">Dirección</label>
+                                        @error('address')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                        <input type="text" id="address" name="address" class="form-control"
+                                            placeholder="Ingrese su dirección" value="{{ old('address') }}">
+                                    </div>
                                     {{-- Géneros --}}
                                     <div class="form-group col-md-6">
                                         <label for="gender_id">Género</label>
@@ -148,17 +167,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                {{-- direccion --}}
-                                <div class="form-group">
-                                    <label for="address">Dirección</label>
-                                    @error('address')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                    <input type="text" id="address" name="address" class="form-control"
-                                        placeholder="Ingrese su dirección" value="{{ old('address') }}">
-                                </div>
-
                                 <button type="submit" class="btn btn-primary">Guardar</button>
 
                             </form>
