@@ -60,14 +60,15 @@ Route::group(['prefix' => 'citas'], function () {
     Route::get('', [PacienteController::class, 'showAppointmentView'])->name('citas.view');
 });
 
-Route::group(['prefix' => 'roles'], function () {
-    Route::get('/roles', [RoleController::class, 'index'])->name('roles.view');
-    Route::post('/newRol', [RoleController::class, 'createNewRol'])->name('create.new.rol');
-    Route::get('/editRol/{rol}', [RoleController::class, 'edit'])->name('edit.rol.view');
-    Route::put('/updateRol/{rol}', [RoleController::class, 'updateRol'])->name('update.rol');
-    Route::delete('/deleteRol/{rol}', [RoleController::class, 'deleteRol'])->name('delete.rol');
-});
+// Route::group(['prefix' => 'roles'], function () {
+//     Route::get('/roles', [RoleController::class, 'index'])->name('roles.view');
+//     Route::post('/newRol', [RoleController::class, 'createNewRol'])->name('create.new.rol');
+//     Route::get('/editRol/{rol}', [RoleController::class, 'edit'])->name('edit.rol.view');
+//     Route::put('/updateRol/{rol}', [RoleController::class, 'updateRol'])->name('update.rol');
+//     Route::delete('/deleteRol/{rol}', [RoleController::class, 'deleteRol'])->name('delete.rol');
+// });
 
+Route::resource('roles', RoleController::class)->names('admin.roles');
 Route::group(['prefix' => 'permisos'], function () {
     Route::get('/permisos', [PermisoController::class, 'index'])->name('permisos.view');
     Route::post('/newPermiso', [PermisoController::class, 'createNewPermiso'])->name('create.new.permiso');

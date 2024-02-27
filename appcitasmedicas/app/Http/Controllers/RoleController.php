@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -23,35 +24,41 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::all();
+        return view('acceso.roles.create' , compact('permissions'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function createNewRol(Request $request)
+    public function store(Request $request)
     {
-        $role = Role::create(['name' => $request->input('name_role')]);
-        return back();
+        $request->validate([
+            'name' =>'required'
+        ]);
+
+        $role =Role::create($request->all());
+
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('acceso.roles.edit' , $role)->with('info' , 'El rol se creo con exito');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( Role $role)
     {
-        //
+        return view('acceso.roles.show' ,compact('role'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit( Role $role)
     {
-        $role = Role::find($id);
-        $permisos = Permission::all();
-
-        return view('acceso.rolePermiso', compact('role', 'permisos'));
+        $permissions = Permission::all();
+        return view('acceso.roles.edit', compact('role' , 'permissions'));
     }
 
     /**
@@ -67,17 +74,16 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->permissions);
 
-        return redirect()->route('acceso.rolePermiso' , $role)->with('info' , 'El rol se actualizo con exito');
+        return redirect()->route('admin.roles.edit' , $role)->with('info' , 'El rol se actualizo con exito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function deleteRol( Role $role)
+    public function destroy(Role $role)
     {
-
         $role->delete();
-        notify()->error('Médico eliminado correctamente', 'Eliminar Médico');
-        return redirect()->route('roles.view');
+        return redirect()->route('acceso.roles.index' , $role)->with('info' , 'El rol se elimino con exito');
+
     }
 }

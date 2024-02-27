@@ -3,10 +3,11 @@
 <h6 class="navbar-heading text-muted">Usuarios</h6>
 <ul class="navbar-nav">
     <li class="nav-item  active ">
-        <a class="nav-link  active " href="{{ route('roles.view') }}">
-            <i class="fas fa-user-shield"></i> Roles
+        <a class="nav-link   " href="{{url('/roles')}}">
+           <i class="fas fa-user-cog text-black"></i> Lista de roles
+
         </a>
-    </li>
+      </li>
     <li class="nav-item  active ">
         <a class="nav-link  active " href="{{ route('permisos.view') }}">
             <i class="fas fa-key"></i> Permisos
