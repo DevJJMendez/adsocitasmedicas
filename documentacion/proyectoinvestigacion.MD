@@ -175,7 +175,7 @@ seguimiento estructurado de la atención médica.
 ### Beneficios Esperados:
 
 - **Mejora en la Experiencia del Paciente**: Mayor facilidad para gestionar
-  citas  y recibir una atención médica más
+  citas y recibir una atención médica más
   personalizada.
 
 - **Eficiencia Operativa**: Optimización de los procesos de gestión de
@@ -269,15 +269,3 @@ realizadas al paciente.
 
 - Capacidad para registrar acciones importantes dentro del sistema para
   propósitos de auditoría y seguimiento.
-
----
-
-# Modelo Relacional
-
-![](assets/MODELORELACIONALV2.png)
-
----
-
-# Diagrama Casos de Uso
-
-![](assets/CASOSDEUSO.png)
