@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('medical_entities', function (Blueprint $table) {
-            $table->tinyIncrements('medical_entity_id');
+            $table->tinyIncrements('medical_entity_id')->unsigned();
             $table->string('nit', 9);
             $table->string('number_phone', 30);
             $table->string('email', 100);

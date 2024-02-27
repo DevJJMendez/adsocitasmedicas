@@ -28,7 +28,7 @@ return new class extends Migration {
             // Estado
             $table->string('statu_type_id')->default('1');
             // entidad medica
-            $table->tinyInteger('idMedicalEntity')->unsigned()->nullable();
+            $table->unsignedTinyInteger('idMedicalEntity');
             $table->foreign('idMedicalEntity')->references('medical_entity_id')->on('medical_entities');
             // profesion
             $table->unsignedTinyInteger('id_profession')->unsigned()->nullable();
