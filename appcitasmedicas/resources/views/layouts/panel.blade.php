@@ -18,6 +18,10 @@
     <!-- CSS Files -->
     <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
 
+    <!-- Calendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css">
+
 </head>
 
 <body class="">
@@ -246,6 +250,7 @@
     </script>
     <x-notify::notify />
     @notifyJs
+    @yield('scripts')
 </body>
 
 </html>
