@@ -20,13 +20,9 @@ class Medical_Entities extends Model
         'business_name',
         'address',
     ];
-    public function medicalEntitythirdData(): BelongsTo
+    public function user(): HasOne
     {
-        return $this->belongsTo(Third_Data::class, 'third_data_id', 'data_id');
-    }
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'id_entity');
+        return $this->hasOne(User::class, 'id_medical_entity','id');
     }
 
     // Relacion con vistas:

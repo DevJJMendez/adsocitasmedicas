@@ -70,7 +70,7 @@
                                 contraseña?</small></a>
                     </div>
                     <div class="col-6 text-right">
-                        <a href="{{ route('register') }}" class="text-light"><small>¿No estas registrado aún?</small></a>
+                        <a href="{{ route('register-form-view') }}" class="text-light"><small>¿No estas registrado aún?</small></a>
                     </div>
                 </div>
             </div>

@@ -30,13 +30,13 @@
                     {{-- form register --}}
                     <div class="container">
                         <h1>Formulario de Datos Personales</h1>
-                        <form class="form-width" action="" method="POST">
+                        <form class="form-width" action="{{ route('new-user') }}" method="POST">
                             @csrf
                             {{-- tipo de documento --}}
                             <div class="form-group">
                                 <label for="document_type_id">Tipo de Documento</label>
                                 <select name="document_type_id" class="form-control" required>
-                                    @forelse ($documendType as $detail_id => $name)
+                                    @forelse ($documentType as $detail_id => $name)
                                     <option value="{{ $detail_id }}">
                                         {{ $name }}
                                     </option>
@@ -48,8 +48,8 @@
 
                             {{-- Tipo de entidad --}}
                             <div class="form-group">
-                                <label for="idMedicalEntity">Entidad Médica</label>
-                                <select name="idMedicalEntity" class="form-control" required>
+                                <label for="id_medical_entity">Entidad Médica</label>
+                                <select name="id_medical_entity" class="form-control" required>
                                     @forelse ($medicalEntity as $medicalEntities)
                                     <option value="{{ $medicalEntities->medical_entity_id }}">
                                         {{ $medicalEntities->business_name }}
@@ -124,15 +124,24 @@
                                         placeholder="Ingrese su segundo apellido" value="{{ old('second_sur_name') }}">
                                 </div>
                             </div>
-
-                            {{-- correo electronico --}}
-                            <div class="form-group">
-                                <label for="email">Correo Electrónico</label>
-                                @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <input type="email" id="email" name="email" class="form-control"
-                                    placeholder="Ingrese su correo electrónico" value="{{ old('email') }}">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="email">Correo Electronico</label>
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <input type="text" id="email" name="email" class="form-control"
+                                        placeholder="Ingrese un correo electrónico" value="{{ old('email') }}">
+                                </div>
+                                {{-- Email - Password --}}
+                                <div class="form-group col-md-6">
+                                    <label for="password">Contraseña</label>
+                                    @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <input type="text" id="password" name="password" class="form-control"
+                                        placeholder="Ingrese su una contraseña" value="{{ old('password') }}">
+                                </div>
                             </div>
                             {{-- Fecha de Nacimiento --}}
                             <div class="form-row">

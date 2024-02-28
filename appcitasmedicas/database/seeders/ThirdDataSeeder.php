@@ -22,8 +22,7 @@ class ThirdDataSeeder extends Seeder
             'number_phone' => '3005657465',
             'birth_date' => fake()->date(),
             'gender_type_id' => fake()->numberBetween(6, 7),
-            'address' => fake()->address(),
-            'idMedicalEntity' => fake()->numberBetween(1, 16),
+            'address' => fake()->address()
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],

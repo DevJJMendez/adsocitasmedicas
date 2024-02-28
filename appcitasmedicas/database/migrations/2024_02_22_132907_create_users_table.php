@@ -19,8 +19,8 @@ return new class extends Migration {
             $table->string('password');
             $table->string('role')->nullable();
 
-            $table->tinyInteger('id_entity')->unsigned()->nullable();
-            $table->foreign('id_entity')->references('medical_entity_id')->on('medical_entities');
+            $table->tinyInteger('id_medical_entity')->unsigned()->nullable();
+            $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities');
 
             $table->rememberToken();
             $table->timestamps();

@@ -53,7 +53,7 @@
                     <!-- Navbar items -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link nav-link-icon" href="{{ route('register') }}">
+                            <a class="nav-link nav-link-icon" href="{{ route('register-form-view') }}">
                                 <i class="ni ni-circle-08"></i>
                                 <span class="nav-link-inner--text" style="">Registrate</span>
                             </a>
@@ -129,6 +129,8 @@
             });
     </script>
     <!--   Core   -->
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

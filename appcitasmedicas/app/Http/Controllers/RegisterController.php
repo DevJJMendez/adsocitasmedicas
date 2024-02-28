@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\Document_Type_View;
+use App\Models\Gender_View;
+use App\Models\Medical_Entities;
 use App\Models\Third_Data;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+    public function showRegisterForm()
+    {
+
+        $documentType = Document_Type_View::pluck('name', 'detail_id');
+        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
+        $genderType = Gender_View::pluck('name', 'detail_id');
+        return view('auth.register', compact('documentType', 'medicalEntity', 'genderType', ));
+    }
     public function createUser(RegisterRequest $registerRequest)
     {
         $thirdData = Third_Data::create([
@@ -22,16 +32,14 @@ class RegisterController extends Controller
             'birth_date' => $registerRequest->birth_date,
             'gender_type_id' => $registerRequest->gender_type_id,
             'address' => $registerRequest->address,
-            'idMedicalEntity' => $registerRequest->idMedicalEntity,
         ]);
         User::create([
             'third_data_id' => $thirdData->data_id,
             'email' => $registerRequest->email,
-            'password' => $thirdData->password,
-            'roler' => 'paciente',
-            'id_entity' => $thirdData->idMedicalEntity
+            'password' => $registerRequest->password,
+            'role' => 'paciente',
+            'id_medical_entity' => $registerRequest->id_medical_entity
         ]);
-        notify()->success('Usuario registrado correctamente', 'Registrar usuario');
-        return view('auth.register');
+        return redirect()->route('login')->with('email', 'password');
     }
 }

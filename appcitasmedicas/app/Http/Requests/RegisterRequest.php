@@ -16,7 +16,31 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'identification_number' =>'required',
+            'first_name' =>'required',
+            'sur_name' =>'required',
+            'number_phone' =>'required',
+            'birth_date' =>'required',
+            'address' =>'required',
+            'password' =>'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
 
+            'identification_number.required' => 'Debe ingresar el número de identificación',
+            'first_name.required' => 'Debe ingresar el primer nombre',
+            'sur_name.required' => 'Debe ingresar el primer apellido',
+
+            'number_phone.required' => 'Debe ingresar un número telefonico',
+            // 'number_phone.numeric' => 'Solo debe contener números',
+
+            'email.required' => 'Debe ingresar un correo electronico',
+            'email.email' => 'Debe ingresar un correo electronico valido',
+            'password.required' => 'Debe ingresar una contraseña',
+            'birth_date.required' => 'Debe ingresar una fecha de nacimiento',
+            'address.required' => 'Debe ingresar una dirección',
         ];
     }
 }
