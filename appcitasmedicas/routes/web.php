@@ -19,8 +19,8 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'register'], function () {
-    Route::get('',[RegisterController::class, 'showRegisterForm'])->name('register-form-view');
-    Route::post('/new-user',[RegisterController::class, 'createUser'])->name('new-user');
+    Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
+    Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
 });
 // Medical Entity Route
 Route::group(['prefix' => 'medical-entities'], function () {
@@ -28,7 +28,7 @@ Route::group(['prefix' => 'medical-entities'], function () {
     Route::get('/create', [MedicalEntityController::class, 'create'])->name('create.view');
     Route::post('createnewentity', [MedicalEntityController::class, 'store'])->name('create');
     Route::get('{id}/edit', [MedicalEntityController::class, 'edit'])->name('edit.view');
-    // Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
+    Route::put('update/{id}', [MedicalEntityController::class, 'update'])->name('update');
     // Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
 });
 

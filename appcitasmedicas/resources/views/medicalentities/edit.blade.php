@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
         </div>
     </div>
     <div class="card-body">
-        <form action="#" method="POST">
+        <form action="{{ route('update') }}" method="POST">
             @csrf
             @method('PUT')
             <div class="input-group mb-3">

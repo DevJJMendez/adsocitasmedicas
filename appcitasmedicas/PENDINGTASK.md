@@ -1,1 +1,1 @@
--   create register function
+-   fix update function

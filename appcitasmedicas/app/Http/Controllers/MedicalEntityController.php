@@ -39,5 +39,11 @@ class MedicalEntityController extends Controller
         $statuType = Statu_View::pluck('name', 'detail_id');
         return view('medicalentities.edit', compact('entityType', 'statuType', 'entity'));
     }
+    public function update(MedicalEntityRequest $medicalEntityRequest, Medical_Entities $medicalEntity)
+    {
+        $medicalEntity->update($medicalEntityRequest->all());
+        notify()->success('Entidad médica editada correctamente', 'Editar');
+        return redirect()->route('medical.entities.view');
+    }
 }
 
