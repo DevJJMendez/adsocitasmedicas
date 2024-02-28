@@ -3,6 +3,12 @@
 <h6 class="navbar-heading text-muted">Usuarios</h6>
 <ul class="navbar-nav">
     <li class="nav-item  active ">
+        <a class="nav-link   " href="{{url('/users')}}">
+           <i class="fas fa-user-cog text-black"></i> Usuarios
+
+        </a>
+      </li>
+    <li class="nav-item  active ">
         <a class="nav-link   " href="{{url('/roles')}}">
            <i class="fas fa-user-cog text-black"></i> Lista de roles
 

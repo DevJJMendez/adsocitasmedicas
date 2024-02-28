@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
 use App\Http\Controllers\RegisterController;
+=======
+use App\Http\Controllers\AsignarRol;
+>>>>>>> Stashed changes
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicalEntityController;
@@ -79,4 +83,7 @@ Route::group(['prefix' => 'permisos'], function () {
     Route::get('/editPermiso/{permiso}', [PermisoController::class, 'edit'])->name('edit.permiso.view');
     Route::delete('/deletePermiso/{permiso}', [PermisoController::class, 'deletePermiso'])->name('delete.permiso');
 });
+
+// Route::resource('users', AsignarRol::class)->names('asignar');
+Route::get('/users', \App\Http\Controllers\AsignarRol::class);
 

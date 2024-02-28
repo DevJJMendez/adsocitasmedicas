@@ -45,4 +45,9 @@ class Third_Data extends Model
     {
         return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'data_id');
+    }
 }

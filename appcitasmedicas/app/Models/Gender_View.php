@@ -14,4 +14,6 @@ class Gender_View extends Model
     public function thirddatagender():BelongsTo{
         return $this->belongsTo(Third_Data::class,'gender_id','gender_type_id');
     }
+
+    
 }
