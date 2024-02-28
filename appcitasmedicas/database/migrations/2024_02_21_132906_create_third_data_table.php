@@ -12,7 +12,6 @@ return new class extends Migration {
     {
         Schema::create('third_data', function (Blueprint $table) {
             $table->smallIncrements('data_id')->unsigned();
-
             // Tipo de documento
             $table->string('document_type_id', 2)->nullable();
             $table->string('identification_number', 12)->nullable();

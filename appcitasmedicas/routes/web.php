@@ -28,6 +28,7 @@ Route::group(['prefix' => 'medical-entities'], function () {
     // Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
     // Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
 });
+
 // specialty route
 Route::group(['prefix' => 'specialties'], function () {
     Route::get('', [SpecialtyController::class, 'index'])->name('specialtyView');

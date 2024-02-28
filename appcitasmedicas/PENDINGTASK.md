@@ -1,3 +1,1 @@
--   relation between third_data and medical_entities
--   fix medical_entities functions
-- fix render data at register
+-   create register function
