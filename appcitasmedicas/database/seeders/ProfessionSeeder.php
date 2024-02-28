@@ -11,103 +11,103 @@ class ProfessionSeeder extends Seeder
     public function run(): void
     {
         Profession::create([
-            'name'=>'Alergólogo',
+            'name' => 'Alergólogo',
         ]);
         Profession::create([
-            'name'=>'Anestesiólogo',
+            'name' => 'Anestesiólogo',
         ]);
         Profession::create([
-            'name'=>'Cardiólogo',
+            'name' => 'Cardiólogo',
         ]);
         Profession::create([
-            'name'=>'Cardiólogo Pediatra',
+            'name' => 'Cardiólogo Pediatra',
         ]);
         Profession::create([
-            'name'=>'Cirujano General',
+            'name' => 'Cirujano General',
         ]);
         Profession::create([
-            'name'=>'Cirujano Pediátrico',
+            'name' => 'Cirujano Pediátrico',
         ]);
         Profession::create([
-            'name'=>'Cirujano Plástico',
+            'name' => 'Cirujano Plástico',
         ]);
         Profession::create([
-            'name'=>'Cirujano Vascular',
+            'name' => 'Cirujano Vascular',
         ]);
         Profession::create([
-            'name'=>'Dermatólogo',
+            'name' => 'Dermatólogo',
         ]);
         Profession::create([
-            'name'=>'Especialista en Dolor y Cuidados Paliativos',
+            'name' => 'Especialista en Dolor y Cuidados Paliativos',
         ]);
         Profession::create([
-            'name'=>'Endocrinólogo',
+            'name' => 'Endocrinólogo',
         ]);
         Profession::create([
-            'name'=>'Endocrinólogo Pediatra',
+            'name' => 'Endocrinólogo Pediatra',
         ]);
         Profession::create([
-            'name'=> 'Fonoaudiólogo',
+            'name' => 'Fonoaudiólogo',
         ]);
         Profession::create([
-            'name'=>'Gastroenterólogo',
+            'name' => 'Gastroenterólogo',
         ]);
         Profession::create([
-            'name'=>'Ginecólogo',
+            'name' => 'Ginecólogo',
         ]);
         Profession::create([
-            'name'=>'Internista',
+            'name' => 'Internista',
         ]);
         Profession::create([
-            'name'=>'Nefrólogo',
+            'name' => 'Nefrólogo',
         ]);
         Profession::create([
-            'name'=>'Nefrólogo Pediatra',
+            'name' => 'Nefrólogo Pediatra',
         ]);
         Profession::create([
-            'name'=>'Neumólogo',
+            'name' => 'Neumólogo',
         ]);
         Profession::create([
-            'name'=>'Neumólogo Pediatra',
+            'name' => 'Neumólogo Pediatra',
         ]);
         Profession::create([
-            'name'=>'Neurocirujano',
+            'name' => 'Neurocirujano',
         ]);
         Profession::create([
-            'name'=>'Neurólogo',
+            'name' => 'Neurólogo',
         ]);
         Profession::create([
-            'name'=> 'Neurólogo Infantil',
+            'name' => 'Neurólogo Infantil',
         ]);
         Profession::create([
-            'name'=>'Nutricionista',
+            'name' => 'Nutricionista',
         ]);
         Profession::create([
-            'name'=>'Odontólogo',
+            'name' => 'Odontólogo',
         ]);
         Profession::create([
-            'name'=>'Ortopedista',
+            'name' => 'Ortopedista',
         ]);
         Profession::create([
-            'name'=>'Otorrinolaringólogo',
+            'name' => 'Otorrinolaringólogo',
         ]);
         Profession::create([
-            'name'=>'Otorrinolaringólogo Infantil',
+            'name' => 'Otorrinolaringólogo Infantil',
         ]);
         Profession::create([
-            'name'=>'Pediatra',
+            'name' => 'Pediatra',
         ]);
         Profession::create([
-            'name'=>'Psicólogo',
+            'name' => 'Psicólogo',
         ]);
         Profession::create([
-            'name'=>'Psiquiatra',
+            'name' => 'Psiquiatra',
         ]);
         Profession::create([
-            'name'=>'Reumatólogo',
+            'name' => 'Reumatólogo',
         ]);
         Profession::create([
-            'name'=>'Urólogo',
+            'name' => 'Urólogo',
         ]);
     }
 }

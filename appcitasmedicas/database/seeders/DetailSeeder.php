@@ -15,69 +15,69 @@ class DetailSeeder extends Seeder
     {
         Detail::create([
             'id_header' => 1,
-            'value'=>'Activo',
+            'value' => 'Activo',
             'nomenclature' => 'ACT',
         ]);
         Detail::create([
             'id_header' => 1,
-            'value'=>'Inactivo',
+            'value' => 'Inactivo',
             'nomenclature' => 'INAC',
         ]);
         Detail::create([
             'id_header' => 1,
-            'value'=>'En Espera',
+            'value' => 'En Espera',
             'nomenclature' => 'EESP',
         ]);
         Detail::create([
             'id_header' => 1,
-            'value'=>'Atendida',
+            'value' => 'Atendida',
             'nomenclature' => 'ATDA',
         ]);
         Detail::create([
             'id_header' => 1,
-            'value'=>'Cancelada',
+            'value' => 'Cancelada',
             'nomenclature' => 'CANC',
         ]);
 
         Detail::create([
             'id_header' => 2,
-            'value'=>'Masculino',
+            'value' => 'Masculino',
             'nomenclature' => 'M',
         ]);
         Detail::create([
             'id_header' => 2,
-            'value'=>'Femenino',
+            'value' => 'Femenino',
             'nomenclature' => 'F',
         ]);
 
         Detail::create([
             'id_header' => 3,
-            'value'=>'Cedula de Ciudadania',
+            'value' => 'Cedula de Ciudadania',
             'nomenclature' => 'CC',
         ]);
         Detail::create([
             'id_header' => 3,
-            'value'=>'Tarjeta de Identidad',
+            'value' => 'Tarjeta de Identidad',
             'nomenclature' => 'TI',
         ]);
         Detail::create([
             'id_header' => 3,
-            'value'=>'Registro Civil',
+            'value' => 'Registro Civil',
             'nomenclature' => 'RC',
         ]);
         Detail::create([
             'id_header' => 3,
-            'value'=>'Cédula de Extranjería',
+            'value' => 'Cedula de Extranjeria',
             'nomenclature' => 'CE',
         ]);
         Detail::create([
             'id_header' => 4,
-            'value'=>'EPS',
+            'value' => 'EPS',
             'nomenclature' => null,
         ]);
         Detail::create([
             'id_header' => 4,
-            'value'=>'IPS',
+            'value' => 'IPS',
             'nomenclature' => null,
         ]);
     }
