@@ -28,7 +28,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('users', AsignarRol::class)->names('asignar');
     // Medical Entity Route
     Route::group(['prefix' => 'medical-entities'], function () {
-        Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view')->middleware('can:admin.especialidades.index');
+        Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');
         Route::get('/create', [MedicalEntityController::class, 'create'])->name('create.view');
         Route::post('createnewentity', [MedicalEntityController::class, 'store'])->name('create');
         Route::get('{id}/edit', [MedicalEntityController::class, 'edit'])->name('edit.view');
@@ -89,7 +89,7 @@ Route::group(['prefix' => 'register'], function () {
     Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
     Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
 });
-<<<<<<< Updated upstream
+
 // Medical Entity Route
 Route::group(['prefix' => 'medical-entities'], function () {
     Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');
@@ -99,31 +99,5 @@ Route::group(['prefix' => 'medical-entities'], function () {
     Route::put('update/{medicalEntity}', [MedicalEntityController::class, 'update'])->name('update');
     Route::delete('delete/{medicalEntity}', [MedicalEntityController::class, 'delete'])->name('delete');
 });
-=======
->>>>>>> Stashed changes
 
 
-
-
-
-
-
-// Route::group(['prefix' => 'roles'], function () {
-//     Route::get('/roles', [RoleController::class, 'index'])->name('roles.view');
-//     Route::post('/newRol', [RoleController::class, 'createNewRol'])->name('create.new.rol');
-//     Route::get('/editRol/{rol}', [RoleController::class, 'edit'])->name('edit.rol.view');
-//     Route::put('/updateRol/{rol}', [RoleController::class, 'updateRol'])->name('update.rol');
-//     Route::delete('/deleteRol/{rol}', [RoleController::class, 'deleteRol'])->name('delete.rol');
-// });
-
-
-
-
-
-// Route::group(['prefix' => 'usuarios'], function () {
-//     Route::get('/usuarios', AsignarRol::class)->name('usuarios.view');
-//     Route::get('/editusuario/{user}', [AsignarRol::class, 'edit'])->name('edit.usuario.view');
-//     Route::put('/updateUsuario/{user}', [AsignarRol::class, 'update'])->name('update.usuario');
-//     Route::delete('/deleteUsuario/{usuario}', [AsignarRol::class, 'deleteUsuario'])->name('delete.usuario');
-
-// });

@@ -53,12 +53,11 @@ class User extends Authenticatable
         return $query->where('role', 'medico');
     }
 
-<<<<<<< Updated upstream
+
     public function tercero()
     {
         // $tercero = $this->Third_Data::where('third_data_id', $this->id)->first();
-=======
->>>>>>> Stashed changes
 
 
+    }
 }
