@@ -16,38 +16,28 @@ class AsignarRol extends Controller
 
     public function __construct()
     {
+        $this->middleware('can:Ver listado de usuarios');
 
-    }
 
-    public function __invoke()
-    {
-        $terceros = Third_Data::all();
-        return view('acceso.listUser' , compact('terceros'));
     }
     public function index()
     {
         $terceros = Third_Data::all();
         return view('acceso.listUser' , compact('terceros'));
     }
-    public function show(string $id)
+
+
+    public function edit(User  $user)
     {
-        //
+
+         $roles = Role::all();
+
+         return view('acceso.UserRole' ,compact('user' , 'roles'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::find($id);
-        $roles = Role::all();
 
-        return view('acceso.UserRole' ,compact('user' , 'roles'));
-    }
-
-    public function update(Request $request, string $id)
-    {
-       $user = User::find($id);
        $user->roles()->sync($request->roles);
         return redirect()->route('asignar.edit',$user);
     }

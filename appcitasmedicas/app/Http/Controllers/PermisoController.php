@@ -7,26 +7,20 @@ use Spatie\Permission\Models\Permission;
 
 class PermisoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware('can:Ver listado de permisos')->only('index');
+        $this->middleware('can:Crear permisos')->only('create');
+        $this->middleware('can:Editar permisos')->only('edit');
+        $this->middleware('can:Eliminar permisos')->only('destroy');
+
+    }
     public function index()
     {
         $permisos = Permission::all();
         return view('acceso.permisos.index', compact('permisos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function createNewPermiso(Request $request)
     {
         $permission = Permission::create(['name' => $request->input('name_permiso')]);

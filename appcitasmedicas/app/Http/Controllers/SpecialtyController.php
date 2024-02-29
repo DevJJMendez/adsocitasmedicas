@@ -10,6 +10,9 @@ class SpecialtyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->middleware('can:Ver listado de especialidades');
+
     }
     public function index()
     {

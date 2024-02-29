@@ -12,6 +12,12 @@ use Illuminate\View\View;
 
 class MedicalEntityController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:Ver listado de entidades médicas');
+    }
+
     public function index(): view
     {
         $medicalEntity = Medical_Entities::with('medicalentitytype', 'statutype')->paginate(8);
@@ -52,4 +58,3 @@ class MedicalEntityController extends Controller
         return redirect()->route('medical.entities.view');
     }
 }
-

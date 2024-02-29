@@ -7,6 +7,10 @@ use App\Models\User;
 
 class MedicoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Ver listado de médicos');
+    }
     public function index()
     {
         $medicos = User::medicos()->select('id', 'email')->paginate(10);

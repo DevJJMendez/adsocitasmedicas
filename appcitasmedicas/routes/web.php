@@ -25,7 +25,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'admin'])->group(function () {
 
     //Users Route
-    Route::resource('users', AsignarRol::class)->names('asignar');
+    Route::resource('users', AsignarRol::class)->only('index' , 'edit' , 'update')->names('asignar');
     // Medical Entity Route
     Route::group(['prefix' => 'medical-entities'], function () {
         Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');

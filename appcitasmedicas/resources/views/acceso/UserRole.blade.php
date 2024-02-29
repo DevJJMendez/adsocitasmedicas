@@ -29,7 +29,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <p> {{ $user->thirdDataUser->first_name}}</p>
+                    <span>Nombre : </span> <span>{{ $user->thirdDataUser->first_name}}</span>
                 </div>
                 <div class="card-body">
                     <h2 class="h3">Lista de permisos</h2>

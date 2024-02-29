@@ -9,6 +9,10 @@ class PacienteController extends Controller
 {
 
 
+    public function __construct()
+    {
+        $this->middleware('can:Ver listado de pacientes');
+    }
 
     public function index()
     {
