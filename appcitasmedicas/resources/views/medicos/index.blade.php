@@ -6,11 +6,11 @@
             <div class="col">
                 <h3 class="mb-0">Medicos</h3>
             </div>
-            @role('Admin')
+
             <div class="col text-right">
                 <a href="{{ route('create.medico') }}" class="btn btn-sm btn-primary">Agregar nuevo médico</a>
             </div>
-            @endrole
+
         </div>
     </div>
     <div class="table-responsive">

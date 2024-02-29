@@ -1,5 +1,5 @@
 <!-- Heading -->
-@role('Admin')
+
 <h6 class="navbar-heading text-muted">Usuarios</h6>
 <ul class="navbar-nav">
 
@@ -24,12 +24,12 @@
 
 
 </ul>
-@endrole
+
 
 <h6 class="navbar-heading text-muted">Opciones</h6>
 <!-- Navigation -->
 <ul class="navbar-nav">
-    @role('Admin')
+
     <li class="nav-item  active ">
         <a class="nav-link  active " href="">
             <i class="ni ni-tv-2 text-danger"></i> Dashboard
@@ -50,19 +50,19 @@
             <i class="fas fa-bed text-warning"></i> Pacientes
         </a>
     </li>
-    @endrole
+
     <li class="nav-item">
         <a class="nav-link " href="{{ route('citas.view') }}">
             <i class="fas fa-bed text-warning"></i> Citas
         </a>
     </li>
-    @role('Admin')
+
     <li class="nav-item">
         <a class="nav-link " href="{{ route('medical.entities.view') }}">
             <i class="fas fa-bed text-warning"></i> Entidades Médicas
         </a>
     </li>
-    @endrole
+
     <li class="nav-item">
         <a class="nav-link" href="{{ route('citas.view') }}"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
