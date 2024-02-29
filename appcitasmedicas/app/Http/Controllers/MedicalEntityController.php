@@ -14,7 +14,7 @@ class MedicalEntityController extends Controller
 {
     public function index(): view
     {
-        $medicalEntity = Medical_Entities::with('medicalentitytype', 'statutype')->paginate(6);
+        $medicalEntity = Medical_Entities::with('medicalentitytype', 'statutype')->paginate(8);
         return view('medicalentities.index', compact('medicalEntity'));
     }
     public function create(): view
@@ -43,6 +43,12 @@ class MedicalEntityController extends Controller
     {
         $medicalEntity->update($medicalEntityRequest->all());
         notify()->success('Entidad médica editada correctamente', 'Editar');
+        return redirect()->route('medical.entities.view');
+    }
+    public function delete(Medical_Entities $medicalEntity)
+    {
+        $medicalEntity->delete();
+        notify()->error('Entidad médica eliminada correctamente', 'Eliminar');
         return redirect()->route('medical.entities.view');
     }
 }

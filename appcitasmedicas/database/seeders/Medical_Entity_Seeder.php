@@ -15,7 +15,7 @@ class Medical_Entity_Seeder extends Seeder
     {
         Medical_Entities::create([
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '01 8000 123703​',
+            'number_phone' => '018000123703',
             'email' => 'aliansalud@gemail.com',
             'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'ALIANSALUD ENTIDAD PROMOTORA DE SALUD S.A.',
@@ -26,7 +26,7 @@ class Medical_Entity_Seeder extends Seeder
 
         Medical_Entities::create([
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000 962 780',
+            'number_phone' => '018000962780',
             'email' => 'atencioninicialdeurgencias@epsianaswayuu.com',
             'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'ANASWAYUU',
@@ -36,7 +36,7 @@ class Medical_Entity_Seeder extends Seeder
 
         Medical_Entities::create([
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000-930135',
+            'number_phone' => '018000930135',
             'email' => 'notificacionesjudiciales@aicsalud.org.co',
             'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'ASOCIACIÓN INDÍGENA DEL CAUCA',
@@ -50,7 +50,7 @@ class Medical_Entity_Seeder extends Seeder
             'email' => 'afiliacion@mutualser.com',
             'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'ASOCIACION MUTUAL SER EMPRESA SOLIDARIA DE SALUD EPS',
-            'address' => 'Carretera. Troncal No. 71B – 105',
+            'address' => 'Carretera. Troncal No. 71B-105',
             'statu_type_id' => 1,
         ]);
         Medical_Entities::create([
@@ -115,7 +115,7 @@ class Medical_Entity_Seeder extends Seeder
 
         Medical_Entities::create([
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000 112524',
+            'number_phone' => '018000112524',
             'email' => 'saludtotal@gemail.org',
             'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'SALUD TOTAL S.A. E.P.S.',
@@ -124,9 +124,9 @@ class Medical_Entity_Seeder extends Seeder
         ]);
         Medical_Entities::create([
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000765874​',
+            'number_phone' => '018000765874',
             'email' => 'santafe@gemail.com',
-            'entity_type_id' => 13,
+            'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'Fundacion Santa Fe',
             'address' => 'Cr 65 11-50',
             'statu_type_id' => 1,
@@ -136,9 +136,9 @@ class Medical_Entity_Seeder extends Seeder
             'nit' => fake()->numberBetween(100000000, 999999999),
             'number_phone' => '0180006547830',
             'email' => 'hpablotobon@epsianaswayuu.com',
-            'entity_type_id' => 13,
+            'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'Hospital Pablo Tobon',
-            'address' => 'Carrera 16 No. 16 - 31',
+            'address' => 'Carrera 16 No. 16-31',
             'statu_type_id' => 1,
         ]);
 
@@ -146,7 +146,7 @@ class Medical_Entity_Seeder extends Seeder
             'nit' => fake()->numberBetween(100000000, 999999999),
             'number_phone' => '018000234563',
             'email' => 'clinicashaio@org.co',
-            'entity_type_id' => 13,
+            'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'Fundacion Clinica Shaio',
             'address' => 'Calle 1 # 4-66-727',
             'statu_type_id' => 1,
@@ -156,9 +156,9 @@ class Medical_Entity_Seeder extends Seeder
             'nit' => fake()->numberBetween(100000000, 999999999),
             'number_phone' => '0180009874566',
             'email' => 'clinica@colsanitas.com',
-            'entity_type_id' => 13,
+            'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'Clinica Colsanitas',
-            'address' => 'Troncal No. 22B – 105',
+            'address' => 'Troncal No. 22B 105',
             'statu_type_id' => 1,
         ]);
 
@@ -166,7 +166,7 @@ class Medical_Entity_Seeder extends Seeder
             'nit' => fake()->numberBetween(100000000, 999999999),
             'number_phone' => '018000625341',
             'email' => 'sanjose@gemail.com',
-            'entity_type_id' => 13,
+            'entity_type_id' => fake()->numberBetween(12, 13),
             'business_name' => 'Hospital San Jose',
             'address' => 'Avenida 68 # 49A-47',
             'statu_type_id' => 1,

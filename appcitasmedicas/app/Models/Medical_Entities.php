@@ -19,10 +19,11 @@ class Medical_Entities extends Model
         'entity_type_id',
         'business_name',
         'address',
+        'statu_type_id'
     ];
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'id_medical_entity','id');
+        return $this->hasOne(User::class, 'id_medical_entity', 'id');
     }
 
     // Relacion con vistas:
