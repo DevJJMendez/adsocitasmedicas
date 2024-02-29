@@ -9,7 +9,7 @@ class PacienteController extends Controller
 {
     public function index()
     {
-        $pacientes = User::pacientes()->select('id','email')->paginate(10);
+        $pacientes = User::with('thirdDataUser')->get();
         return view('pacientes.index', compact('pacientes'));
     }
     public function showAppointmentView()
@@ -46,7 +46,8 @@ class PacienteController extends Controller
         notify()->success('Paciente editado correctamente', 'Editar Paciente');
         return redirect()->route('paciente.view');
     }
-    public function deletePaciente($id){
+    public function deletePaciente($id)
+    {
         $paciente = User::pacientes()->findOrFail($id);
         $paciente->delete();
         notify()->error('Paciente eliminado correctamente', 'Eliminar Paciente');

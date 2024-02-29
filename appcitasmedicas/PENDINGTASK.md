@@ -1,1 +1,1 @@
--   fix update function
+-   return all data of user model for patients

@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
     public function medicalEntity(): BelongsTo
     {
-        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity','id');
+        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'id');
     }
     public function scopePacientes($query)
     {
@@ -53,7 +53,8 @@ class User extends Authenticatable
         return $query->where('role', 'medico');
     }
 
-    public function tercero(){
+    public function tercero()
+    {
         // $tercero = $this->Third_Data::where('third_data_id', $this->id)->first();
 
         return $this->hasOne('App\Models\Third_Data', 'users_id')->first();
