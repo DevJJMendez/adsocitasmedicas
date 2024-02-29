@@ -14,6 +14,11 @@ class AsignarRol extends Controller
      * Display a listing of the resource.
      */
 
+    public function __construct()
+    {
+
+    }
+
     public function __invoke()
     {
         $terceros = Third_Data::all();
