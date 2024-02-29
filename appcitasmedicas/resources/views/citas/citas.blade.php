@@ -24,13 +24,13 @@
 
                     <div class="form-group">
                       <label for="id">ID</label>
-                      <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="" value="{{Auth::User()->password}}" readonly="readonly">
+                      <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="" value="{{Auth::User()->thirdDataUser->data_id}}" readonly="readonly">
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
                     <div class="form-group">
                       <label for="">Nombre</label>
-                      <input type="text" class="form-control" name="name" id="title" aria-describedby="helpId" placeholder="" value="{{Auth::User()->email}}" readonly="readonly">
+                      <input type="text" class="form-control" name="name" id="title" aria-describedby="helpId" placeholder="" value="{{Auth::User()->thirdDataUser->first_name}}" readonly="readonly">
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
