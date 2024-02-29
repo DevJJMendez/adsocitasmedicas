@@ -28,38 +28,44 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th colspan="2"></th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rol</th>
+
+                <th colspan="2">Acciones</th>
 
             </tr>
             </thead>
             <tbody>
 
-                @foreach ($users  as $user)
+                @foreach ($terceros  as $tercero)
 
 
               <tr>
-                <th scope="row">
-                  {{ $user->data_id}}
+                <th >
+                  {{ $tercero->data_id}}
                 </th>
-                <td>
-                 {{ $user->first_name}}
+                <th >
+                 {{ $tercero->first_name}}
                 </td>
                 <td>
-                 {{ $user->name}}
+                 {{ $tercero->users->email}}
                 </td>
-                <td width="10px">
-                  {{-- <a href="{{ route('asignar.edit',$user)}}" class="btn btn-sm btn-primary">Editar</a> --}}
-                </td>
+                <th>
+                    {{ $tercero->users->role}}
+                   </td>
+                   <td>
 
-                <td width="10px">
-                    {{-- <form action="{{route('asignar.destroy' , $user )}}" method="POST">
+                    <form action="{{ route('asignar.destroy',$tercero) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-
-                    </form> --}}
+                        <a href="{{ route('asignar.edit',$tercero) }}"
+                            class="btn btn-sm btn-primary">
+                            Editar
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
 
                 </td>
 
@@ -69,6 +75,8 @@
               @endforeach
             </tbody>
           </table>
+
+
 
 
 

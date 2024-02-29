@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+   {
+        $this->middleware('can:Crear medicos');
+   }
     public function index()
     {
         return view('citas.citas');
