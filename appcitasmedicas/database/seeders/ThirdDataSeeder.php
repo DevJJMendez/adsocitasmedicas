@@ -26,9 +26,9 @@ class ThirdDataSeeder extends Seeder
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
-            'email' => 'usertest@gmail.com',
-            'password' => $thirddata['identification_number'],
-            'role' => 'paciente',
+            'email' => 'jei@gmail.com',
+            'password' => '1234',
+            'role' => 'admin',
         ]);
     }
 }

@@ -15,13 +15,18 @@ class Third_Data extends Model
     protected $primaryKey = 'data_id';
     protected $fillable = [
         'data_id',
-        'nit',
+        'document_type_id',
+        'identification_number',
+        'first_name',
+        'second_name',
+        'sur_name',
+        'second_sur_name',
         'number_phone',
-        'entity_type_id',
-        'email',
-        'business_name',
+        'birth_date',
+        'gender_type_id',
         'address',
         'statu_type_id' => 1,
+        'entity_type_id',
     ];
     public function userThirdData(): HasOne
     {
@@ -44,10 +49,5 @@ class Third_Data extends Model
     public function statutype(): HasOne
     {
         return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
-    }
-
-    public function users()
-    {
-        return $this->belongsTo('App\Models\User', 'data_id');
     }
 }

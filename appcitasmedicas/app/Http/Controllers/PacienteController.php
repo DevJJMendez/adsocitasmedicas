@@ -8,7 +8,7 @@ use App\Models\User;
 class PacienteController extends Controller
 {
 
-   
+
 
     public function index()
     {

@@ -17,7 +17,7 @@
             <table class="table align-items-center table-flush" style="text-transform: uppercase">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">Nombre y apellidos</th>
+                        <th scope="col">Nombres</th>
                         <th scope="col"></th>
                         <th scope="col">telefono</th>
                         <th scope="col">Email</th>
