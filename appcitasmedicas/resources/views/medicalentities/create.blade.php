@@ -41,14 +41,15 @@ use Illuminate\Support\Str;
                     @error('nit')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="number" name="nit" value="{{ old('nit') }}">
+                    <input class="form-control" type="number" name="nit" value="{{ old('nit') }}" maxlength="9">
                 </div>
                 <div class="form-group">
                     <label for="number_phone">Número de contacto</label>
                     @error('number_phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="number_phone" value="{{ old('number_phone') }}">
+                    <input class="form-control" type="number" name="number_phone" value="{{ old('number_phone') }}"
+                        maxlength="9">
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -64,23 +65,10 @@ use Illuminate\Support\Str;
                     @enderror
                     <input class="form-control" type="text" name="address" value="{{ old('address') }}">
                 </div>
-                {{-- <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="statu_type_id">Estado</label>
-                </div>
-
-                <select class="custom-select" name="statu_type_id">
-                    @foreach ($statuType as $detail_id => $nombre)
-                    <option value="{{ $detail_id }}">{{ $nombre }}
-                    </option>
-                    @endforeach
-                </select>
-            </div> --}}
                 <button type="submit" class="btn btn-sm btn-primary">Crear entidad médica</button>
             </form>
         </div>
     </div>
 
-</div>
-
+    </div>
 @endsection

@@ -24,6 +24,9 @@ use Illuminate\Support\Str;
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="entity_type_id">Tipo de entidad médica</label>
+                        @error('entity_type_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <select class="custom-select" name="entity_type_id">
                         @foreach ($entityType as $detail_id => $name)
@@ -34,18 +37,24 @@ use Illuminate\Support\Str;
                 </div>
                 <div class="form-group">
                     <label for="business_name">Razón Social</label>
+                    @error('business_name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <input class="form-control" type="text" name="business_name" value="{{ $entity->business_name }}">
                 </div>
                 <div class="form-group">
                     <label for="nit">NIT</label>
-                    <input class="form-control" type="text" name="nit" value="{{ $entity->nit }}">
+                    @error('nit')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input class="form-control" type="text" name="nit" value="{{ $entity->nit }}" maxlength="9">
                 </div>
                 <div class="form-group">
                     <label for="number_phone">Número de contacto</label>
                     @error('number_phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="number_phone" value="{{ $entity->number_phone }}">
+                    <input class="form-control" type="number" name="number_phone" value="{{ $entity->number_phone }}">
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
@@ -72,7 +81,7 @@ use Illuminate\Support\Str;
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-sm btn-primary">Actualizar entidad médica</button>
+                <button type="submit" class="btn btn-sm btn-primary">Actu entidad médica</button>
             </form>
         </div>
     </div>
