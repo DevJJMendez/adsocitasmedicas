@@ -40,10 +40,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointments::class, 'id_doctor');
     }
-    public function medicalEntity(): BelongsTo
-    {
-        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'id');
-    }
+   
     public function scopePacientes($query)
     {
         return $query->where('role', 'paciente');

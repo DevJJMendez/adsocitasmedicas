@@ -25,13 +25,14 @@ class ThirdDataSeeder extends Seeder
         'birth_date'=>fake()->date(),
         'gender_type_id'=> fake()->numberBetween(6, 7),
         'address'=> fake()->address(),
+        'id_medical_entity'=> fake()->numberBetween(12, 13),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
             'email' => 'admin@gmail.com',
             'password' => '1234',
             'role' => 'admin',
-            'id_medical_entity'=> fake()->numberBetween(12, 13),
+
         ])->assignRole('Admin');
 
         $thirddata = Third_Data::create([
@@ -45,13 +46,14 @@ class ThirdDataSeeder extends Seeder
             'birth_date'=>fake()->date(),
             'gender_type_id'=> fake()->numberBetween(6, 7),
             'address'=> fake()->address(),
+            'id_medical_entity'=> fake()->numberBetween(12, 13),
             ]);
             User::create([
                 'third_data_id' => $thirddata['data_id'],
                 'email' => 'paciente@gmail.com',
                 'password' => '1234',
                 'role' => 'admin',
-                'id_medical_entity'=> fake()->numberBetween(12, 13),
+
             ])->assignRole('Paciente');
 
             $thirddata = Third_Data::create([
@@ -65,13 +67,14 @@ class ThirdDataSeeder extends Seeder
                 'birth_date'=>fake()->date(),
                 'gender_type_id'=> fake()->numberBetween(6, 7),
                 'address'=> fake()->address(),
+                'id_medical_entity'=> fake()->numberBetween(12, 13),
                 ]);
                 User::create([
                     'third_data_id' => $thirddata['data_id'],
                     'email' => 'doctor@gmail.com',
                     'password' => '1234',
                     'role' => 'doctor',
-                    'id_medical_entity'=> fake()->numberBetween(12, 13),
+
                 ])->assignRole('Doctor');
 
 

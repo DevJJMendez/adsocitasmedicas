@@ -37,6 +37,11 @@ class Third_Data extends Model
         return $this->hasOne(Profession::class, 'profession_id');
     }
 
+    public function medicalEntity(): BelongsTo
+    {
+        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'id');
+    }
+
     // Relaciones con las vistas
     public function documentType(): HasOne
     {

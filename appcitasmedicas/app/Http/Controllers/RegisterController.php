@@ -32,14 +32,15 @@ class RegisterController extends Controller
             'birth_date' => $registerRequest->birth_date,
             'gender_type_id' => $registerRequest->gender_type_id,
             'address' => $registerRequest->address,
+            'id_medical_entity' => $registerRequest->id_medical_entity
         ]);
         User::create([
             'third_data_id' => $thirdData->data_id,
             'email' => $registerRequest->email,
             'password' => $registerRequest->password,
             'role' => 'paciente',
-            'id_medical_entity' => $registerRequest->id_medical_entity
-        ]);
+
+        ])->assignRole('Paciente');
         return redirect()->route('login')->with('email', 'password');
     }
 }
