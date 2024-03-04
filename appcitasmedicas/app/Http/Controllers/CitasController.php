@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 
-class EventoController extends Controller
+class CitasController extends Controller
 {
     public function __construct()
-   {
-        $this->middleware('can:Crear medicos');
-   }
+    {
+         $this->middleware('can:Ver listado de citas');
+    }
     public function index()
     {
         return view('citas.citas');

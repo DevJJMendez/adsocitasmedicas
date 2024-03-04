@@ -39,28 +39,28 @@
             </thead>
             <tbody>
 
-                @foreach ($terceros  as $tercero)
+                @foreach ($users  as $user)
 
 
               <tr>
                 <th >
-                  {{ $tercero->data_id}}
+                  {{ $user->id}}
                 </th>
                 <th >
-                 {{ $tercero->first_name}}
+                 {{ $user->thirdDataUser->first_name}}
                 </td>
                 <td>
-                 {{ $tercero->users->email}}
+                 {{ $user->email}}
                 </td>
                 <th>
-                    {{ $tercero->users->role}}
+                    {{ $user->role}}
                    </td>
                    <td>
 
-                    <form action="{{ route('asignar.destroy',$tercero) }}" method="POST">
+                    <form action="{{ route('asignar.destroy',$user) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="{{ route('asignar.edit',$tercero) }}"
+                        <a href="{{ route('asignar.edit',$user) }}"
                             class="btn btn-sm btn-primary">
                             Editar
                         </a>

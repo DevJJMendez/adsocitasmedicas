@@ -28,11 +28,11 @@ class ThirdDataSeeder extends Seeder
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
-            'email' => 'jei@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => '1234',
             'role' => 'admin',
             'id_medical_entity'=> fake()->numberBetween(12, 13),
-        ]);
+        ])->assignRole('Admin');
 
         $thirddata = Third_Data::create([
             'document_type_id' => fake()->numberBetween(8, 11),
@@ -48,11 +48,11 @@ class ThirdDataSeeder extends Seeder
             ]);
             User::create([
                 'third_data_id' => $thirddata['data_id'],
-                'email' => 'Devjjmendez@gmail.com',
+                'email' => 'paciente@gmail.com',
                 'password' => '1234',
                 'role' => 'admin',
                 'id_medical_entity'=> fake()->numberBetween(12, 13),
-            ]);
+            ])->assignRole('Paciente');
 
             $thirddata = Third_Data::create([
                 'document_type_id' => fake()->numberBetween(8, 11),
@@ -68,51 +68,13 @@ class ThirdDataSeeder extends Seeder
                 ]);
                 User::create([
                     'third_data_id' => $thirddata['data_id'],
-                    'email' => 'luish@gmail.com',
+                    'email' => 'doctor@gmail.com',
                     'password' => '1234',
                     'role' => 'doctor',
                     'id_medical_entity'=> fake()->numberBetween(12, 13),
-                ]);
+                ])->assignRole('Doctor');
 
-                $thirddata = Third_Data::create([
-                    'document_type_id' => fake()->numberBetween(8, 11),
-                    'identification_number'=>fake()->numberBetween(100000000, 999999999),
-                    'first_name' =>fake() ->firstName(),
-                    'second_name'=>fake() ->firstName(),
-                    'sur_name'=>fake() ->lastName(),
-                    'second_sur_name'=>fake() ->lastName(),
-                    'number_phone'=> fake()->phoneNumber(),
-                    'birth_date'=>fake()->date(),
-                    'gender_type_id'=> fake()->numberBetween(6, 7),
-                    'address'=> fake()->address(),
-                    ]);
-                    User::create([
-                        'third_data_id' => $thirddata['data_id'],
-                        'email' => 'miguel1@gmail.com',
-                        'password' => '1234',
-                        'role' => 'paciente',
-                        'id_medical_entity'=> fake()->numberBetween(12, 13),
-                    ]);
 
-                    $thirddata = Third_Data::create([
-                        'document_type_id' => fake()->numberBetween(8, 11),
-                        'identification_number'=>fake()->numberBetween(100000000, 999999999),
-                        'first_name' =>fake() ->firstName(),
-                        'second_name'=>fake() ->firstName(),
-                        'sur_name'=>fake() ->lastName(),
-                        'second_sur_name'=>fake() ->lastName(),
-                        'number_phone'=> fake()->phoneNumber(),
-                        'birth_date'=>fake()->date(),
-                        'gender_type_id'=> fake()->numberBetween(6, 7),
-                        'address'=> fake()->address(),
-                        ]);
-                        User::create([
-                            'third_data_id' => $thirddata['data_id'],
-                            'email' => 'migueladmin@gmail.com',
-                            'password' => '1234',
-                            'role' => 'admin',
-                            'id_medical_entity'=> fake()->numberBetween(12, 13),
-                        ]);
 
     }
 }

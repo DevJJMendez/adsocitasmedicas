@@ -14,16 +14,19 @@ class AsignarRol extends Controller
      * Display a listing of the resource.
      */
 
-    public function __construct()
-    {
-        $this->middleware('can:Ver listado de usuarios');
 
+     public function __construct()
+     {
+         $this->middleware('can:Ver listado de permisos')->only('index');
+         $this->middleware('can:Crear permisos')->only('create');
+         $this->middleware('can:Editar permisos')->only('edit');
+         $this->middleware('can:Eliminar permisos')->only('destroy');
 
-    }
+     }
     public function index()
     {
-        $terceros = Third_Data::all();
-        return view('acceso.listUser' , compact('terceros'));
+        $users = User::all();
+        return view('acceso.listUser' , compact('users'));
     }
 
 
@@ -40,6 +43,12 @@ class AsignarRol extends Controller
 
        $user->roles()->sync($request->roles);
         return redirect()->route('asignar.edit',$user);
+    }
+
+    public function destroy(Role $role)
+    {
+
+
     }
 
 }
