@@ -23,6 +23,12 @@
                   <form action="">
 
                     <div class="form-group">
+                      <label for="id">Numero cita</label>
+                      <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="" value="" readonly="readonly">
+                      <small id="helpId" class="form-text text-muted"> </small>
+                    </div>
+
+                    <div class="form-group">
                       <label for="id">ID</label>
                       <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="" value="{{Auth::User()->thirdDataUser->data_id}}" readonly="readonly">
                       <small id="helpId" class="form-text text-muted">Help text</small>
@@ -34,12 +40,23 @@
                       <small id="helpId" class="form-text text-muted">Help text</small>
                     </div>
 
-                    <div class="form-group">
-                      <label for="">Especialidad/ informacion</label>
-                      <textarea class="form-control" name="" id="" rows="3"></textarea>
+                    <div class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                      </a>
+                      
+                      <div class="form-group">
+                        <label for="id_specialty">Especialidad</label>
+                        <select name="id_specialty" class="form-control" required>
+                            @forelse ($profession as $professiones)
+                                <option value="{{ $professiones->profession_id }}">
+                                    {{ $professiones->name }}
+                                </option>
+                            @empty
+                                <option value="">No data found</option>
+                            @endforelse
+                        </select>
                     </div>
-
-                    b4-input
 
                     <div class="form-group">
                       <label for="start">fecha / hora inicial </label>

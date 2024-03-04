@@ -19,10 +19,6 @@ class PacienteController extends Controller
         $pacientes = User::with('thirdDataUser')->get();
         return view('pacientes.index', compact('pacientes'));
     }
-    public function showAppointmentView()
-    {
-        return view('citas.citas');
-    }
     public function create()
     {
         return view('pacientes.create');

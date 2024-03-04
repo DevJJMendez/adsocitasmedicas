@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Medical_Entities;
+use App\Models\Profession;
 use Illuminate\Http\Request;
 
-class EventoController extends Controller
+class CitasController extends Controller
 {
     public function __construct()
    {
@@ -13,7 +15,9 @@ class EventoController extends Controller
    }
     public function index()
     {
-        return view('citas.citas');
+        $profession = Profession::select('profession_id','name')->get();
+        return view('citas.citas',compact( 'profession'));
+
     }
 
     /**

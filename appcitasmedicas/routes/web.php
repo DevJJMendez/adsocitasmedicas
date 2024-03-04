@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CitasController;
 use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\AsignarRol;
@@ -68,7 +69,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // citas route
     Route::group(['prefix' => 'citas'], function () {
-        Route::get('', [PacienteController::class, 'showAppointmentView'])->name('citas.view');
+        Route::get('', [CitasController::class, 'index'])->name('citas.view');
     });
 
     //roles route
