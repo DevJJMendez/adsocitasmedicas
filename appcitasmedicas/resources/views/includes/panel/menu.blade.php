@@ -56,35 +56,40 @@
             <i class="fas fa-bed text-warning"></i> Entidades Médicas
         </a>
     </li>
-   @elserole('Doctor')
-   <li class="nav-item">
+
+    @endrole
+
+
+   @role('Doctor')
+  <li class="nav-item">
     <a class="nav-link " href="{{ route('citas.view') }}">
         <i class="fas fa-bed text-warning"></i> Citas
     </a>
 </li>
 <li class="nav-item  active ">
-    <a class="nav-link   " href="{{url('/roles')}}">
+    <a class="nav-link   " href="">
        <i class="far fa-calendar-alt"></i> Citas Agendadas
 
     </a>
   </li>
- @elserole('Paciente')
-  <li class="nav-item  active ">
-    <a class="nav-link   " href="{{url('/roles')}}">
-       <i class="fas fa-calendar-alt text-purple"></i> Reservar cita
+  @endrole
 
+ @role('Paciente')
+ <li class="nav-item">
+    <a class="nav-link " href="{{ route('citas.view') }}">
+        <i class="fas fa-bed text-warning"></i> Citas
     </a>
-  </li>
+</li>
 
   <li class="nav-item  active ">
-    <a class="nav-link   " href="{{url('/roles')}}">
+    <a class="nav-link   " href="">
        <i class="far fa-clock text-red"></i> Mis citas
 
     </a>
   </li>
 
 
-   @endif
+   @endrole
 
 
 
