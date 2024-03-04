@@ -5,8 +5,8 @@ use App\Http\Controllers\CitasController;
 use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\AsignarRol;
+use App\Http\Controllers\CitasController;
 
-use App\Http\Controllers\EventoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicalEntityController;
 use App\Http\Controllers\MedicoController;
@@ -26,7 +26,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'admin'])->group(function () {
 
     //Users Route
-    Route::resource('users', AsignarRol::class)->only('index' , 'edit' , 'update')->names('asignar');
+    Route::resource('users', AsignarRol::class)->only('index' , 'edit' , 'update' , 'destroy')->names('asignar');
     // Medical Entity Route
     Route::group(['prefix' => 'medical-entities'], function () {
         Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');
@@ -69,7 +69,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // citas route
     Route::group(['prefix' => 'citas'], function () {
-        Route::get('', [CitasController::class, 'index'])->name('citas.view');
+        Route::get('', [CitasController::class, 'Index'])->name('citas.view');
     });
 
     //roles route

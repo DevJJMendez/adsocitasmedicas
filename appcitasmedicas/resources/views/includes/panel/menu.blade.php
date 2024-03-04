@@ -2,7 +2,7 @@
 
 <h6 class="navbar-heading text-muted">Usuarios</h6>
 <ul class="navbar-nav">
-
+     @role('Admin')
     <li class="nav-item  active ">
         <a class="nav-link   " href="{{route('asignar.index')}}">
            <i class="fas fa-user-cog text-black"></i> Usuarios
@@ -52,16 +52,41 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link " href="{{ route('citas.view') }}">
-            <i class="fas fa-bed text-warning"></i> Citas
-        </a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link " href="{{ route('medical.entities.view') }}">
             <i class="fas fa-bed text-warning"></i> Entidades Médicas
         </a>
     </li>
+   @elserole('Doctor')
+   <li class="nav-item">
+    <a class="nav-link " href="{{ route('citas.view') }}">
+        <i class="fas fa-bed text-warning"></i> Citas
+    </a>
+</li>
+<li class="nav-item  active ">
+    <a class="nav-link   " href="{{url('/roles')}}">
+       <i class="far fa-calendar-alt"></i> Citas Agendadas
+
+    </a>
+  </li>
+ @elserole('Paciente')
+  <li class="nav-item  active ">
+    <a class="nav-link   " href="{{url('/roles')}}">
+       <i class="fas fa-calendar-alt text-purple"></i> Reservar cita
+
+    </a>
+  </li>
+
+  <li class="nav-item  active ">
+    <a class="nav-link   " href="{{url('/roles')}}">
+       <i class="far fa-clock text-red"></i> Mis citas
+
+    </a>
+  </li>
+
+
+   @endif
+
+
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('citas.view') }}"
@@ -78,17 +103,4 @@
 <!-- Divider -->
 <hr class="my-3">
 <!-- Heading -->
-<h6 class="navbar-heading text-muted">Reportes</h6>
-<!-- Navigation -->
-<ul class="navbar-nav mb-md-3">
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ni ni-books text-default"></i> Citas
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ni ni-chart-bar-32 text-warning"></i>Desempeño Médico
-        </a>
-    </li>
-</ul>
+

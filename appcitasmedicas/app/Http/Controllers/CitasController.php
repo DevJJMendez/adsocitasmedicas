@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class CitasController extends Controller
 {
     public function __construct()
-   {
-        $this->middleware('can:Crear medicos');
-   }
+    {
+         $this->middleware('can:Ver listado de citas');
+    }
     public function index()
     {
         $profession = Profession::select('profession_id','name')->get();

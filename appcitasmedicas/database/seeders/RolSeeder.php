@@ -125,7 +125,7 @@ class RolSeeder extends Seeder
         Permission::create([
 
             'name' => 'Ver listado de citas'
-        ])->syncRoles([$role1], $role2);
+        ])->syncRoles([$role1, $role2 , $role3]);
 
         Permission::create([
 
