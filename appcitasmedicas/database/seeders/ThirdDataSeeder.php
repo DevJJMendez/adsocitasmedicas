@@ -32,7 +32,6 @@ class ThirdDataSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => '1234',
             'role' => 'admin',
-
         ])->assignRole('Admin');
 
         $thirddata = Third_Data::create([
@@ -53,7 +52,6 @@ class ThirdDataSeeder extends Seeder
                 'email' => 'paciente@gmail.com',
                 'password' => '1234',
                 'role' => 'admin',
-
             ])->assignRole('Paciente');
 
             $thirddata = Third_Data::create([
@@ -74,10 +72,6 @@ class ThirdDataSeeder extends Seeder
                     'email' => 'doctor@gmail.com',
                     'password' => '1234',
                     'role' => 'doctor',
-
                 ])->assignRole('Doctor');
-
-
-
     }
 }

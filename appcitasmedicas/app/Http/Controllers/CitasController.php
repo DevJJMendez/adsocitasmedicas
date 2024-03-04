@@ -17,7 +17,6 @@ class CitasController extends Controller
     {
         $profession = Profession::select('profession_id','name')->get();
         return view('citas.citas',compact( 'profession'));
-
     }
 
     /**
