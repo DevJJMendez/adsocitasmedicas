@@ -40,13 +40,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointments::class, 'id_doctor');
     }
-   
-    public function scopePacientes($query)
-    {
-        return $query->where('role', 'paciente');
-    }
-    public function scopeMedicos($query)
-    {
-        return $query->where('role', 'medico');
-    }
+
+
+
+
 }

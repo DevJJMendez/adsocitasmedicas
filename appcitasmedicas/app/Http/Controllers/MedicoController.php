@@ -20,6 +20,7 @@ class MedicoController extends Controller
     }
     public function create()
     {
+      
         return view('medicos.create');
     }
     public function createNewMedico(MedicoRequest $medicoRequest)
