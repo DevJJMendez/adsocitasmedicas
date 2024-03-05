@@ -11,8 +11,4 @@ class Profession extends Model
     use HasFactory;
     protected $table = 'professions';
     protected $guarded = [];
-    public function thirddata():BelongsTo
-    {
-        return $this->belongsTo(Third_Data::class, 'profession_id');
-    }
 }

@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
-use App\Models\Medical_Entities;
-use App\Models\Profession;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
 {
-    
+
     public function index()
     {
-        $profession = Profession::select('profession_id','name')->get();
-        return view('citas.citas',compact( 'profession'));
+        $specialty = Specialty::select('specialty_id', 'name')->get();
+        return view('citas.citas', compact('specialty'));
     }
 
     /**

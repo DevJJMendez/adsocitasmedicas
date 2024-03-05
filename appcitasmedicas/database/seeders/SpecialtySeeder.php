@@ -8,109 +8,109 @@ use Illuminate\Database\Seeder;
 
 class SpecialtySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        
         Specialty::create([
-            'name' => 'Alergólogo',
+            'name' => 'Alergología',
         ]);
         Specialty::create([
-            'name' => 'Anestesiólogo',
+            'name' => 'Anestesiología',
         ]);
         Specialty::create([
-            'name' => 'Cardiólogo',
+            'name' => 'Cardiología',
         ]);
         Specialty::create([
-            'name' => 'Cardiólogo Pediatra',
+            'name' => 'Cardiología Pediátrica',
         ]);
         Specialty::create([
-            'name' => 'Cirujano General',
+            'name' => 'Cirugía General',
         ]);
         Specialty::create([
-            'name' => 'Cirujano Pediátrico',
+            'name' => 'Cirugía Pediátrica',
         ]);
         Specialty::create([
-            'name' => 'Cirujano Plástico',
+            'name' => 'Cirugía Plástica',
         ]);
         Specialty::create([
-            'name' => 'Cirujano Vascular',
+            'name' => 'Cirugía Vascular Periférica',
         ]);
         Specialty::create([
-            'name' => 'Dermatólogo',
+            'name' => 'Dermatología',
         ]);
         Specialty::create([
-            'name' => 'Especialista en Dolor y Cuidados Paliativos',
+            'name' => 'Dolor y Cuidados Paliativos',
         ]);
         Specialty::create([
-            'name' => 'Endocrinólogo',
+            'name' => 'Endocrinología',
         ]);
         Specialty::create([
-            'name' => 'Endocrinólogo Pediatra',
+            'name' => 'Endocrinología Pediátrica',
         ]);
         Specialty::create([
-            'name' => 'Fonoaudiólogo',
+            'name' => 'Fonoaudiología',
         ]);
         Specialty::create([
-            'name' => 'Gastroenterólogo',
+            'name' => 'Gastroenterología',
         ]);
         Specialty::create([
-            'name' => 'Ginecólogo',
+            'name' => 'Ginecología',
         ]);
         Specialty::create([
-            'name' => 'Internista',
+            'name' => 'Medicina Interna',
         ]);
         Specialty::create([
-            'name' => 'Nefrólogo',
+            'name' => 'Medicina Familiar',
         ]);
         Specialty::create([
-            'name' => 'Nefrólogo Pediatra',
+            'name' => 'Nefrología',
         ]);
         Specialty::create([
-            'name' => 'Neumólogo',
+            'name' => 'Nefrología Pediátrica',
         ]);
         Specialty::create([
-            'name' => 'Neumólogo Pediatra',
+            'name' => 'Neumología',
         ]);
         Specialty::create([
-            'name' => 'Neurocirujano',
+            'name' => 'Neumología Pediátrica',
         ]);
         Specialty::create([
-            'name' => 'Neurólogo',
+            'name' => 'Neurocirugía',
         ]);
         Specialty::create([
-            'name' => 'Neurólogo Infantil',
+            'name' => 'Neurología',
+        ]);
+        Specialty::create([
+            'name' => 'Neurología Infantil',
         ]);
         Specialty::create([
             'name' => 'Nutricionista',
         ]);
         Specialty::create([
-            'name' => 'Odontólogo',
+            'name' => 'Odontología',
         ]);
         Specialty::create([
-            'name' => 'Ortopedista',
+            'name' => 'Ortopedia y Traumatología',
         ]);
         Specialty::create([
-            'name' => 'Otorrinolaringólogo',
+            'name' => 'Otorrinolaringología',
         ]);
         Specialty::create([
-            'name' => 'Otorrinolaringólogo Infantil',
+            'name' => 'Otorrinolaringología Infantil',
         ]);
         Specialty::create([
-            'name' => 'Pediatra',
+            'name' => 'Pediatría',
         ]);
         Specialty::create([
-            'name' => 'Psicólogo',
+            'name' => 'Psicología',
         ]);
         Specialty::create([
-            'name' => 'Psiquiatra',
+            'name' => 'Psiquiatría',
         ]);
         Specialty::create([
-            'name' => 'Reumatólogo',
+            'name' => 'Reumatología',
         ]);
         Specialty::create([
-            'name' => 'Urólogo']);
+            'name' => 'Urología'
+        ]);
     }
 }

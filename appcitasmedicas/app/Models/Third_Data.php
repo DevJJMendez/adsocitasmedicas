@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Third_Data extends Model
 {
     use HasFactory;
-
     protected $table = 'third_data';
     protected $primaryKey = 'data_id';
     protected $fillable = [
@@ -32,16 +31,10 @@ class Third_Data extends Model
     {
         return $this->hasOne(User::class, 'third_data_id', 'data_id');
     }
-    public function profession(): HasOne
-    {
-        return $this->hasOne(Profession::class, 'profession_id');
-    }
-
     public function medicalEntity(): BelongsTo
     {
         return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'id');
     }
-
     // Relaciones con las vistas
     public function documentType(): HasOne
     {
