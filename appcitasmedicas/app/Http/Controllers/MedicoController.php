@@ -13,7 +13,7 @@ class MedicoController extends Controller
     }
     public function index()
     {
-        $medicos = User::medicos()->select('id', 'email')->paginate(10);
+        $medicos = User::with('thirdDataUser')->get();
         return view('medicos.index', compact('medicos'));
     }
     public function create()
