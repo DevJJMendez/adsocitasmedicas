@@ -32,7 +32,7 @@ class Third_Data extends Model
     }
     public function medicalEntity(): BelongsTo
     {
-        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'id');
+        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'data_id');
     }
     // Relaciones con las vistas
     public function documentType(): HasOne

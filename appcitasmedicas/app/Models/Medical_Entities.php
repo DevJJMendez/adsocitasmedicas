@@ -23,7 +23,7 @@ class Medical_Entities extends Model
     ];
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'id_medical_entity', 'id');
+        return $this->hasOne(User::class, 'id_medical_entity', 'data_id');
     }
 
     // Relacion con vistas:
