@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRequest;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class PacienteController extends Controller
 {
@@ -17,7 +18,7 @@ class PacienteController extends Controller
     public function index()
     {
         $pacienteRol = Role::where('name', 'Doctor')->first();
-        $pacientes = User::with('thirdDataUser')->get();
+        $pacientes = $pacienteRol->users()->with('thirdDataUser')->get();
         return view('pacientes.index', compact('pacientes'));
     }
     public function create()
