@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicoRequest;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class MedicoController extends Controller
 {
@@ -13,7 +14,8 @@ class MedicoController extends Controller
     }
     public function index()
     {
-        $medicos = User::with('thirdDataUser')->get();
+        $medicoRol = Role::where('name', 'Doctor')->first();
+        $medicos = $medicoRol->users()->with('thirdDataUser')->get();
         return view('medicos.index', compact('medicos'));
     }
     public function create()

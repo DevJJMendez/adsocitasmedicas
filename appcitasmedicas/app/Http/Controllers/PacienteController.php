@@ -16,6 +16,7 @@ class PacienteController extends Controller
 
     public function index()
     {
+        $pacienteRol = Role::where('name', 'Doctor')->first();
         $pacientes = User::with('thirdDataUser')->get();
         return view('pacientes.index', compact('pacientes'));
     }
