@@ -15,7 +15,7 @@ class MedicalEntityController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:Ver listado de entidades médicas');
+        $this->middleware('can:Administrador');
     }
 
     public function index(): view

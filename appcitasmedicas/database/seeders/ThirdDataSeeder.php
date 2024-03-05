@@ -17,7 +17,7 @@ class ThirdDataSeeder extends Seeder
         $thirddata = Third_Data::create([
         'document_type_id' => fake()->numberBetween(8, 11),
         'identification_number'=>fake()->numberBetween(100000000, 999999999),
-        'first_name' =>fake() ->firstName(),
+        'first_name' => "Administrador",
         'second_name'=>fake() ->firstName(),
         'sur_name'=>fake() ->lastName(),
         'second_sur_name'=>fake() ->lastName(),
@@ -31,13 +31,13 @@ class ThirdDataSeeder extends Seeder
             'third_data_id' => $thirddata['data_id'],
             'email' => 'admin@gmail.com',
             'password' => '1234',
-            'role' => 'admin',
-        ])->assignRole('Admin');
+
+        ])->assignRole('Administrador');
 
         $thirddata = Third_Data::create([
             'document_type_id' => fake()->numberBetween(8, 11),
             'identification_number'=>fake()->numberBetween(100000000, 999999999),
-            'first_name' =>fake() ->firstName(),
+            'first_name' => "Paciente",
             'second_name'=>fake() ->firstName(),
             'sur_name'=>fake() ->lastName(),
             'second_sur_name'=>fake() ->lastName(),
@@ -51,13 +51,13 @@ class ThirdDataSeeder extends Seeder
                 'third_data_id' => $thirddata['data_id'],
                 'email' => 'paciente@gmail.com',
                 'password' => '1234',
-                'role' => 'admin',
+
             ])->assignRole('Paciente');
 
             $thirddata = Third_Data::create([
                 'document_type_id' => fake()->numberBetween(8, 11),
                 'identification_number'=>fake()->numberBetween(100000000, 999999999),
-                'first_name' =>fake() ->firstName(),
+                'first_name' => "Doctor",
                 'second_name'=>fake() ->firstName(),
                 'sur_name'=>fake() ->lastName(),
                 'second_sur_name'=>fake() ->lastName(),
@@ -71,7 +71,7 @@ class ThirdDataSeeder extends Seeder
                     'third_data_id' => $thirddata['data_id'],
                     'email' => 'doctor@gmail.com',
                     'password' => '1234',
-                    'role' => 'doctor',
+
                 ])->assignRole('Doctor');
     }
 }

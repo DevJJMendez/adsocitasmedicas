@@ -9,10 +9,8 @@ class PermisoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:Ver listado de usuarios')->only('index');
-        $this->middleware('can:Crear permisos')->only('create');
-        $this->middleware('can:Editar permisos')->only('edit');
-        $this->middleware('can:Eliminar permisos')->only('destroy');
+        $this->middleware('can:Administrador');
+
 
     }
     public function index()

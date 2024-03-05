@@ -9,7 +9,7 @@ class MedicoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:Ver listado de pacientes');
+        $this->middleware('can:Administrador');
     }
     public function index()
     {

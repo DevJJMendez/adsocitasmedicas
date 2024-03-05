@@ -11,7 +11,7 @@ class SpecialtyController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('can:Ver listado de especialidades');
+        $this->middleware('can:Administrador');
 
     }
     public function index()

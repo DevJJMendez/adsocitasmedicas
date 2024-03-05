@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth', 'admin'])->group(function () {
 
     //Users Route
     Route::resource('users', AsignarRol::class)->only('index' , 'edit' , 'update' , 'destroy')->names('asignar');
@@ -64,10 +63,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::delete('/deletePaciente/{paciente}', [PacienteController::class, 'deletePaciente'])->name('delete.paciente');
     });
 
-    // citas route
-    Route::group(['prefix' => 'citas'], function () {
-        Route::get('', [CitasController::class, 'Index'])->name('citas.view');
-    });
+
 
     //roles route
     Route::resource('roles', RoleController::class)->names('admin.roles');
@@ -79,6 +75,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/editPermiso/{permiso}', [PermisoController::class, 'edit'])->name('edit.permiso.view');
         Route::delete('/deletePermiso/{permiso}', [PermisoController::class, 'deletePermiso'])->name('delete.permiso');
     });
+
+
+ // citas route
+ Route::group(['prefix' => 'citas'], function () {
+    Route::get('citas', [CitasController::class, 'Index'])->name('citas.view');
 });
 
 

@@ -12,7 +12,7 @@ class RoleController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:Ver listado de roles');
+        $this->middleware('can:Administrador');
 
     }
     public function index()
