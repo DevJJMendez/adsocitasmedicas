@@ -8,9 +8,9 @@
                 <h3 class="mb-0">Nueva Especialidad</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('specialtyView') }}" class="btn btn-sm btn-success">
+                {{-- <a href="{{ route('specialtyView') }}" class="btn btn-sm btn-success">
                     <i class="fas fa-chevron-left"> Regresar</i>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

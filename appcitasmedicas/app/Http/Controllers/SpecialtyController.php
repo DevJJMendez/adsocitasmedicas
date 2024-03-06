@@ -16,14 +16,14 @@ class SpecialtyController extends Controller
     }
     public function index()
     {
-        $specialties = Specialty::select(['specialty_id', 'name'])->get();
+        $specialties = Specialty::select(['specialty_id', 'name'])->paginate(10);
         return view('specialties.index', compact('specialties'));
     }
     public function create()
     {
         return view('specialties.create');
     }
-    public function createNewSpecialty(SpecialtyRequest $specialtyRequest)
+    public function store(SpecialtyRequest $specialtyRequest)
     {
         Specialty::create([
             'name' => $specialtyRequest->name,
@@ -31,17 +31,17 @@ class SpecialtyController extends Controller
         notify()->success('Especialidad agregada correctamente', 'Agregar');
         return redirect()->route('specialtyView');
     }
-    public function especialtyEdit(Specialty $specialty)
+    public function edit(Specialty $specialty)
     {
         return view('specialties.edit', compact('specialty'));
     }
-    public function updateSpecialty(SpecialtyRequest $specialtyRequest, Specialty $specialty)
+    public function update(SpecialtyRequest $specialtyRequest, Specialty $specialty)
     {
         $specialty->update($specialtyRequest->all());
         notify()->success('Especialidad editada correctamente', 'Editar');
         return redirect()->route('specialtyView');
     }
-    public function deleteSpecialty(Specialty $specialty)
+    public function delete(Specialty $specialty)
     {
         $specialty->delete();
         notify()->error('Especialidad eliminada correctamente', 'Eliminar');

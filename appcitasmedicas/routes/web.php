@@ -31,16 +31,6 @@ Route::group(['prefix' => 'medical-entities'], function () {
     Route::delete('delete/{medicalEntity}', [MedicalEntityController::class, 'delete'])->name('delete');
 });
 
-
-// specialty route
-Route::group(['prefix' => 'specialties'], function () {
-    Route::get('', [SpecialtyController::class, 'index'])->name('specialtyView');
-    Route::get('/create', [SpecialtyController::class, 'create'])->name('createSpecialty');
-    Route::post('createNewSpecialty', [SpecialtyController::class, 'createNewSpecialty'])->name('createNewSpecialty');
-    Route::get('{specialty}/edit', [SpecialtyController::class, 'especialtyEdit'])->name('specialty.edit');
-    Route::put('update/{specialty}', [SpecialtyController::class, 'updateSpecialty'])->name('specialty.update');
-    Route::delete('update/{specialty}', [SpecialtyController::class, 'deleteSpecialty'])->name('specialty.delete');
-});
 // medicos route
 Route::group(['prefix' => 'medicos'], function () {
     Route::get('', [MedicoController::class, 'index'])->name('medico.view');
