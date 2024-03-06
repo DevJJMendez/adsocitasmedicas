@@ -57,9 +57,8 @@
                                 {{ $paciente->thirdDataUSer->address }}
                             </td>
                             <td>
-                                {{ $paciente->thirdDataUSer->medicalEntity->name }}
+                                {{ $paciente->thirdDataUSer->medicalEntity->business_name }}
                             </td>
-
                             <td>
 
                                 <form action="{{ route('delete.paciente', ['paciente' => $paciente->id]) }}"

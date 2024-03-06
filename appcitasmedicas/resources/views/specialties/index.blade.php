@@ -16,7 +16,7 @@
         <table class="table align-items-center table-flush" style="text-transform: uppercase">
             <thead class="thead-light">
                 <tr>
-
+                    <th scope="col">Id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Opciones</th>
                 </tr>
@@ -26,14 +26,17 @@
                 <tr>
 
                     <th scope="row">
+                        {{ $specialty->specialty_id }}
+                    </th>
+                    <th scope="row">
                         {{ $specialty->name }}
                     </th>
                     <td>
 
-                        <form action="{{ route('specialty.delete', ['specialty'=>$specialty->id]) }}" method="POST">
+                        {{-- <form action="{{ route('specialty.delete', ['specialty'=>$specialty->id]) }}" method="POST"> --}}
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('specialty.edit', ['specialty'=>$specialty->id]) }}"
+                            {{-- <a href="{{ route('specialty.edit', ['specialty'=>$specialty->id]) }}" --}}
                                 class="btn btn-sm btn-primary">
                                 Editar
                             </a>

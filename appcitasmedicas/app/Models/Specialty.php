@@ -14,6 +14,6 @@ class Specialty extends Model
 
     public function appointment(): BelongsTo
     {
-        return $this->belongsTo(Appointments::class,'id_specialty');
+        return $this->belongsTo(Appointments::class, 'id_specialty');
     }
 }

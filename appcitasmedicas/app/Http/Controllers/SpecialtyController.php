@@ -16,7 +16,7 @@ class SpecialtyController extends Controller
     }
     public function index()
     {
-        $specialties = Specialty::get(['specialty_id', 'name']);
+        $specialties = Specialty::select(['specialty_id', 'name'])->get();
         return view('specialties.index', compact('specialties'));
     }
     public function create()

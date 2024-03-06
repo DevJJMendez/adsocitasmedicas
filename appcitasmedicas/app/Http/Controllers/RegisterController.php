@@ -38,8 +38,6 @@ class RegisterController extends Controller
             'third_data_id' => $thirdData->data_id,
             'email' => $registerRequest->email,
             'password' => $registerRequest->password,
-            'role' => 'paciente',
-
         ])->assignRole('Paciente');
         return redirect()->route('login')->with('email', 'password');
     }
