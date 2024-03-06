@@ -7,7 +7,7 @@
                 <h3 class="mb-0">Especialidades</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('createSpecialty') }}" class="btn btn-sm btn-primary">Agregar nueva especialidad</a>
+                {{-- <a href="{{ route('createSpecialty') }}" class="btn btn-sm btn-primary">Agregar nueva especialidad</a> --}}
             </div>
         </div>
     </div>
@@ -33,10 +33,10 @@
                     </th>
                     <td>
 
-                        {{-- <form action="{{ route('specialty.delete', ['specialty'=>$specialty->id]) }}" method="POST"> --}}
+                        <form action="" method="POST">
                             @csrf
                             @method('DELETE')
-                            {{-- <a href="{{ route('specialty.edit', ['specialty'=>$specialty->id]) }}" --}}
+                            <a href=""
                                 class="btn btn-sm btn-primary">
                                 Editar
                             </a>
@@ -56,6 +56,9 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+    <div class="card-body">
+        {{ $specialties->links() }}
     </div>
 </div>
 @endsection

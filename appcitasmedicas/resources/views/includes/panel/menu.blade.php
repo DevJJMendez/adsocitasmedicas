@@ -43,11 +43,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('specialtyView') }}">
-                <i class="ni ni-briefcase-24 text-blue"></i> Especialidades
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link " href="{{ route('medico.view') }}">
                 <i class="fas fa-stethoscope text-info"></i> Médicos
             </a>
@@ -57,16 +52,18 @@
                 <i class="fas fa-bed text-warning"></i> Pacientes
             </a>
         </li>
-
+        
         <li class="nav-item">
             <a class="nav-link " href="{{ route('medical.entities.view') }}">
                 <i class="fas fa-bed text-warning"></i> Entidades Médicas
             </a>
         </li>
+        {{-- <li class="nav-item">
+            <a class="nav-link " href="{{ route('specialtyView') }}">
+                <i class="ni ni-briefcase-24 text-blue"></i> Especialidades
+            </a>
+        </li> --}}
     @endcan
-
-
-
 
     @can('Doctor')
 

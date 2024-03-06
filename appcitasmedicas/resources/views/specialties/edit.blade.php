@@ -8,15 +8,15 @@
                     <h3 class="mb-0">Editar Especialidad</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('specialtyView') }}" class="btn btn-sm btn-success">
+                    {{-- <a href="{{ route('specialtyView') }}" class="btn btn-sm btn-success">
                         <i class="fas fa-chevron-left"> Regresar</i>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
         <div class="card-body">
 
-            <form action="{{ route('specialty.update', ['specialty'=>$specialty->id]) }}" method="POST">
+            {{-- <form action="{{ route('specialty.update', ['specialty'=>$specialty->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -44,7 +44,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Editar especialidad</button>
-            </form>
+            </form> --}}
 
         </div>
     </div>
