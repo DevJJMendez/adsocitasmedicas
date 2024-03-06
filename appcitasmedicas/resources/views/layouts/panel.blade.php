@@ -122,6 +122,16 @@
                                     <span class="mb-0 text-sm  font-weight-bold" style="text-transform: uppercase">
                                         {{ auth()->user()->thirdDataUser->first_name }}
                                     </span>
+                                    <br>
+
+                                    {{-- <h5>
+                                        @foreach ($nombres as $nombre )
+                                            <p>{{ $nombre->name  }}</p>
+                                        @endforeach
+
+                                    </h5> --}}
+
+
                                 </div>
                             </div>
                         </a>

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicoRequest;
+use App\Models\Document_Type_View;
+use App\Models\Gender_View;
+use App\Models\Medical_Entities;
+use App\Models\Third_Data;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 
@@ -20,16 +24,30 @@ class MedicoController extends Controller
     }
     public function create()
     {
-      
-        return view('medicos.create');
+        $documentType = Document_Type_View::pluck('name', 'detail_id');
+        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
+        $genderType = Gender_View::pluck('name', 'detail_id');
+        return view('medicos.create' , compact('documentType', 'medicalEntity', 'genderType', ));
     }
     public function createNewMedico(MedicoRequest $medicoRequest)
     {
-        User::create([
-            'email' => $medicoRequest->email,
-            'role' => 'medico',
-            'password' => bcrypt($medicoRequest->password),
+
+        $thirdData = Third_Data::create([
+           //Cedula de ciudadania
+            'document_type_id' => $medicoRequest->document_type_id,
+            'identification_number' => $medicoRequest->identification_number,
+            'first_name' => $medicoRequest->first_name,
+            'id_medical_entity' => $medicoRequest->id_medical_entity,
+            'gender_type_id' => $medicoRequest->gender_type_id,
+            'address' => $medicoRequest->address,
+            'birth_date' => $medicoRequest->birth_date,
+            'number_phone' => $medicoRequest->number_phone,
         ]);
+        User::create([
+            'third_data_id' => $thirdData->data_id,
+            'email' => $medicoRequest->email,
+            'password' => $medicoRequest->password,
+        ])->assignRole('Doctor');
         notify()->success('Médico agregado correctamente', 'Agregar Médico');
         return redirect()->route('medico.view');
     }

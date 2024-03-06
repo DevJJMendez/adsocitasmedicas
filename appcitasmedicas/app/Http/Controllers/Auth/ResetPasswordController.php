@@ -3,27 +3,73 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
-    |
-    */
+    /**
+     * Reset the given user's password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function resetPassword(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
 
-    use ResetsPasswords;
+        if (!$user) {
+            // El usuario no existe
+            // Puedes mostrar un mensaje de error o redirigir al usuario a una página de error
+            return back()->withErrors(['email' => 'El usuario no existe.']);
+        }
+
+        $request->validate($this->rules(), $this->validationErrorMessages());
+
+        $response = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->password = bcrypt($password);
+                $user->save();
+            }
+        );
+
+        if ($response === Password::PASSWORD_RESET) {
+            return redirect()->route('password.reset.success');
+        }
+
+        return back()->withErrors(['email' => __($response)]);
+    }
 
     /**
-     * Where to redirect users after resetting their password.
+     * Get the password reset validation rules.
      *
-     * @var string
+     * @return array
      */
-    protected $redirectTo = '/home';
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ];
+    }
+
+    /**
+     * Get the password reset validation error messages.
+     *
+     * @return array
+     */
+    protected function validationErrorMessages()
+    {
+        return [
+            'token.required' => __('This password reset token is invalid.'),
+            'email.required' => __('Please enter your email address.'),
+            'email.email' => __('Please enter a valid email address.'),
+            'password.required' => __('Please enter your password.'),
+            'password.min' => __('Your password must be at least 8 characters.'),
+            'password.confirmed' => __('Your password confirmation does not match.'),
+        ];
+    }
 }
