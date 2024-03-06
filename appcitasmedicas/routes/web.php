@@ -18,9 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::group(['prefix' => 'register'], function () {
+    Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
+    Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
+});
 
-//Users Route
-Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
 // Medical Entity Route
 Route::group(['prefix' => 'medical-entities'], function () {
     Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');
@@ -61,9 +63,16 @@ Route::group(['prefix' => 'pacientes'], function () {
     Route::delete('/deletePaciente/{paciente}', [PacienteController::class, 'deletePaciente'])->name('delete.paciente');
 });
 
+// citas route
+Route::group(['prefix' => 'citas'], function () {
+    Route::get('citas', [CitasController::class, 'Index'])->name('citas.view');
+});
+
+//Users Route
+Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
+
 //roles route
 Route::resource('roles', RoleController::class)->names('admin.roles');
-
 //permisos route
 Route::group(['prefix' => 'permisos'], function () {
     Route::get('/permisos', [PermisoController::class, 'index'])->name('permisos.view');
@@ -72,12 +81,3 @@ Route::group(['prefix' => 'permisos'], function () {
     Route::delete('/deletePermiso/{permiso}', [PermisoController::class, 'deletePermiso'])->name('delete.permiso');
 });
 
-// citas route
-Route::group(['prefix' => 'citas'], function () {
-    Route::get('citas', [CitasController::class, 'Index'])->name('citas.view');
-});
-
-Route::group(['prefix' => 'register'], function () {
-    Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
-    Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
-});
