@@ -23,9 +23,8 @@ class Medical_Entities extends Model
     ];
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'id_medical_entity', 'medical_entity_id');
+        return $this->hasOne(Third_Data::class, 'id_medical_entity', 'medical_entity_id');
     }
-
     // Relacion con vistas:
     public function medicalentitytype(): HasOne
     {

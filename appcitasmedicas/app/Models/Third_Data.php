@@ -23,7 +23,7 @@ class Third_Data extends Model
         'birth_date',
         'gender_type_id',
         'address',
-        'entity_type_id',
+        'id_medical_entity',
         'statu_type_id' => 1,
     ];
     public function userThirdData(): HasOne

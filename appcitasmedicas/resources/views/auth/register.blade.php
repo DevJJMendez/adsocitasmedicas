@@ -6,6 +6,7 @@
         nuestros servicios</p>
 @endsection
 @section('content')
+    {{-- @dd($genderType) --}}
     <div class="container mt--8 pb-5">
         <!-- Table -->
         <div class="row justify-content-center">
@@ -163,6 +164,7 @@
                                         <input type="text" id="address" name="address" class="form-control"
                                             placeholder="Ingrese su dirección" value="{{ old('address') }}">
                                     </div>
+
                                     {{-- Géneros --}}
                                     <div class="form-group col-md-6">
                                         <label for="gender_type_id">Género</label>
@@ -170,13 +172,16 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                         <select id="gender_type_id" name="gender_type_id" class="form-control">
-                                            @forelse ($genderType as $detaild_id => $name)
-                                                <option value="{{ $detail_id }}">{{ $name }}</option>
+                                            @forelse ($genderType as $gender_id => $name)
+                                                <option value="{{ $gender_id }}">
+                                                    {{ $name }}
+                                                </option>
                                             @empty
                                                 <option value="#">No data found</option>
                                             @endforelse
                                         </select>
                                     </div>
+
                                 </div>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
 
