@@ -39,6 +39,7 @@ class RegisterController extends Controller
             'email' => $registerRequest->email,
             'password' => $registerRequest->password,
         ])->assignRole('Paciente');
-        return redirect()->route('login')->with('email', 'password');
+
+        return redirect()->route('login');
     }
 }

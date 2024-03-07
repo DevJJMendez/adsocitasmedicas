@@ -1,4 +1,3 @@
-- return email and password from register to login
 - fix problem with the function delete at medical entities and the relation between users
 
 
