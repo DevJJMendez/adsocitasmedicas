@@ -17,32 +17,25 @@
             <table class="table align-items-center table-flush" style="text-transform: uppercase">
                 <thead class="thead-light">
                     <tr>
-                        <th>N. Identificación</th>
+
                         <th scope="col">Nombres</th>
-                        <th scope="col"></th>
-                        <th scope="col">Apellidos</th>
+
                         <th scope="col"></th>
                         <th>telefono</th>
                         <th>Email</th>
                         <th>Genero</th>
-                        <th>Dirección</th>
                         <th>Entidad Médica</th>
+
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($pacientes as $paciente)
                         <tr>
-                            <td>
-                                {{ $paciente->thirdDataUSer->identification_number }}
-                            </td>
+
                             <td colspan="2">
                                 {{ $paciente->thirdDataUSer->first_name }}
-                                {{ $paciente->thirdDataUSer->second_name }}
-                            </td>
-                            <td colspan="2">
                                 {{ $paciente->thirdDataUSer->sur_name }}
-                                {{ $paciente->thirdDataUSer->second_sur_name }}
                             </td>
                             <td>
                                 {{ $paciente->thirdDataUSer->number_phone }}
@@ -51,18 +44,20 @@
                                 {{ $paciente->email }}
                             </td>
                             <td>
-                                {{ $paciente->thirdDataUSer->gender->name }}
+                                {{ $paciente->thirdDataUser->gender->name }}
                             </td>
+
                             <td>
-                                {{ $paciente->thirdDataUSer->address }}
-                            </td>
-                            <td>
-                                {{ $paciente->thirdDataUSer->medicalEntity->business_name }}
+                                {{ $paciente->thirdDataUser->entity_medical->business_name }}
+
+
+
+
+
                             </td>
                             <td>
 
-                                <form action="{{ route('delete.paciente', ['paciente' => $paciente->id]) }}"
-                                    method="POST">
+                                <form action="{{ route('delete.paciente', ['paciente' => $paciente->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <a href="{{ route('edit.paciente.view', ['paciente' => $paciente->id]) }}"

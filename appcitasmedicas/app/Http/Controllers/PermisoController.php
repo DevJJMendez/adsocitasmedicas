@@ -53,8 +53,10 @@ class PermisoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Permission $permiso)
     {
-        //
+        $permiso->delete();
+        notify()->error("El permiso ha sido eliminado satisfactoriamente" , "Eliminar permiso");
+        return back();
     }
 }

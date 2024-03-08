@@ -22,25 +22,30 @@ class PacienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cedula' => 'required|numeric',
-            'name' => 'required|string|regex:/^[a-zA-Z\s]+$/',
-            'email' => 'required|email',
-            'address' => 'required',
-            'number_phone' => 'required',
+            'identification_number' =>'required',
+            'first_name' =>'required',
+            'sur_name' =>'required',
+            'number_phone' =>'required',
+            'birth_date' =>'required',
+            'address' =>'required',
+
         ];
     }
     public function messages()
     {
         return [
-            'cedula.required' => 'Debe ingresar un número de identificación',
-            'cedula.numeric' => 'El número de identificacón no debe contener letras ni caracteres especiales',
-            'name.required' => 'Debe ingresar el nombre del paciente',
-            'name.regex' => 'El nombre solo debe contener letras',
-            'email.required' => 'Debe ingresar un correo electronico valido',
-            'email.email' => 'Debe ingresar un correo electronico valido',
-            'address.required' => 'Debe ingresar una dirección',
+            'identification_number.required' => 'Debe ingresar el número de identificación',
+            'first_name.required' => 'Debe ingresar el primer nombre',
+            'sur_name.required' => 'Debe ingresar el primer apellido',
+
             'number_phone.required' => 'Debe ingresar un número telefonico',
-            'number_phone.numeric' => 'El número telefonico no debe contener letras ni caracteres especiales',
+            // 'number_phone.numeric' => 'Solo debe contener números',
+
+            'email.required' => 'Debe ingresar un correo electronico',
+            'email.email' => 'Debe ingresar un correo electronico valido',
+            'password.required' => 'Debe ingresar una contraseña',
+            'birth_date.required' => 'Debe ingresar una fecha de nacimiento',
+            'address.required' => 'Debe ingresar una dirección',
         ];
     }
 }

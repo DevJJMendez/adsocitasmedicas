@@ -42,6 +42,16 @@ class User extends Authenticatable
         return $this->hasMany(Appointments::class, 'id_doctor');
     }
 
+    public function UserThirdData()
+    {
+        return $this->hasOne(Third_Data::class);
+    }
+
+    public function tercero()
+    {
+        return $this->hasOne(Third_Data::class ,  'data_id');
+    }
+
 
 
 }

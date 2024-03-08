@@ -23,8 +23,12 @@ class AsignarRol extends Controller
      }
     public function index()
     {
-        $users = User::all();
-        return view('acceso.listUser' , compact('users'));
+
+        // $roles = Role::all();
+        // $users = $roles->users()->with('thirdDataUser')->get();
+        $usersWithRoles = User::with('roles')->get();
+        // Dd($usersWithRoles);
+        return view('acceso.listUser' , compact('usersWithRoles'));
     }
 
 
@@ -45,7 +49,9 @@ class AsignarRol extends Controller
 
     public function destroy(Role $role)
     {
-
+        
+        notify()->error("El rol ha sido eliminado satisfactoriamente" , "Eliminar rol");
+        return back();
 
     }
 

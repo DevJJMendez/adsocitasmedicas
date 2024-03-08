@@ -15,7 +15,7 @@
               <h3 class="mb-0">Editar rol</h3>
             </div>
             <div class="col text-right">
-              <a href="{{ url('/medicos')}}" class="btn btn-sm btn-success">
+              <a href="{{ url('/roles')}}" class="btn btn-sm btn-success">
                 <i class="fas fa-angle-left"></i>
                 Regresar</a>
             </div>

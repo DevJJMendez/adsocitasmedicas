@@ -39,7 +39,7 @@
             </thead>
             <tbody>
 
-                @foreach ($users  as $user)
+                @foreach ($usersWithRoles  as $user)
 
 
               <tr>
@@ -53,7 +53,7 @@
                  {{ $user->email}}
                 </td>
                 <th>
-                    {{ $user->role}}
+                    {{ $user->roles->first()->name}}
                    </td>
                    <td>
 
@@ -64,7 +64,7 @@
                             class="btn btn-sm btn-primary">
                             Editar
                         </a>
-                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        {{-- <button type="submit" class="btn btn-sm btn-danger">Eliminar</button> --}}
                     </form>
 
                 </td>

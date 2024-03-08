@@ -24,7 +24,7 @@
             </a>
         </li>
         <li class="nav-item  active ">
-            <a class="nav-link  active " href="{{ route('permisos.view') }}">
+            <a class="nav-link  active " href="{{ url('/permisos') }}">
                 <i class="fas fa-key"></i> Permisos
             </a>
         </li>
@@ -52,7 +52,7 @@
                 <i class="fas fa-bed text-warning"></i> Pacientes
             </a>
         </li>
-        
+
         <li class="nav-item">
             <a class="nav-link " href="{{ route('medical.entities.view') }}">
                 <i class="fas fa-bed text-warning"></i> Entidades Médicas
@@ -82,7 +82,7 @@
 
         <li class="nav-item  active ">
             <a class="nav-link   " href="">
-                <i class="far fa-clock text-red"></i> Mis citas
+                <i class="ni ni-calendar-grid-58"></i> Mis citas
 
             </a>
         </li>

@@ -11,6 +11,14 @@
                 </div>
             </div>
         </div>
+        <div class="card-body">
+            @if (session('info'))
+            <div class="alert alert-success">
+                {{session('info')}}
+            </div>
+
+        @endif
+        </div>
         <div class="table-responsive">
             <!-- Projects table -->
             <table class="table align-items-center table-flush" style="text-transform: uppercase">
@@ -33,10 +41,10 @@
                             </td>
                             <td>
 
-                                <form action="{{ route('delete.permiso', ['permiso' => $permiso->id]) }}" method="POST">
+                                <form action="{{ route('admin.permisos.destroy', $permiso) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('edit.permiso.view', ['permiso' => $permiso->id]) }}"
+                                    <a href="{{ route('admin.permisos.edit', $permiso) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar
                                     </a>
@@ -71,7 +79,7 @@
                                         <div class="text-muted text-center ">
                                             <h2>Nuevo Permiso</h2>
                                         </div>
-                                        <form role="form" action="{{ route('create.new.permiso') }}" method="POST">
+                                        <form role="form" action="{{ route('admin.permisos.create') }}" method="POST">
                                             @csrf
                                             <div class="form-group mb-3">
                                                 <div class="input-group input-group-merge input-group-alternative">

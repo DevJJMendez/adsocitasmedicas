@@ -86,7 +86,9 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->route('acceso.roles.index' , $role)->with('info' , 'El rol se elimino con exito');
+        notify()->error("El rol ha sido eliminado satisfactoriamente" , "Eliminar rol");
+        return back();
+
 
     }
 }
