@@ -22,19 +22,16 @@ class PacienteController extends Controller
 
     public function index()
     {
-
         $pacienteRol = Role::where('name', 'Paciente')->first();
         $pacientes = $pacienteRol->users()->with('thirdDataUser')->get();
-
         return view('pacientes.index', compact('pacientes'));
     }
     public function create()
     {
-
         $documentType = Document_Type_View::pluck('name', 'detail_id');
         $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
         $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType',));
+        return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType', ));
     }
     public function createNewPaciente(PacienteRequest $pacienteRequest)
     {
@@ -62,12 +59,8 @@ class PacienteController extends Controller
     }
     public function edit($id)
     {
-        // $pacientes = User::pacientes()->findOrFail($id);
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;
-        // Dd($tercero);
-
-
         $documentType = Document_Type_View::pluck('name', 'detail_id');
         $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
         $genderType = Gender_View::pluck('name', 'detail_id');
@@ -75,7 +68,6 @@ class PacienteController extends Controller
     }
     public function updatePaciente($id, PacienteRequest $pacienteRequest)
     {
-
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;
 
@@ -112,5 +104,5 @@ class PacienteController extends Controller
         notify()->error("El paciente ha sido {$message} satisfactoriamente", "{$message} Paciente");
         return back();
     }
-  
+
 }
