@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="id">Numero cita</label>
                             <input type="text" class="form-control" name="id" id="id"
-                                aria-describedby="helpId" placeholder="" value="" readonly="readonly">
+                                aria-describedby="helpId" placeholder="" value="{{$n_cita}}" readonly="readonly">
                             <small id="helpId" class="form-text text-muted"> </small>
                         </div>
 
@@ -33,7 +33,6 @@
                             <input type="text" class="form-control" name="id" id="id"
                                 aria-describedby="helpId" placeholder="" value="{{ Auth::User()->thirdDataUser->data_id }}"
                                 readonly="readonly">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
 
                         <div class="form-group">
@@ -41,7 +40,6 @@
                             <input type="text" class="form-control" name="name" id="title"
                                 aria-describedby="helpId" placeholder=""
                                 value="{{ Auth::User()->thirdDataUser->first_name }}" readonly="readonly">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
                             <div class="form-group">
                                 <label for="id_specialty">Especialidad</label>
@@ -71,16 +69,13 @@
 
                             <div class="form-group">
                                 <label for="start">fecha / hora inicial </label>
-                                <input type="text" class="form-control" name="start" id="start"
+                                <input type="datetime-local" class="form-control" name="start" id="start"
                                     aria-describedby="helpId" placeholder="">
-                                <small id="helpId" class="form-text text-muted">Help text</small>
                             </div>
 
                             <div class="form-group">
-                                <label for="end">Fecha/hora final</label>
-                                <input type="text" class="form-control" name="end" id="end"
-                                    aria-describedby="helpId" placeholder="">
-                                <small id="helpId" class="form-text text-muted">Help text</small>
+                                <label for="end">Observaciones</label>
+                                <textarea name="observaciones" id="" cols="30" rows="10" placeholder="Escriba aqui las observaciones"></textarea>
                             </div>
                     </form>
                 </div>

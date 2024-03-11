@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointments;
 use App\Models\Evento;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
@@ -14,10 +15,14 @@ class CitasController extends Controller
 
     public function index()
     {
+        //variable para mostrar el numero de cita.
+        $n_cita = Appointments::select('appointment_id')->get();
+        //variable para mostrar las especialidades.
         $specialty = Specialty::select('specialty_id', 'name')->get();
+        //variable para mostrar medicos.
         $medicoRol = Role::where('name', 'Doctor')->first();
         $medicos = $medicoRol->users()->with('thirdDataUser')->get();
-        return view('citas.citas', compact('specialty', 'medicos'));
+        return view('citas.citas', compact('specialty', 'medicos','n_cita'));
 
 
     }
