@@ -49,9 +49,6 @@ class User extends Authenticatable
 
     public function tercero()
     {
-        return $this->hasOne(Third_Data::class ,  'data_id');
+        return $this->hasOne(Third_Data::class, 'data_id');
     }
-
-
-
 }

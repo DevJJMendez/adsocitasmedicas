@@ -31,7 +31,7 @@ return new class extends Migration {
             $table->string('statu_type_id')->default('1');
 
             // Especialidad
-            $table->tinyInteger('id_specialty')->unsigned();
+            $table->tinyInteger('id_specialty')->unsigned()->nullable();
             $table->foreign('id_specialty')->references('specialty_id')->on('specialties');
 
             $table->timestamps();
