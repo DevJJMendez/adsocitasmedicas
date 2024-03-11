@@ -9,6 +9,7 @@ use App\Models\Medical_Entities;
 use App\Models\Third_Data;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use App\Models\Specialty;
 
 class MedicoController extends Controller
 {
@@ -18,17 +19,18 @@ class MedicoController extends Controller
     }
     public function index()
     {
+
         $medicoRol = Role::where('name', 'Doctor')->first();
         $medicos = $medicoRol->users()->with('thirdDataUser')->get();
-
         return view('medicos.index', compact('medicos'));
     }
     public function create()
     {
+        $specialties = Specialty::select(['specialty_id', 'name'])->get();
         $documentType = Document_Type_View::pluck('name', 'detail_id');
         $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
         $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('medicos.create' , compact('documentType', 'medicalEntity', 'genderType', ));
+        return view('medicos.create' , compact('documentType', 'medicalEntity', 'genderType',  'specialties'));
     }
     public function createNewMedico(MedicoRequest $medicoRequest)
     {
@@ -54,25 +56,47 @@ class MedicoController extends Controller
     }
     public function edit($id)
     {
-        $medicos = User::medicos()->findOrFail($id);
-        return view('medicos.edit', compact('medicos'));
+        $medicos = User::findOrFail($id);
+        $tercero = $medicos->thirdDataUser;
+        $documentType = Document_Type_View::pluck('name', 'detail_id');
+        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
+        $genderType = Gender_View::pluck('name', 'detail_id');
+        return view('medicos.edit', compact('medicos', 'tercero', 'documentType', 'medicalEntity', 'genderType'));
     }
-    public function updateMedico($id, MedicoRequest $medicoRequest)
+    public function updateMedico($id, MedicoRequest $medicosRequest)
     {
-        $medicos = User::medicos()->findOrFail($id);
+        $medicos = User::findOrFail($id);
+        $tercero = $medicos->thirdDataUser;
         $medicos->update([
-            'email' => $medicoRequest->email,
-            'role' => 'medico',
-            'password' => $medicoRequest->password ? bcrypt($medicoRequest->password) : $medicos->password,
+            'email' => $medicosRequest->email,
+
         ]);
-        notify()->success('Médico editado correctamente', 'Editar Médico');
-        return redirect()->route('medico.view');
+        $tercero->update([
+            'identification_number' => $medicosRequest->identification_number,
+            'name' => $medicosRequest->name,
+            'last_name' => $medicosRequest->last_name,
+            'email' => $medicosRequest->email,
+            'id_medical_entity' => $medicosRequest->id_medical_entity,
+            'gender_type_id' => $medicosRequest->gender_type_id,
+            'address' => $medicosRequest->address,
+            'birth_date' => $medicosRequest->birth_date,
+            'number_phone' => $medicosRequest->number_phone,
+        ]);
+        notify()->success('Medico editado correctamente', 'Editar Medico');
+        return redirect()->route('medicos.view');
     }
     public function deleteMedico($id)
     {
-        $medico = User::medicos()->findOrFail($id);
-        $medico->delete();
-        notify()->error('Médico eliminado correctamente', 'Eliminar Médico');
-        return redirect()->route('medico.view');
+        $medicos = User::findOrFail($id);
+        $tercero = $medicos->thirdDataUser;
+        if ($medicos->status == 1) {
+            $medicos->update(['status' => 0]);
+            $message = "Desactivado";
+        } else {
+            $medicos->delete();
+            $message = "Eliminado";
+        }
+        notify()->error("El medico ha sido {$message} satisfactoriamente", "{$message} medico");
+        return back();
     }
 }

@@ -21,6 +21,7 @@
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo</th>
+                        <th scope="col">Especialidad</th>
                         <th scope="col">Opciones</th>
                     </tr>
 
@@ -33,6 +34,9 @@
                             </td>
                             <td>
                                 {{ $medico->email }}
+                            </td>
+                            <td>
+                                {{  $medico->id_specialty }}
                             </td>
                             <td>
 
