@@ -43,19 +43,25 @@
                                 value="{{ Auth::User()->thirdDataUser->first_name }}" readonly="readonly">
                             <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
-
-                        <div class="dropdown show">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown link
-                            </a>
-
                             <div class="form-group">
                                 <label for="id_specialty">Especialidad</label>
                                 <select name="id_specialty" class="form-control" required>
                                     @forelse ($specialty as $specialtys)
                                         <option value="{{ $specialtys->specialty_id }}">
                                             {{ $specialtys->name }}
+                                        </option>
+                                    @empty
+                                        <option value="">No data found</option>
+                                    @endforelse
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_doctor">Doctor</label>
+                                <select name="id_doctor" class="form-control" required>
+                                    @forelse ($medicos as $medico)
+                                        <option value="{{ $medico->thirdDataUser->first_name}}">
+                                            {{ $medico->thirdDataUser->first_name}}
                                         </option>
                                     @empty
                                         <option value="">No data found</option>
