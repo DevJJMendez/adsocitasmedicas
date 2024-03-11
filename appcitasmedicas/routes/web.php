@@ -16,9 +16,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
+Route::middleware(['auth', 'check_user_status'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+});
 //Users Route
 Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
 // Medical Entity Route

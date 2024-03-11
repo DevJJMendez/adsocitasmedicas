@@ -41,10 +41,12 @@ class Third_Data extends Model
     {
         return $this->hasOne(Document_Type_View::class, 'detail_id', 'document_type_id');
     }
+
     public function gender(): HasOne
     {
         return $this->hasOne(Gender_View::class, 'detail_id', 'gender_type_id');
     }
+
     public function entity(): HasOne
     {
         return $this->hasOne(Entity_Type_View::class, 'detail_id', 'id_medical_entity');
@@ -58,6 +60,8 @@ class Third_Data extends Model
     {
         return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
     }
+
+
     public function genderView()
     {
         return $this->belongsTo(Gender_View::class, 'gender_type_id', 'gender_id');

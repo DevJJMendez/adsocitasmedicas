@@ -15,6 +15,12 @@
                     </div>
                     <div class="card-body px-lg-5 py-lg-5">
 
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         {{-- Alerts --}}
                         @if ($errors->any())
                             <div class="text-center text-muted mb-2">
