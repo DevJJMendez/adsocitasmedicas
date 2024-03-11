@@ -56,7 +56,7 @@ use Illuminate\Support\Str;
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="sur_name">Primer Apellido</label>
+                        <label for="sur_name">Apellidos</label>
                         @error('sur_name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -143,14 +143,34 @@ use Illuminate\Support\Str;
                             placeholder="Ingrese su número de teléfono" value="{{ old('number_phone') }}">
                     </div>
                 </div>
-                {{-- CONTRASEÑA --}}
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                    <input type="text" id="password" name="password" class="form-control"
-                        placeholder="Ingrese su una contraseña" value="{{ old('password') }}">
+
+                <div class="form-row">
+                    {{-- CONTRASEÑA --}}
+                    <div class="form-group col-md-6">
+                        <label for="password">Contraseña</label>
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input type="text" id="password" name="password" class="form-control"
+                            placeholder="Ingrese su una contraseña" value="{{ old('password') }}">
+                    </div>
+                    {{-- ESPECIALIDAD --}}
+                    {{-- <div class="form-group col-md-6">
+                        <label for="specialty">Epecialidad</label>
+                    </div> --}}
+                    <div class="form-group col-md-6">
+                        <label for="id_specialty">Especialidad</label>
+                        @error('id_specialty')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <select id="id_specialty" name="id_specialty" class="form-control">
+                            @forelse ($specialties as $specialtie)
+                                <option value="{{ $specialtie-> specialty_id }}">{{$specialtie-> name }}</option>
+                            @empty
+                                <option value="#">No data found</option>
+                            @endforelse
+                        </select>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-sm btn-primary">Crear Médico</button>
             </form>
