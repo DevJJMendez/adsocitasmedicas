@@ -31,6 +31,10 @@ class Third_Data extends Model
     {
         return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'medical_entity_id');
     }
+    public function specialty(): HasOne
+    {
+        return $this->hasOne(Specialty::class);
+    }
     // Relaciones con las vistas
     public function documentType(): HasOne
     {
@@ -40,7 +44,6 @@ class Third_Data extends Model
     {
         return $this->hasOne(Gender_View::class, 'detail_id', 'gender_type_id');
     }
-
     public function entity(): HasOne
     {
         return $this->hasOne(Entity_Type_View::class, 'detail_id', 'id_medical_entity');
@@ -50,17 +53,12 @@ class Third_Data extends Model
     {
         return $this->hasOne(Medical_Entities::class, 'medical_entity_id', 'id_medical_entity');
     }
-
-
     public function statutype(): HasOne
     {
         return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
     }
-
-
-
     public function genderView()
     {
-        return $this->belongsTo(Gender_View::class, 'gender_type_id' , 'gender_id');
+        return $this->belongsTo(Gender_View::class, 'gender_type_id', 'gender_id');
     }
 }

@@ -14,13 +14,14 @@ class Appointments extends Model
     protected $guarded = [];
     public function patient(): BelongsTo
     {
-        return $this->belongsTo(User::class,'id_patient');
+        return $this->belongsTo(User::class, 'id_patient');
     }
     public function doctor(): BelongsTo
     {
-        return $this->belongsTo(User::class,'id_doctor');
+        return $this->belongsTo(User::class, 'id_doctor');
     }
-    public function specialty():HasOne{
+    public function specialty(): HasOne
+    {
         return $this->hasOne(Specialty::class, 'id_specialty');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Third_Data;
 use Spatie\Permission\Models\Role;
+
 class CitasController extends Controller
 {
 
@@ -18,7 +19,7 @@ class CitasController extends Controller
         $medicos = $medicoRol->users()->with('thirdDataUser')->get();
         return view('citas.citas', compact('specialty', 'medicos'));
 
-        
+
     }
 
     /**

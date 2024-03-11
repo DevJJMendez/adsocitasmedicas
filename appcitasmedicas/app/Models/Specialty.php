@@ -16,4 +16,8 @@ class Specialty extends Model
     {
         return $this->belongsTo(Appointments::class, 'id_specialty');
     }
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(Third_Data::class, '');
+    }
 }

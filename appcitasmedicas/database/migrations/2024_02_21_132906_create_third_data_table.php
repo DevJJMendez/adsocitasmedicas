@@ -24,11 +24,16 @@ return new class extends Migration {
             // Tipo de genero
             $table->string('gender_type_id')->nullable();
             $table->string('address', 100)->nullable();
-            //entidades medicas
+            // Entidades medicas
             $table->tinyInteger('id_medical_entity')->unsigned();
             $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities');
             // Estado
             $table->string('statu_type_id')->default('1');
+
+            // Especialidad
+            $table->tinyInteger('id_specialty')->unsigned();
+            $table->foreign('id_specialty')->references('specialty_id')->on('specialties');
+
             $table->timestamps();
         });
     }
