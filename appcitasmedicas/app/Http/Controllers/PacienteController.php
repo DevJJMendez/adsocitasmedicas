@@ -9,7 +9,6 @@ use App\Models\Medical_Entities;
 use App\Models\Third_Data;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Termwind\Components\Dd;
 
 class PacienteController extends Controller
 {
@@ -35,7 +34,6 @@ class PacienteController extends Controller
     }
     public function createNewPaciente(PacienteRequest $pacienteRequest)
     {
-
         $thirdData = Third_Data::create([
             'document_type_id' => $pacienteRequest->document_type_id,
             'identification_number' => $pacienteRequest->identification_number,
@@ -70,7 +68,6 @@ class PacienteController extends Controller
     {
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;
-
         $user->update([
             'email' => $pacienteRequest->email,
 
@@ -104,5 +101,4 @@ class PacienteController extends Controller
         notify()->error("El paciente ha sido {$message} satisfactoriamente", "{$message} Paciente");
         return back();
     }
-
 }
