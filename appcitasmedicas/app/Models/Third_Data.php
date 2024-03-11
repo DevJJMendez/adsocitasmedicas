@@ -24,7 +24,8 @@ class Third_Data extends Model
         'gender_type_id',
         'address',
         'id_medical_entity',
-
+        'statu_type_id',
+        'id_specialty'
     ];
 
     public function medicalEntity(): BelongsTo
