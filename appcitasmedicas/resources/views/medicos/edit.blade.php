@@ -156,16 +156,6 @@ use Illuminate\Support\Str;
                     {{-- ESPECIALIDAD --}}
                     <div class="form-group col-md-6">
                         <label for="id_specialty">Especialidad</label>
-                        @error('id_specialty')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <select id="id_specialty" name="id_specialty" class="form-control">
-                            @forelse ($specialties as $specialtie)
-                                <option value="{{ $specialtie-> id_specialty }}">{{$specialtie-> name }}</option>
-                            @empty
-                                <option value="#">No data found</option>
-                            @endforelse
-                        </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-sm btn-primary">Editar Médico</button>
