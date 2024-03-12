@@ -19,72 +19,69 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
-
-                        <div class="form-group">
-                            <label for="id">Numero cita</label>
-                            <input type="text" class="form-control" name="id" id="id"
+                    <form action="{{ route('crear.cita') }}" method="POST">
+                        @csrf
+                        {{-- <div class="form-group">
+                            <label for="appointment_id">Numero cita</label>
+                            <input type="text" class="form-control" name="appointment_id" id="id"
                                 aria-describedby="helpId" placeholder="" value="{{$n_cita}}" readonly="readonly">
                             <small id="helpId" class="form-text text-muted"> </small>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
-                            <label for="id">ID</label>
-                            <input type="text" class="form-control" name="id" id="id"
+                            <label for="id_patient">ID</label>
+                            <input type="text" class="form-control" name="id_patient" id="id"
                                 aria-describedby="helpId" placeholder="" value="{{ Auth::User()->thirdDataUser->data_id }}"
                                 readonly="readonly">
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Nombre</label>
                             <input type="text" class="form-control" name="name" id="title"
                                 aria-describedby="helpId" placeholder=""
                                 value="{{ Auth::User()->thirdDataUser->first_name }}" readonly="readonly">
+                        </div> --}}
+
+                        <div class="form-group">
+                            <label for="id_specialty">Especialidad</label>
+                            <select name="id_specialty" class="form-control" required>
+                                @forelse ($specialty as $specialtys)
+                                    <option value="{{ $specialtys->specialty_id }}">
+                                        {{ $specialtys->name }}
+                                    </option>
+                                @empty
+                                    <option value="">No data found</option>
+                                @endforelse
+                            </select>
                         </div>
-                            <div class="form-group">
-                                <label for="id_specialty">Especialidad</label>
-                                <select name="id_specialty" class="form-control" required>
-                                    @forelse ($specialty as $specialtys)
-                                        <option value="{{ $specialtys->specialty_id }}">
-                                            {{ $specialtys->name }}
-                                        </option>
-                                    @empty
-                                        <option value="">No data found</option>
-                                    @endforelse
-                                </select>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="id_doctor">Doctor</label>
-                                <select name="id_doctor" class="form-control" required>
-                                    @forelse ($medicos as $medico)
-                                        <option value="{{ $medico->thirdDataUser->first_name}}">
-                                            {{ $medico->thirdDataUser->first_name}}
-                                        </option>
-                                    @empty
-                                        <option value="">No data found</option>
-                                    @endforelse
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="id_doctor">Doctor</label>
+                            <select name="id_doctor" class="form-control" required>
+                                @forelse ($medicos as $medico)
+                                    <option value="{{ $medico->thirdDataUser->data_id }}">
+                                        {{ $medico->thirdDataUser->first_name }}
+                                    </option>
+                                @empty
+                                    <option value="">No data found</option>
+                                @endforelse
+                            </select>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="start">fecha / hora inicial </label>
-                                <input type="datetime-local" class="form-control" name="start" id="start"
-                                    aria-describedby="helpId" placeholder="">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="end">Observaciones</label>
-                                <textarea name="observaciones" id="" cols="30" rows="10" placeholder="Escriba aqui las observaciones"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="appointment_date">fecha / hora inicial </label>
+                            <input type="datetime-local" class="form-control" name="appointment_date" id="appointment_date"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" id="btn_modify">Modificar</button>
+                            <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="btn_save">Guardar</button>
-                    <button type="button" class="btn btn-warning" id="btn_modify">Modificar</button>
-                    <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
+
             </div>
         </div>
     </div>

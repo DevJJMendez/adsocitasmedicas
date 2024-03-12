@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointments;
-use App\Models\Evento;
 use App\Models\Specialty;
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Third_Data;
 use Spatie\Permission\Models\Role;
 
 class CitasController extends Controller
@@ -22,55 +19,39 @@ class CitasController extends Controller
         //variable para mostrar medicos.
         $medicoRol = Role::where('name', 'Doctor')->first();
         $medicos = $medicoRol->users()->with('thirdDataUser')->get();
-        return view('citas.citas', compact('specialty', 'medicos','n_cita'));
-
-
+        return view('citas.citas', compact('specialty', 'medicos', 'n_cita'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(AppointmentRequest $appointmentRequest)
+    {
+        // TODO: FIX THIS
+        Appointments::create([
+            'appointment_id' => $data->appointment_id,
+            'id_patient' => $data->id_patient,
+            'id_specialty' => $data->id_specialty,
+            'id_doctor' => $data->id_doctor,
+            'appointment_date' => $data->appointment_date,
+            // 'statu_id' => $appointmentRequest->statu_id,
+        ]);
+        notify()->success('Paciente agregado correctamente', 'Agregar Paciente');
+        return redirect()->route('citas.index');
+    }
+    public function show()
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Evento $evento)
+    public function edit ()
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Evento $evento)
+    public function update()
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Evento $evento)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Evento $evento)
+    public function destroy()
     {
         //
     }

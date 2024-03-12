@@ -24,9 +24,9 @@ return new class extends Migration {
             $table->foreign('id_doctor')->references('id')->on('users');
 
             $table->dateTime('appointment_date');
-            $table->text('medical_evaluation');
+            $table->text('medical_evaluation')->nullable();
 
-            $table->tinyInteger('statu_id')->unsigned();
+            $table->tinyInteger('statu_id')->unsigned()->default(1);
             $table->foreign('statu_id')->references('detail_id')->on('details');
             $table->timestamps();
         });

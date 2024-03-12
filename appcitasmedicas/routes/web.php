@@ -69,7 +69,8 @@ Route::resource('permisos', PermisoController::class)->names('admin.permisos');
 
 // citas route
 Route::group(['prefix' => 'citas'], function () {
-    Route::get('citas', [CitasController::class, 'Index'])->name('citas.view');
+        Route::get('nuevacita', [CitasController::class, 'Index'])->name('citas.view');
+        Route::post('/crearcita',[CitasController::class,'store'])->name('crear.cita');
 });
 
 Route::group(['prefix' => 'register'], function () {
