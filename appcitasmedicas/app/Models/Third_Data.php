@@ -32,10 +32,6 @@ class Third_Data extends Model
     {
         return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'medical_entity_id');
     }
-    public function specialty(): HasOne
-    {
-        return $this->hasOne(Specialty::class);
-    }
     // Relaciones con las vistas
     public function documentType(): HasOne
     {
@@ -55,6 +51,11 @@ class Third_Data extends Model
     public function entity_medical(): HasOne
     {
         return $this->hasOne(Medical_Entities::class, 'medical_entity_id', 'id_medical_entity');
+    }
+
+    public function especialidad(): HasOne
+    {
+        return $this->hasOne(Specialty::class, 'specialty_id', 'id_specialty');
     }
     public function statutype(): HasOne
     {

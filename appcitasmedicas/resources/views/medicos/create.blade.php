@@ -154,10 +154,7 @@ use Illuminate\Support\Str;
                         <input type="text" id="password" name="password" class="form-control"
                             placeholder="Ingrese su una contraseña" value="{{ old('password') }}">
                     </div>
-                    {{-- ESPECIALIDAD --}}
-                    {{-- <div class="form-group col-md-6">
-                        <label for="specialty">Epecialidad</label>
-                    </div> --}}
+
                     <div class="form-group col-md-6">
                         <label for="id_specialty">Especialidad</label>
                         @error('id_specialty')
@@ -165,7 +162,7 @@ use Illuminate\Support\Str;
                         @enderror
                         <select id="id_specialty" name="id_specialty" class="form-control">
                             @forelse ($specialties as $specialtie)
-                                <option value="{{ $specialtie-> specialty_id }}">{{$specialtie-> name }}</option>
+                                <option value="{{ $specialtie-> id_specialty }}">{{$specialtie-> name }}</option>
                             @empty
                                 <option value="#">No data found</option>
                             @endforelse

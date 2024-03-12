@@ -5,13 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Specialty extends Model
 {
     use HasFactory;
     protected $table = 'specialties';
+    protected $primaryKey = 'specialty_id';
     protected $guarded = [];
 
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(Third_Data::class, 'id_medical_entity', 'medical_entity_id');
+    }
     public function appointment(): BelongsTo
     {
         return $this->belongsTo(Appointments::class, 'id_specialty');
@@ -20,4 +27,7 @@ class Specialty extends Model
     {
         return $this->belongsTo(Third_Data::class, '');
     }
+
+
+
 }

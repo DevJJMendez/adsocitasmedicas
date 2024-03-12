@@ -36,7 +36,9 @@
                                 {{ $medico->email }}
                             </td>
                             <td>
-                                {{  $medico->id_specialty }}
+                                {{-- {{ $medico->thirdDataUser->gender->name }} --}}
+
+                                {{ $medico->thirdDataUser->especialidad->name}}
                             </td>
                             <td>
 
