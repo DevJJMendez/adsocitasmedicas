@@ -11,7 +11,13 @@ class Appointments extends Model
 {
     use HasFactory;
     protected $table = 'appointments';
-    protected $guarded = [];
+    protected $fillable = [
+        'appointment_id',
+        'id_patient',
+        'id_specialty',
+        'id_doctor',
+        'appointment_date',
+    ];
     public function patient(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_patient');
