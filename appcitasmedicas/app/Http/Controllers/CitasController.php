@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointments;
 use App\Models\Specialty;
+use Illuminate\Http\Request;    
 use Spatie\Permission\Models\Role;
 
 class CitasController extends Controller
@@ -25,11 +26,10 @@ class CitasController extends Controller
     {
         //
     }
-    public function store(AppointmentRequest $appointmentRequest)
+    public function store(AppointmentRequest $data)
     {
-        // TODO: FIX THIS
         Appointments::create([
-            'appointment_id' => $data->appointment_id,
+            // 'appointment_id' => $data->appointment_id,
             'id_patient' => $data->id_patient,
             'id_specialty' => $data->id_specialty,
             'id_doctor' => $data->id_doctor,
@@ -37,7 +37,7 @@ class CitasController extends Controller
             // 'statu_id' => $appointmentRequest->statu_id,
         ]);
         notify()->success('Paciente agregado correctamente', 'Agregar Paciente');
-        return redirect()->route('citas.index');
+        return redirect()->route('citas.view');
     }
     public function show()
     {
