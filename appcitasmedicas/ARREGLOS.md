@@ -1,0 +1,1 @@
+- En el registro de médicos, a la hora de seleccionar el documento de indentidad, no debe mostrar tarjeta de indentidad ya que los medicos deben ser mayores de edad.
