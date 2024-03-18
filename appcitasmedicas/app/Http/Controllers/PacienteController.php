@@ -36,7 +36,7 @@ class PacienteController extends Controller
         $documentType = Document_Type_View::pluck('name', 'detail_id');
         $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
         $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType',));
+        return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType', ));
     }
     public function createNewPaciente(PacienteRequest $pacienteRequest)
     {

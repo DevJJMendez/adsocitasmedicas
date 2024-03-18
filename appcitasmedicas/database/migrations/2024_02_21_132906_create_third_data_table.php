@@ -29,7 +29,6 @@ return new class extends Migration {
             $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities');
             // Estado
             $table->string('statu_type_id')->default('1');
-
             // Especialidad
             $table->tinyInteger('id_specialty')->unsigned()->nullable();
             $table->foreign('id_specialty')->references('specialty_id')->on('specialties');

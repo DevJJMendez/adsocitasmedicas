@@ -29,8 +29,8 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($medicalEntity as $medicalEntities)
-                        <tr>
+                    <tr>
+                            @foreach ($medicalEntity as $medicalEntities)
                             <td>
                                 {{ $medicalEntities->nit }}
                             </td>
@@ -58,7 +58,7 @@
                                     action="{{ route('delete', ['medicalEntity' => $medicalEntities->medical_entity_id]) }}"
                                     method="POST">
                                     @csrf
-                                    @method('DELETE')
+                                    @method('PUT')
                                     <a href="{{ route('edit.view', $medicalEntities->medical_entity_id) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar

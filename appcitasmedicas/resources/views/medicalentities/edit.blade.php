@@ -81,7 +81,7 @@ use Illuminate\Support\Str;
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-sm btn-primary">Actu entidad médica</button>
+                <button type="submit" class="btn btn-sm btn-primary">Actualizar entidad médica</button>
             </form>
         </div>
     </div>

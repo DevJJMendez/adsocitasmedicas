@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->string('address', 100);
             // Estado
             $table->string('statu_type_id')->default('1');
-
             $table->timestamps();
         });
     }

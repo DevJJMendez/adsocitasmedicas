@@ -20,7 +20,10 @@ class MedicalEntityController extends Controller
 
     public function index(): view
     {
-        $medicalEntity = Medical_Entities::with('medicalentitytype', 'statutype')->paginate(8);
+        $medicalEntity = Medical_Entities::with([
+            'medicalentitytype',
+            'statuType'
+        ])->paginate(10);
         return view('medicalentities.index', compact('medicalEntity'));
     }
     public function create(): view
@@ -32,9 +35,7 @@ class MedicalEntityController extends Controller
     public function store(MedicalEntityRequest $medicalEntityRequest)
     {
         $medicalEntity = $medicalEntityRequest->all();
-
         Medical_Entities::create($medicalEntity);
-
         notify()->success('Entidad médica agregada correctamente', 'Agregar entidad médica');
         return redirect()->route('medical.entities.view');
     }
@@ -53,8 +54,12 @@ class MedicalEntityController extends Controller
     }
     public function delete(Medical_Entities $medicalEntity)
     {
-        $medicalEntity->delete();
-        notify()->error('Entidad médica eliminada correctamente', 'Eliminar');
+        if ($medicalEntity->statu_type_id == 2) {
+            $medicalEntity->update(['statu_type_id' => 1]);
+        } else {
+            $medicalEntity->update(['statu_type_id' => 2]);
+        }
+        notify()->success('El estado de la entidad médica se actualizo correctamente', 'Estado cambiado');
         return redirect()->route('medical.entities.view');
     }
 }

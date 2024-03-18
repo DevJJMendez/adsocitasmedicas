@@ -16,11 +16,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Auth::routes();
-
-
 Route::middleware(['auth', 'check_user_status'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 });
 //Users Route
 Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
@@ -31,7 +28,7 @@ Route::group(['prefix' => 'medical-entities'], function () {
     Route::post('createnewentity', [MedicalEntityController::class, 'store'])->name('create');
     Route::get('{id}/edit', [MedicalEntityController::class, 'edit'])->name('edit.view');
     Route::put('update/{medicalEntity}', [MedicalEntityController::class, 'update'])->name('update');
-    Route::delete('delete/{medicalEntity}', [MedicalEntityController::class, 'delete'])->name('delete');
+    Route::put('delete/{medicalEntity}', [MedicalEntityController::class, 'delete'])->name('delete');
 });
 
 // medicos route
@@ -56,8 +53,6 @@ Route::group(['prefix' => 'pacientes'], function () {
 
 //roles route
 Route::resource('roles', RoleController::class)->names('admin.roles');
-
-
 Route::resource('permisos', PermisoController::class)->names('admin.permisos');
 //permisos route
 // Route::group(['prefix' => 'permisos'], function () {
@@ -69,8 +64,8 @@ Route::resource('permisos', PermisoController::class)->names('admin.permisos');
 
 // citas route
 Route::group(['prefix' => 'citas'], function () {
-        Route::get('nuevacita', [CitasController::class, 'Index'])->name('citas.view');
-        Route::post('/crearcita',[CitasController::class,'store'])->name('crear.cita');
+    Route::get('nuevacita', [CitasController::class, 'Index'])->name('citas.view');
+    Route::post('/crearcita', [CitasController::class, 'store'])->name('crear.cita');
 });
 
 Route::group(['prefix' => 'register'], function () {

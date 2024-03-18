@@ -9,9 +9,6 @@ use Illuminate\Database\Seeder;
 
 class ThirdDataSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $thirddata = Third_Data::create([
@@ -26,7 +23,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -46,7 +43,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -66,7 +63,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -88,7 +85,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -107,7 +104,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -126,7 +123,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -145,7 +142,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
@@ -164,7 +161,7 @@ class ThirdDataSeeder extends Seeder
             'gender_type_id' => fake()->numberBetween(6, 7),
             'address' => fake()->address(),
             'id_medical_entity' => fake()->numberBetween(12, 13),
-            'id_specialty' => fake()->numberBetween(1, 35),
+            'id_specialty' => fake()->numberBetween(1, 34),
         ]);
         User::create([
             'third_data_id' => $thirddata['data_id'],
