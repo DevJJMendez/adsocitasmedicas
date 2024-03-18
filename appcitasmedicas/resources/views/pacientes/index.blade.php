@@ -49,14 +49,8 @@
 
                             <td>
                                 {{ $paciente->thirdDataUser->entity_medical->business_name }}
-
-
-
-
-
                             </td>
                             <td>
-
                                 <form action="{{ route('delete.paciente', ['paciente' => $paciente->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -66,7 +60,6 @@
                                     </a>
                                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                 </form>
-
                             </td>
                         </tr>
                     @empty
@@ -82,7 +75,7 @@
             </table>
         </div>
         <div class="card-body">
-            {{-- {{ $pacientes->links() }} --}}
+            {{ $pacientes->links() }}
         </div>
     </div>
 @endsection

@@ -8,7 +8,6 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SpecialtyController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -64,7 +63,8 @@ Route::resource('permisos', PermisoController::class)->names('admin.permisos');
 
 // citas route
 Route::group(['prefix' => 'citas'], function () {
-    Route::get('nuevacita', [CitasController::class, 'Index'])->name('citas.view');
+    Route::get('', [CitasController::class, 'index'])->name('citas.view');
+    Route::get('/nueva-cita', [CitasController::class, 'create'])->name('create.cita');
     Route::post('/crearcita', [CitasController::class, 'store'])->name('crear.cita');
 });
 

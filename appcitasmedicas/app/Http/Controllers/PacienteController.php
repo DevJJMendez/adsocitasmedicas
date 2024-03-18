@@ -13,26 +13,20 @@ use Termwind\Components\Dd;
 
 class PacienteController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('can:Administrador');
     }
-
     public function index()
     {
         $pacienteRol = Role::where('name', 'Paciente')->first();
         $pacientes = $pacienteRol->users()->whereHas('thirdDataUser', function ($query) {
             $query->where('statu_type_id', 1);
-        })->get();
-
-
+        })->paginate(10);
         return view('pacientes.index', compact('pacientes'));
     }
     public function create()
     {
-
         $documentType = Document_Type_View::pluck('name', 'detail_id');
         $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
         $genderType = Gender_View::pluck('name', 'detail_id');
@@ -64,7 +58,6 @@ class PacienteController extends Controller
     }
     public function edit($id)
     {
-
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;
 
@@ -75,13 +68,10 @@ class PacienteController extends Controller
     }
     public function updatePaciente($id, PacienteRequest $pacienteRequest)
     {
-
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;
-
         $user->update([
             'email' => $pacienteRequest->email,
-
         ]);
         $tercero->update([
             'identification_number' => $pacienteRequest->identification_number,

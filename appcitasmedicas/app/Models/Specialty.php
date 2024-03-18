@@ -27,7 +27,4 @@ class Specialty extends Model
     {
         return $this->belongsTo(Third_Data::class, '');
     }
-
-
-
 }

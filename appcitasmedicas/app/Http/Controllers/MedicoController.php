@@ -19,13 +19,8 @@ class MedicoController extends Controller
     }
     public function index()
     {
-
-
         $medicoRol = Role::where('name', 'Doctor')->first();
-
         $medicos = $medicoRol->users()->with('thirdDataUser')->get();
-        // dd($medicos);
-
         return view('medicos.index', compact('medicos'));
     }
     public function create()
@@ -34,13 +29,12 @@ class MedicoController extends Controller
         $documentType = Document_Type_View::pluck('name', 'detail_id');
         $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
         $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('medicos.create' , compact('documentType', 'medicalEntity', 'genderType',  'specialties'));
+        return view('medicos.create', compact('documentType', 'medicalEntity', 'genderType', 'specialties'));
     }
     public function createNewMedico(MedicoRequest $medicoRequest)
     {
-
         $thirdData = Third_Data::create([
-           //Cedula de ciudadania
+            //Cedula de ciudadania
             'document_type_id' => $medicoRequest->document_type_id,
             'identification_number' => $medicoRequest->identification_number,
             'first_name' => $medicoRequest->first_name,
@@ -75,7 +69,6 @@ class MedicoController extends Controller
         $tercero = $medicos->thirdDataUser;
         $medicos->update([
             'email' => $medicosRequest->email,
-
         ]);
         $tercero->update([
             'identification_number' => $medicosRequest->identification_number,

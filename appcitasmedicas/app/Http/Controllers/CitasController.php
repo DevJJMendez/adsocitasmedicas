@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointments;
 use App\Models\Specialty;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class CitasController extends Controller
@@ -24,7 +23,7 @@ class CitasController extends Controller
     }
     public function create()
     {
-        //
+        return view('citas.create');
     }
     public function store(AppointmentRequest $data)
     {

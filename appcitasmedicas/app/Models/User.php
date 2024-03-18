@@ -6,16 +6,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Contracts\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-
     use HasRoles;
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'users';
@@ -41,14 +38,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointments::class, 'id_doctor');
     }
-
     public function UserThirdData()
     {
         return $this->hasOne(Third_Data::class);
     }
-
     public function tercero()
     {
         return $this->hasOne(Third_Data::class, 'data_id');
+    }
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class, 'medico_id', 'id_schedule');
     }
 }

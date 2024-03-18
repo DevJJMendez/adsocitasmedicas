@@ -1,10 +1,10 @@
 <!-- Heading -->
 @can('Administrador')
-<h6 class="navbar-heading text-muted">Usuarios</h6>
+    <h6 class="navbar-heading text-muted">Usuarios</h6>
 @elsecan('Doctor')
-<h6 class="navbar-heading text-muted">Opciones Doctores</h6>
+    <h6 class="navbar-heading text-muted">Opciones Doctores</h6>
 @elsecan('Paciente')
-<h6 class="navbar-heading text-muted">Opciones Pacientes</h6>
+    <h6 class="navbar-heading text-muted">Opciones Pacientes</h6>
 @endcan
 <ul class="navbar-nav">
     @can('Administrador')
@@ -60,7 +60,7 @@
     @endcan
     @can('Paciente')
         <li class="nav-item  active ">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('create.cita') }}">
                 <i class="ni ni-calendar-grid-58"></i> Agendar Cita
             </a>
         </li>
@@ -70,16 +70,16 @@
             </a>
         </li>
     @endcan
-{{-- logout --}}
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('citas.view') }}"
-        onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
-        <i class="fas fa-sign-in-alt"></i> Cerrar Sesión
-    </a>
-    <form action="{{ route('logout') }}" method="POST" style="display: none" id="formLogout">
-        @csrf
-    </form>
-</li>
+    {{-- logout --}}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('citas.view') }}"
+            onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
+            <i class="fas fa-sign-in-alt"></i> Cerrar Sesión
+        </a>
+        <form action="{{ route('logout') }}" method="POST" style="display: none" id="formLogout">
+            @csrf
+        </form>
+    </li>
 </ul>
 <!-- Divider -->
 <hr class="my-3">
