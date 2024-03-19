@@ -33,17 +33,13 @@
                                 {{ $cita->appointment_date }}
                             </td>
                             <td>
-                                {{ $cita->statu_id }}
+                                {{ $cita->statuType->name }}
                             </td>
                             <td>
-                                <form action="" method="POST">
+                                <form action="{{ route('cancelar.cita',$cita->appointment_id) }}" method="POST">
                                     @csrf
-                                    @method('DELETE')
-                                    <a href=""
-                                        class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
-                                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-sm btn-danger">Cancelar cita</button>
                                 </form>
                             </td>
                         </tr>
@@ -51,7 +47,7 @@
                         <tr>
                             <th>
                                 <span>
-                                    No data found
+                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a href="{{ route('crear.cita') }}">¿DESEA AGENDAR UNA CITA?</a>
                                 </span>
                             </th>
                         </tr>

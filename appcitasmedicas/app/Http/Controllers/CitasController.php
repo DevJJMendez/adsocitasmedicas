@@ -33,30 +33,34 @@ class CitasController extends Controller
     }
     public function store(AppointmentRequest $appointmentRequest)
     {
+        // metodo para crear registros
+        // $appointmentRequest nos ayuda a validar los datos enviados en la request
         Appointments::create([
             'id_patient' => $appointmentRequest->id_patient,
             'id_specialty' => $appointmentRequest->id_specialty,
             'id_doctor' => $appointmentRequest->id_doctor,
             'appointment_date' => $appointmentRequest->appointment_date,
         ]);
-        notify()->success('Paciente agregado correctamente', 'Agregar Paciente');
-        return redirect()->route('citas.view');
+        notify()->success('Cita agendar correctamente', 'Agendar Cita');
+        return redirect()->route('citas.agendadas');
     }
     public function mostrarCitasAgendadas()
     {
-        $citas = Appointments::with('doctor', 'specialty')->get();
+        // obtengo el Id del usuario logueado
+        $userId = auth()->user()->id;
+        // Obtengo las citas medicas que tiene el usuario logueado
+        $citas = Appointments::with('doctor', 'specialty', 'statutype')->where('id_patient', $userId)->whereIn('statu_type_id', [3, 4])->get();
         return view('citas.citasAgendadas', compact('citas'));
     }
-    public function edit()
+
+    // El paciente no puede aplazar citas
+    public function cancelarCita($appointment_id)
     {
-        //
-    }
-    public function update()
-    {
-        //
-    }
-    public function destroy()
-    {
-        //
+        // Obtenemos la cita por su id
+        $citaId = Appointments::findOrFail($appointment_id);
+        // actualizamos el estado de la cita
+        $citaId->update(['statu_type_id' => '5']);
+        notify()->success('Cita cancelada correctamente', 'Cancelar cita');
+        return redirect()->route('citas.agendadas');
     }
 }

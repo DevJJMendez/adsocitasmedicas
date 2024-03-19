@@ -60,6 +60,7 @@ Route::group(['prefix' => 'citas'], function () {
     Route::get('/nueva-cita', [CitasController::class, 'create'])->name('create.cita');
     Route::post('/crearcita', [CitasController::class, 'store'])->name('crear.cita');
     Route::get('/citas-agendadas', [CitasController::class, 'mostrarCitasAgendadas'])->name('citas.agendadas');
+    Route::put('/cancelar-cita/{appointment_id}', [CitasController::class, 'cancelarCita'])->name('cancelar.cita');
 });
 
 Route::group(['prefix' => 'register'], function () {

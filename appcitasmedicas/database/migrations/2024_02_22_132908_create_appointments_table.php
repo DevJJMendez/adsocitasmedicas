@@ -17,8 +17,7 @@ return new class extends Migration {
             $table->foreign('id_doctor')->references('id')->on('users');
             $table->dateTime('appointment_date');
             $table->text('medical_evaluation')->nullable();
-            $table->tinyInteger('statu_id')->unsigned()->default(3);
-            $table->string('statu_type_id')->default('1');
+            $table->string('statu_type_id')->default('3');
             // $table->enum('status', ['scheduled', 'cancelled', 'postponed']);
             $table->timestamps();
         });
