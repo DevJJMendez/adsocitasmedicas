@@ -36,7 +36,7 @@
                                 {{ $cita->statuType->name }}
                             </td>
                             <td>
-                                <form action="{{ route('cancelar.cita',$cita->appointment_id) }}" method="POST">
+                                <form action="{{ route('cancelar.cita', $cita->appointment_id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-sm btn-danger">Cancelar cita</button>
@@ -47,7 +47,7 @@
                         <tr>
                             <th>
                                 <span>
-                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a href="{{ route('crear.cita') }}">¿DESEA AGENDAR UNA CITA?</a>
+                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a href="{{ route('create.cita') }}">¿DESEA AGENDAR UNA CITA?</a>
                                 </span>
                             </th>
                         </tr>

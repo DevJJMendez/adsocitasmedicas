@@ -59,7 +59,7 @@ class CitasController extends Controller
         // Obtenemos la cita por su id
         $citaId = Appointments::findOrFail($appointment_id);
         // actualizamos el estado de la cita
-        $citaId->update(['statu_type_id' => '5']);
+        $citaId->update(['statu_type_id' => 5]);
         notify()->success('Cita cancelada correctamente', 'Cancelar cita');
         return redirect()->route('citas.agendadas');
     }
