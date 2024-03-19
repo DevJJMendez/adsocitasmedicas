@@ -53,19 +53,13 @@ Route::group(['prefix' => 'pacientes'], function () {
 //roles route
 Route::resource('roles', RoleController::class)->names('admin.roles');
 Route::resource('permisos', PermisoController::class)->names('admin.permisos');
-//permisos route
-// Route::group(['prefix' => 'permisos'], function () {
-//     Route::get('/permisos', [PermisoController::class, 'index'])->name('permisos.view');
-//     Route::post('/newPermiso', [PermisoController::class, 'createNewPermiso'])->name('create.new.permiso');
-//     Route::get('/editPermiso/{permiso}', [PermisoController::class, 'edit'])->name('edit.permiso.view');
-//     Route::delete('/deletePermiso/{permiso}', [PermisoController::class, 'deletePermiso'])->name('delete.permiso');
-// });
 
 // citas route
 Route::group(['prefix' => 'citas'], function () {
     Route::get('', [CitasController::class, 'index'])->name('citas.view');
     Route::get('/nueva-cita', [CitasController::class, 'create'])->name('create.cita');
     Route::post('/crearcita', [CitasController::class, 'store'])->name('crear.cita');
+    Route::get('/citas-agendadas', [CitasController::class, 'mostrarCitasAgendadas'])->name('citas.agendadas');
 });
 
 Route::group(['prefix' => 'register'], function () {

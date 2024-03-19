@@ -19,4 +19,8 @@ class Statu_View extends Model
     {
         return $this->belongsTo(Third_Data::class, 'statu_type_id', 'statu_id');
     }
+    public function appointment(): BelongsTo
+    {
+        return $this->belongsTo(Appointments::class, 'statu_type_id', 'statu_id');
+    }
 }

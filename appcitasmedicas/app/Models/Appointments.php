@@ -11,6 +11,7 @@ class Appointments extends Model
 {
     use HasFactory;
     protected $table = 'appointments';
+    protected $primaryKey = 'appointment_id';
     protected $fillable = [
         'appointment_id',
         'id_patient',
@@ -26,8 +27,12 @@ class Appointments extends Model
     {
         return $this->belongsTo(User::class, 'id_doctor');
     }
-    public function specialty(): HasOne
+    public function specialty(): BelongsTo
     {
-        return $this->hasOne(Specialty::class, 'id_specialty');
+        return $this->belongsTo(Specialty::class, 'id_specialty', 'specialty_id');
+    }
+    public function statutype(): HasOne
+    {
+        return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
     }
 }

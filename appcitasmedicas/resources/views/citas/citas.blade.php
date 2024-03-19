@@ -2,7 +2,6 @@
 @section('content')
     <div id="calendar" style="width: 50%; display: inline-block">
     </div>
-
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#evento">
         Launch
@@ -86,9 +85,6 @@
         </div>
     </div>
 @endsection
-
-
-
 @section('scripts')
     <script src="{{ asset('js/calendario.js') }}"></script>
 @endsection

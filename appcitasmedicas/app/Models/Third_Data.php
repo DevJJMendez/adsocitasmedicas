@@ -47,9 +47,9 @@ class Third_Data extends Model
     {
         return $this->hasOne(Medical_Entities::class, 'medical_entity_id', 'id_medical_entity');
     }
-    public function especialidad(): HasOne
+    public function specialty(): BelongsTo
     {
-        return $this->hasOne(Specialty::class, 'specialty_id', 'id_specialty');
+        return $this->belongsTo(Specialty::class, 'id_specialty', 'specialty_id');
     }
     public function statutype(): HasOne
     {

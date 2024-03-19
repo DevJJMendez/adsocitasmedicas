@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('business_name', 100);
             $table->string('address', 100);
             // Estado
-            $table->string('statu_type_id')->default('1');
+            $table->string('statu_type_id')->default('3');
             $table->timestamps();
         });
     }

@@ -65,8 +65,13 @@
             </a>
         </li>
         <li class="nav-item  active ">
-            <a class="nav-link" href="{{ route('citas.view') }}">
+            <a class="nav-link" href="{{ route('citas.agendadas') }}">
                 <i class="ni ni-calendar-grid-58"></i> Citas Agendadas
+            </a>
+        </li>
+        <li class="nav-item  active ">
+            <a class="nav-link" href="{{ route('citas.view') }}">
+                <i class="ni ni-calendar-grid-58"></i> Calendario de Citas
             </a>
         </li>
     @endcan
