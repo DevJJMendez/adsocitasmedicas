@@ -17,14 +17,12 @@
             <!-- Projects table -->
             <table class="table align-items-center table-flush" style="text-transform: uppercase">
                 <thead class="thead-light">
-
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Especialidad</th>
                         <th scope="col">Opciones</th>
                     </tr>
-
                 </thead>
                 <tbody>
                     @forelse ($medicos as $medico)
@@ -36,12 +34,9 @@
                                 {{ $medico->email }}
                             </td>
                             <td>
-                                {{-- {{ $medico->thirdDataUser->gender->name }} --}}
-
-                                {{ $medico->thirdDataUser->especialidad->name}}
+                            {{ $medico->thirdDataUser->specialty ? $medico->thirdDataUser->specialty->name : 'No Specialty' }}
                             </td>
                             <td>
-
                                 <form action="{{ route('delete.medico', ['medico' => $medico->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -51,7 +46,6 @@
                                     </a>
                                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                 </form>
-
                             </td>
                         </tr>
                     @empty
@@ -65,7 +59,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{-- {{$medicos->links()}} --}}
+            {{$medicos->links()}}
         </div>
     </div>
 @endsection

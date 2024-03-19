@@ -20,7 +20,7 @@ class MedicoController extends Controller
     public function index()
     {
         $medicoRol = Role::where('name', 'Doctor')->first();
-        $medicos = $medicoRol->users()->with('thirdDataUser')->get();
+        $medicos = $medicoRol->users()->with('thirdDataUser')->paginate(10);
         return view('medicos.index', compact('medicos'));
     }
     public function create()
