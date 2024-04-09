@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointments;
 use App\Models\Specialty;
+use App\Models\Third_Data;
 use Spatie\Permission\Models\Role;
 
 class CitasController extends Controller
@@ -23,7 +24,7 @@ class CitasController extends Controller
     public function create()
     {
         //variable para mostrar el numero de cita.
-        $n_cita = Appointments::select('appointment_id')->get();
+        $c_cita = Appointments::select('appointment_id')->get();
         //variable para mostrar las especialidades.
         $specialty = Specialty::select('specialty_id', 'name')->get();
         //variable para mostrar medicos.
