@@ -25,4 +25,8 @@ class Specialty extends Model
     {
         return $this->belongsTo(Third_Data::class, 'id_specialty', 'specialty_id');
     }
+    public function thirdData(): HasOne
+    {
+        return $this->hasOne(Third_Data::class, 'id_specialty', 'specialty_id');
+    }
 }

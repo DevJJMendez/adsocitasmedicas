@@ -24,7 +24,7 @@ class CitasController extends Controller
     public function create()
     {
         //variable para mostrar el numero de cita.
-        $c_cita = Appointments::select('appointment_id')->get();
+        $n_cita = Appointments::select('appointment_id')->get();
         //variable para mostrar las especialidades.
         $specialty = Specialty::select('specialty_id', 'name')->get();
         //variable para mostrar medicos.
