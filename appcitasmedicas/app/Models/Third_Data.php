@@ -26,4 +26,28 @@ class Third_Data extends Model
     //     'id_specialty'
     // ];
     protected $guarded = [];
+    public function documentType(): BelongsTo
+    {
+        return $this->belongsTo(DocumentType::class, 'id_document_type', 'document_type_id');
+    }
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class, 'id_gender', 'gender_id');
+    }
+    public function medicalEntity(): BelongsTo
+    {
+        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'medical_entity_id');
+    }
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'id_status', 'status_id');
+    }
+    public function specialty(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'id_specialty', 'specialty_id');
+    }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'id_third_data', 'id');
+    }
 }

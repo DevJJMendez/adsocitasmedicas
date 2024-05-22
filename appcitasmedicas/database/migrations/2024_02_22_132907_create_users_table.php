@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->unsignedSmallInteger('id', true);
-            $table->unsignedSmallInteger('third_data_id')->nullable();
-            $table->foreign('third_data_id')->references('third_data_id')->on('third_data');
+            $table->unsignedSmallInteger('id_third_data')->nullable();
+            $table->foreign('id_third_data')->references('third_data_id')->on('third_data');
             $table->string('email', 100);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

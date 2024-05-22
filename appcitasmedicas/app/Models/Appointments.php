@@ -20,4 +20,20 @@ class Appointments extends Model
         'appointment_date',
         'statu_type_id'
     ];
+    public function patient(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id_patient', 'id');
+    }
+    public function doctor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id_doctor', 'id');
+    }
+    public function specialty(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'id_specialty', 'specialty_id');
+    }
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'id_status', 'status_id');
+    }
 }
