@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('statuses', function (Blueprint $table) {
-            $table->unsignedTinyInteger('status_id', true);
+        Schema::create('genders', function (Blueprint $table) {
+            $table->unsignedTinyInteger('gender_id', true);
             $table->unsignedTinyInteger('id_common_attribute')->nullable();
             $table->foreign('id_common_attribute')->references('common_attribute_id')->on('common_attributes')->onDelete('set null');
             $table->timestamps();
@@ -16,6 +16,6 @@ return new class extends Migration {
     }
     public function down(): void
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('genders');
     }
 };

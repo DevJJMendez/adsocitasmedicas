@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Status extends Model
+class DocumentType extends Model
 {
     use HasFactory;
-    protected $table = 'statuses';
-    protected $primaryKey = 'status_id';
+    protected $table = 'document_types';
+    protected $primaryKey = 'document_type_id';
     protected $guarded = [];
     public function commonAttribute(): BelongsTo
     {

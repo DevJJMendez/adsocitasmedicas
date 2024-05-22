@@ -6,47 +6,39 @@ use App\Models\CommonAttribute;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StatusSeeder extends Seeder
+class DocumentTypeSeeder extends Seeder
 {
     public function run(): void
     {
         $commonAttribute = CommonAttribute::create([
-            'name' => 'active',
-            'nomenclature' => 'act',
+            'name' => 'cedula de ciudadania',
+            'nomenclature' => 'cc',
         ]);
-        $commonAttribute->status()->create([
+        $commonAttribute->documentType()->create([
             'id_common_attribute' => $commonAttribute->common_attribute_id,
         ]);
 
         $commonAttribute = CommonAttribute::create([
-            'name' => 'inactive',
-            'nomenclature' => 'inac',
+            'name' => 'tarjeta de identidad',
+            'nomenclature' => 'cc',
         ]);
-        $commonAttribute->status()->create([
+        $commonAttribute->documentType()->create([
             'id_common_attribute' => $commonAttribute->common_attribute_id,
         ]);
 
         $commonAttribute = CommonAttribute::create([
-            'name' => 'en espera',
-            'nomenclature' => 'eesp',
+            'name' => 'registro civil',
+            'nomenclature' => 'rc',
         ]);
-        $commonAttribute->status()->create([
+        $commonAttribute->documentType()->create([
             'id_common_attribute' => $commonAttribute->common_attribute_id,
         ]);
 
         $commonAttribute = CommonAttribute::create([
-            'name' => 'atendida',
-            'nomenclature' => 'atda',
+            'name' => 'cedula de extranjeria',
+            'nomenclature' => 'cce',
         ]);
-        $commonAttribute->status()->create([
-            'id_common_attribute' => $commonAttribute->common_attribute_id,
-        ]);
-
-        $commonAttribute = CommonAttribute::create([
-            'name' => 'cancelada',
-            'nomenclature' => 'canc',
-        ]);
-        $commonAttribute->status()->create([
+        $commonAttribute->documentType()->create([
             'id_common_attribute' => $commonAttribute->common_attribute_id,
         ]);
     }

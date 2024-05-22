@@ -7,15 +7,19 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('statuses', function (Blueprint $table) {
-            $table->unsignedTinyInteger('status_id', true);
+        Schema::create('document_types', function (Blueprint $table) {
+            $table->unsignedTinyInteger('document_type_id', true);
             $table->unsignedTinyInteger('id_common_attribute')->nullable();
             $table->foreign('id_common_attribute')->references('common_attribute_id')->on('common_attributes')->onDelete('set null');
             $table->timestamps();
         });
     }
+
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('document_types');
     }
 };

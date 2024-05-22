@@ -26,20 +26,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function thirdDataUser(): BelongsTo
-    {
-        return $this->belongsTo(Third_Data::class, 'third_data_id', 'data_id');
-    }
-    public function patientAppointments(): HasMany
-    {
-        return $this->hasMany(Appointments::class, 'id_patient');
-    }
-    public function doctorAppointments(): HasMany
-    {
-        return $this->hasMany(Appointments::class, 'id_doctor');
-    }
-    public function tercero()
-    {
-        return $this->hasOne(Third_Data::class, 'data_id');
-    }
 }

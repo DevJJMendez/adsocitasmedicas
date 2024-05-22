@@ -8,17 +8,17 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->smallIncrements('appointment_id')->unsigned();
-            $table->smallInteger('id_patient')->unsigned();
+            $table->unsignedMediumInteger('appointment_id', true);
+            $table->unsignedSmallInteger('id_patient');
             $table->foreign('id_patient')->references('id')->on('users');
-            $table->tinyInteger('id_specialty')->unsigned();
+            $table->unsignedTinyInteger('id_specialty');
             $table->foreign('id_specialty')->references('specialty_id')->on('specialties');
-            $table->smallInteger('id_doctor')->unsigned();
+            $table->unsignedSmallInteger('id_doctor');
             $table->foreign('id_doctor')->references('id')->on('users');
             $table->dateTime('appointment_date');
             $table->text('medical_evaluation')->nullable();
-            $table->string('statu_type_id')->default('3');
-            // $table->enum('status', ['scheduled', 'cancelled', 'postponed']);
+            $table->unsignedTinyInteger('id_status')->default('3');
+            $table->foreign('id_status')->references('status_id')->on('statuses');
             $table->timestamps();
         });
     }
