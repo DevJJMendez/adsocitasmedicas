@@ -12,8 +12,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StatusSeeder::class,
             GenderSeeder::class,
-            DocumentTypeSeeder::class,
             EntityTypeSeeder::class,
+            DocumentTypeSeeder::class,
+            Medical_Entity_Seeder::class,
         ]);
     }
 }

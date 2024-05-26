@@ -11,6 +11,7 @@ class DocumentTypeSeeder extends Seeder
     public function run(): void
     {
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 10,
             'name' => 'cedula de ciudadania',
             'nomenclature' => 'cc',
         ]);
@@ -19,6 +20,7 @@ class DocumentTypeSeeder extends Seeder
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 11,
             'name' => 'tarjeta de identidad',
             'nomenclature' => 'cc',
         ]);
@@ -27,6 +29,7 @@ class DocumentTypeSeeder extends Seeder
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 12,
             'name' => 'registro civil',
             'nomenclature' => 'rc',
         ]);
@@ -35,6 +38,7 @@ class DocumentTypeSeeder extends Seeder
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 13,
             'name' => 'cedula de extranjeria',
             'nomenclature' => 'cce',
         ]);

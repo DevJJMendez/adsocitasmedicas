@@ -67,3 +67,5 @@ Route::group(['prefix' => 'register'], function () {
     Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
     Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
 });
+
+

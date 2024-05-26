@@ -12,21 +12,25 @@ class CommonAttribute extends Model
     use HasFactory;
     protected $table = 'common_attributes';
     protected $primryKey = 'common_attribute_id';
-    protected $guarded = [];
-    public function status(): HasOne
+    protected $fillable = [
+        'common_attribute_id',
+        'name',
+        'nomenclature',
+    ];
+    public function status(): HasMany
     {
-        return $this->hasOne(Status::class, 'id_common_attribute', 'common_attribute_id');
+        return $this->hasMany(Status::class, 'id_common_attribute', 'common_attribute_id');
     }
-    public function documentType(): HasOne
+    public function documentType(): HasMany
     {
-        return $this->hasOne(DocumentType::class, 'id_common_attribute', 'common_attribute_id');
+        return $this->hasMany(DocumentType::class, 'id_common_attribute', 'common_attribute_id');
     }
-    public function gender(): HasOne
+    public function gender(): HasMany
     {
-        return $this->hasOne(Gender::class, 'id_common_attribute', 'common_attribute_id');
+        return $this->hasMany(Gender::class, 'id_common_attribute', 'common_attribute_id');
     }
-    public function entityType(): HasOne
+    public function entityType(): HasMany
     {
-        return $this->hasOne(EntityType::class, 'id_common_attribute', 'common_attribute_id');
+        return $this->hasMany(EntityType::class, 'id_common_attribute', 'common_attribute_id');
     }
 }

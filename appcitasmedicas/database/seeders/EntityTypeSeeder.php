@@ -11,6 +11,7 @@ class EntityTypeSeeder extends Seeder
     public function run(): void
     {
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 8,
             'name' => 'eps',
             'nomenclature' => null,
         ]);
@@ -19,6 +20,7 @@ class EntityTypeSeeder extends Seeder
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 9,
             'name' => 'ips',
             'nomenclature' => null,
         ]);

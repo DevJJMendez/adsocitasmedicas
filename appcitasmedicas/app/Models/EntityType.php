@@ -19,6 +19,6 @@ class EntityType extends Model
     }
     public function medicalEntities(): HasMany
     {
-        return $this->hasMany(Medical_Entities::class, 'id_common_attribute', 'common_attribute_id');
+        return $this->hasMany(Medical_Entities::class, 'id_entity_type', 'entity_type_id');
     }
 }

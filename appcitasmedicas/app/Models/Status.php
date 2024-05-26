@@ -12,7 +12,10 @@ class Status extends Model
     use HasFactory;
     protected $table = 'statuses';
     protected $primaryKey = 'status_id';
-    protected $guarded = [];
+    protected $fillable = [
+        'status_id',
+        'id_common_attribute'
+    ];
     public function commonAttribute(): BelongsTo
     {
         return $this->belongsTo(CommonAttribute::class, 'id_common_attribute', 'common_attribute_id');

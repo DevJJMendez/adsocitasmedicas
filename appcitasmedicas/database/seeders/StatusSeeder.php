@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CommonAttribute;
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -11,43 +12,48 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         $commonAttribute = CommonAttribute::create([
-            'name' => 'active',
+            'common_attribute_id' => 1,
+            'name' => 'activo',
             'nomenclature' => 'act',
         ]);
-        $commonAttribute->status()->create([
-            'id_common_attribute' => $commonAttribute->common_attribute_id,
+        Status::create([
+            'id_common_attribute' => $commonAttribute['common_attribute_id'],
         ]);
 
         $commonAttribute = CommonAttribute::create([
-            'name' => 'inactive',
+            'common_attribute_id' => 2,
+            'name' => 'inactivo',
             'nomenclature' => 'inac',
         ]);
-        $commonAttribute->status()->create([
-            'id_common_attribute' => $commonAttribute->common_attribute_id,
+        Status::create([
+            'id_common_attribute' => $commonAttribute['common_attribute_id'],
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 3,
             'name' => 'en espera',
             'nomenclature' => 'eesp',
         ]);
-        $commonAttribute->status()->create([
-            'id_common_attribute' => $commonAttribute->common_attribute_id,
+        Status::create([
+            'id_common_attribute' => $commonAttribute['common_attribute_id'],
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 4,
             'name' => 'atendida',
             'nomenclature' => 'atda',
         ]);
-        $commonAttribute->status()->create([
-            'id_common_attribute' => $commonAttribute->common_attribute_id,
+        Status::create([
+            'id_common_attribute' => $commonAttribute['common_attribute_id'],
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 5,
             'name' => 'cancelada',
             'nomenclature' => 'canc',
         ]);
-        $commonAttribute->status()->create([
-            'id_common_attribute' => $commonAttribute->common_attribute_id,
+        Status::create([
+            'id_common_attribute' => $commonAttribute['common_attribute_id'],
         ]);
     }
 }

@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('common_attributes', function (Blueprint $table) {
             $table->unsignedTinyInteger('common_attribute_id', true);
             $table->string('name', 50);
-            $table->string('nomenclature', 4);
+            $table->string('nomenclature', 4)->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,7 @@ class GenderSeeder extends Seeder
     public function run(): void
     {
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 6,
             'name' => 'masculino',
             'nomenclature' => 'm',
         ]);
@@ -19,6 +20,7 @@ class GenderSeeder extends Seeder
         ]);
 
         $commonAttribute = CommonAttribute::create([
+            'common_attribute_id' => 7,
             'name' => 'femenino',
             'nomenclature' => 'm',
         ]);

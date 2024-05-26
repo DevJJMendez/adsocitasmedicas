@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('email', 100);
             $table->unsignedTinyInteger('id_entity_type')->nullable();
             $table->foreign('id_entity_type')->references('entity_type_id')->on('entity_types')->onDelete('set null');
-            $table->string('address', 100);
+            $table->string('address', 50);
             $table->unsignedTinyInteger('id_status')->default('1')->nullable();
             $table->foreign('id_status')->references('status_id')->on('statuses')->onDelete('set null');
             $table->timestamps();
