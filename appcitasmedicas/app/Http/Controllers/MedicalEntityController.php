@@ -58,23 +58,23 @@ class MedicalEntityController extends Controller
     }
     public function edit(Medical_Entities $medical_entity): view
     {
-        $entityType = EntityType::select('entity_type_id', 'id_common_attribute')->with([
+        $entityTypes = EntityType::select('entity_type_id', 'id_common_attribute')->with([
             'commonAttribute' => function ($query) {
                 $query->select('common_attribute_id', 'name');
             }
         ])->get();
-        $statuses = Status::select('status_id', 'id_common_attribute')->with([
+        $statuses = Status::whereIn('status_id', [1, 2])->select('status_id', 'id_common_attribute')->with([
             'commonAttribute' => function ($query) {
                 $query->select('common_attribute_id', 'name');
             }
-        ]);
-        return view('medicalentities.edit', compact('entityType', 'statuses', 'medical_entity'));
+        ])->get();
+        return view('medicalentities.edit', compact('entityTypes', 'statuses', 'medical_entity'));
     }
     public function update(MedicalEntityRequest $medicalEntityRequest, Medical_Entities $medicalEntity)
     {
         $medicalEntity->update($medicalEntityRequest->all());
         notify()->success('Entidad médica editada correctamente', 'Editar');
-        return redirect()->route('medical.entities.view');
+        return redirect()->route('medical-entities.index');
     }
     public function destroy(Medical_Entities $medical_entity)
     {

@@ -30,10 +30,10 @@ use Illuminate\Support\Str;
                         @enderror
                     </div>
                     <select class="custom-select" name="id_entity_type">
-                        @foreach ($entityType as $entityTypes)
-                            <option value="{{ $entityTypes->entity_type_id }}"
-                                @if ($entityTypes->entity_type_id == $entityTypes->entity_type_id) selected @endif>
-                                {{ $entityTypes->commonAttribute->name }}</option>
+                        @foreach ($entityTypes as $entityType)
+                            <option value="{{ $entityType->entity_type_id }}"
+                                {{ $medical_entity->id_entity_type == $entityType->entity_type_id ? 'selected' : '' }}>
+                                {{ $entityType->commonAttribute->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -43,14 +43,14 @@ use Illuminate\Support\Str;
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <input class="form-control" type="text" name="business_name"
-                        value="{{ $entityTypes->business_name }}">
+                        value="{{ old('business_name', $medical_entity->business_name) }}">
                 </div>
                 <div class="form-group">
                     <label for="nit">NIT</label>
                     @error('nit')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="nit" value="{{ $entityTypes->nit }}"
+                    <input class="form-control" type="text" name="nit" value="{{ $medical_entity->nit }}"
                         maxlength="9">
                 </div>
                 <div class="form-group">
@@ -59,21 +59,21 @@ use Illuminate\Support\Str;
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <input class="form-control" type="number" name="number_phone"
-                        value="{{ $entityTypes->number_phone }}">
+                        value="{{ $medical_entity->number_phone }}">
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="email" value="{{ $entityTypes->email }}">
+                    <input class="form-control" type="text" name="email" value="{{ $medical_entity->email }}">
                 </div>
                 <div class="form-group">
                     <label for="address">Dirección</label>
                     @error('address')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="address" value="{{ $entityTypes->address }}">
+                    <input class="form-control" type="text" name="address" value="{{ $medical_entity->address }}">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -81,7 +81,8 @@ use Illuminate\Support\Str;
                     </div>
                     <select class="custom-select" name="id_status">
                         @foreach ($statuses as $status)
-                            <option value="{{ $status->status_id }}" @if ($status->status_id == $status->status_id) selected @endif>
+                            <option value="{{ $status->status_id }}"
+                                {{ $medical_entity->id_status == $status->status_id ? 'selected' : '' }}>
                                 {{ $status->commonAttribute->name }}</option>
                         @endforeach
                     </select>
