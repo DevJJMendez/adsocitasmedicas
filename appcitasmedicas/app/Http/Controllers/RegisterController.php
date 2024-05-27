@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\DocumentType;
-use App\Models\EntityType;
 use App\Models\Gender;
 use App\Models\Medical_Entities;
 use App\Models\Third_Data;
@@ -44,11 +42,10 @@ class RegisterController extends Controller
             'id_medical_entity' => $registerRequest->id_medical_entity
         ]);
         User::create([
-            'id_third_data' => $thirdData->id_third_data,
+            'id_third_data' => $thirdData->third_data_id,
             'email' => $registerRequest->email,
             'password' => $registerRequest->password,
         ])->assignRole('Paciente');
-
         return redirect()->route('login');
     }
 }

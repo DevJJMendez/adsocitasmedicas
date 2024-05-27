@@ -27,9 +27,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function thirdData(): HasOne
+    public function thirdData(): BelongsTo
     {
-        return $this->hasOne(Third_Data::class, 'id_third_data', 'id');
+        return $this->belongsTo(Third_Data::class, 'id_third_data', 'third_data_id');
     }
     public function patientAppointments(): HasMany
     {

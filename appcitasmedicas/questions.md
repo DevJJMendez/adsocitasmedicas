@@ -1,47 +1,130 @@
-Por algun motivo no esta funcionando, te mostrare el codigo para que lo analices
+Estoy presentando el siguiente problema a la hora de logearme al sistema
 ```php
-Route::group(['prefix' => 'register'], function () {
-    Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'third_data.id_third_data' in 'where clause'
+SELECT
+  *
+FROM
+  `third_data`
+WHERE
+  `third_data`.`id_third_data` = 1
+  AND `third_data`.`id_third_data` IS NOT NULL
+limit
+  1
+```
 
-    Route::get('/medical-entities/{entity_type_id}', [MedicalEntityController::class, 'getMedicalEntities']);
-
-    Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
-});
-
-class RegisterController extends Controller
+en teoria para ingresar al sistema debo proporcionar el email y password lo cuales se encuentran el la tabla users pero users tiene una relacion con third_data:
+```php
+class Third_Data extends Model
 {
-    public function getMedicalEntities($entity_type_id)
+    use HasFactory;
+    protected $table = 'third_data';
+    protected $primaryKey = 'third_data_id';
+    protected $guarded = [];
+    public function documentType(): BelongsTo
     {
-        $medicalEntities = Medical_Entities::where(['id_entity_type', $entity_type_id])->select('medical_entity_id', 'business_name')->get();
-        return response()->json($medicalEntities);
+        return $this->belongsTo(DocumentType::class, 'id_document_type', 'document_type_id');
     }
-    public function showRegisterForm()
+    public function gender(): BelongsTo
     {
-        $documentTypes = DocumentType::select(['document_type_id', 'id_common_attribute'])->with([
-            'commonAttribute' => function ($query) {
-                $query->select([
-                    'common_attribute_id',
-                    'name'
-                ]);
-            }
-        ])->get();
+        return $this->belongsTo(Gender::class, 'id_gender', 'gender_id');
+    }
+    public function medicalEntity(): BelongsTo
+    {
+        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'medical_entity_id');
+    }
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class, 'id_status', 'status_id');
+    }
+    public function specialty(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'id_specialty', 'specialty_id');
+    }
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'id_third_data', 'id');
+    }
+}
+class User extends Authenticatable
+{
+    use HasRoles;
+    use HasApiTokens, HasFactory, Notifiable;
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+    protected $guarded = [];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+    public function thirdData(): HasOne
+    {
+        return $this->hasOne(Third_Data::class, 'id_third_data', 'id');
+    }
+    public function patientAppointments(): HasMany
+    {
+        return $this->hasMany(Appointments::class, 'id_patient', 'id');
+    }
+    public function doctorAppointments(): HasMany
+    {
+        return $this->hasMany(Appointments::class, 'id_doctor', 'id');
+    }
+}
 
-        $medicalEntitiesTypes = EntityType::select(['entity_type_id', 'id_common_attribute'])->with([
-            'commonAttribute' => function ($query) {
-                $query->select([
-                    'common_attribute_id',
-                    'name'
-                ]);
-            }
-        ])->get();
+Schema::create('third_data', function (Blueprint $table) {
+            $table->unsignedSmallInteger('third_data_id', true);
+            $table->unsignedTinyInteger('id_document_type')->nullable();
+            $table->foreign('id_document_type')->references('document_type_id')->on('document_types')->onDelete('set null');
+            $table->string('identification_number', 12)->unique();
+            $table->string('name', 30);
+            $table->string('last_name', 30);
+            $table->string('number_phone', 30)->unique();
+            $table->dateTime('birth_date');
+            $table->unsignedTinyInteger('id_gender')->nullable();
+            $table->foreign('id_gender')->references('gender_id')->on('genders')->onDelete('set null');
+            $table->string('address', 100)->nullable();
+            $table->unsignedTinyInteger('id_medical_entity')->nullable();
+            $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities')->onDelete('set null');
+            $table->unsignedTinyInteger('id_status')->default('1')->nullable();
+            $table->foreign('id_status')->references('status_id')->on('statuses')->onDelete('set null');
+            $table->unsignedTinyInteger('id_specialty')->nullable();
+            $table->foreign('id_specialty')->references('specialty_id')->on('specialties')->onDelete('set null');
+            $table->timestamps();
+        });
+Schema::create('users', function (Blueprint $table) {
+            $table->unsignedSmallInteger('id', true);
+            $table->unsignedSmallInteger('id_third_data')->nullable();
+            $table->foreign('id_third_data')->references('third_data_id')->on('third_data');
+            $table->string('email', 100);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+```
 
-        $medicalEntities = Medical_Entities::select('medical_entity_id', 'business_name')->where(['id_status' => 1])->get();
-        // $genders = Gender::pluck('name', 'detail_id');
-        return view('auth.register', compact(['documentTypes', 'medicalEntitiesTypes', 'medicalEntities']));
+este es el controlador:
+```php
+class LoginController extends Controller
+{
+    use AuthenticatesUsers;
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->thirdData && $user->thirdData->id_status != 1) {
+            Auth::logout();
+            return redirect()->route('login')->with('error', 'No tienes permiso para acceder.');
+        }
+        return redirect()->intended($this->redirectPath());
+    }
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
     }
 }
 ```
-
 
 // $medicalEntitiesTypes = EntityType::select(['entity_type_id', 'id_common_attribute'])->with([
         //     'commonAttribute' => function ($query) {
@@ -51,104 +134,3 @@ class RegisterController extends Controller
         //         ]);
         //     }
         // ])->get();
-
-{{-- Tipo de entidad --}}
-                                {{-- <div class="form-group">
-                                    <label for="id_medical_entity">Entidad Médica</label>
-                                    <select name="id_medical_entity" class="form-control" required>
-                                        @forelse ($medicalEntitiesTypes as $medicalEntityType)
-                                            <option value="{{ $medicalEntityType->entity_type_id }}">
-                                                {{ $medicalEntityType->commonAttribute->name }}
-                                            </option>
-                                        @empty
-                                            <option value="">No data found</option>
-                                        @endforelse
-                                    </select>
-                                </div> --}}
-
-
-Arreglar formulario de registro
-
-<div class="row g-3">
-
-                    {{-- product code --}}
-                    <div class="col-md-6">
-                        <input type="number" name="code" id="code" class="form-control" placeholder="Código"
-                            value="{{ old('code') }}">
-                        @error('code')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    {{-- product name --}}
-                    <div class="col-md-6">
-                        <input type="text" name="name" id="code" class="form-control" placeholder="Nómbre"
-                            value="{{ old('name') }}">
-                        @error('name')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    {{-- product description --}}
-                    <div class="col-md-6">
-                        <textarea name="description" class="form-control" id="#description" cols="10" rows="3"
-                            placeholder="Descripción"></textarea>
-                        @error('description')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    {{-- product category --}}
-                    <div class="col-md-6">
-                        <label for="id_category" class="form-label">Seleccionar categoria:</label>
-                        <select title="Seleccionar" class="form-select" name="id_category">
-                            @foreach ($categories as $category)
-                                @if ($category->categoryCommonAtribbute && $category->categoryCommonAtribbute->id_status == 1)
-                                    <option value="{{ $category->category_id }}"
-                                        {{ old('id_category') == $category->category_id ? 'selected' : '' }}>
-                                        {{ $category->categoryCommonAtribbute->name }}
-                                    </option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- product brand --}}
-                    <div class="col-md-6">
-                        <label for="id_brand" class="form-label">Seleccionar marca:</label>
-                        <select class="form-select" name="id_brand">
-                            @foreach ($brands as $brand)
-                                @if ($brand->brandCommonAtribbute && $brand->brandCommonAtribbute->id_status == 1)
-                                    <option
-                                        value="{{ $brand->brand_id }} {{ old('id_brand') == $brand->brand_id ? 'selected' : '' }}">
-                                        {{ $brand->brandCommonAtribbute->name }}
-                                    </option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- product ovedue --}}
-                    <div class="col-md-6">
-                        <label for="due_date" class="form-label">Fecha de vencimiento:</label>
-                        <input type="date" name="due_date" id="due_date" class="form-control"
-                            value="{{ old('due_date', date('Y-m-d')) }}" min="{{ date('Y-m-d') }}">
-                        @error('due_date')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    {{-- product image --}}
-                    <div class="col-md-6">
-                        <label for="image_path" class="form-label">Fecha de vencimiento:</label>
-                        <input type="file" name="image_path" id="image_path" class="form-control" accept="image/*"
-                            value="{{ old('name') }}">
-                        @error('image_path')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </div>

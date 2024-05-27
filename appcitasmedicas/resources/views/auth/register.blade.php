@@ -14,19 +14,6 @@
                     <div class="card-header bg-transparent pb-5">
                     </div>
                     <div class="card-body px-lg-5 py-lg-5">
-                        {{-- Alerts --}}
-                        {{-- @if ($errors->any())
-                            <div class="text-center text-muted mb-2">
-                                <h3>Se encontro el siguiente error:</h3>
-                            </div>
-                            <div class="alert alert-danger mb-4" role="alert">
-                                {{ $errors->first() }}
-                            </div>
-                        @else
-                            <div class="text-center text-muted mb-4">
-                                <h2>Ingresa tu datos</h2>
-                            </div>
-                        @endif --}}
                         {{-- form register --}}
                         <div class="container">
                             <h1>Formulario de Datos Personales</h1>

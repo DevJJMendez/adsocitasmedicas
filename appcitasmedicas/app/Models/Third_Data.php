@@ -10,7 +10,7 @@ class Third_Data extends Model
 {
     use HasFactory;
     protected $table = 'third_data';
-    protected $primaryKey = 'data_id';
+    protected $primaryKey = 'third_data_id';
     protected $guarded = [];
     public function documentType(): BelongsTo
     {
@@ -34,6 +34,6 @@ class Third_Data extends Model
     }
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'id_third_data', 'id');
+        return $this->hasOne(User::class, 'id_third_data', 'third_data_id');
     }
 }
