@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HeaderSeeder::class,
             DetailSeeder::class,
-            Rolseeder::class,
+            RolSeeder::class,
             SpecialtySeeder::class,
             Medical_Entity_Seeder::class,
             ThirdDataSeeder::class,
