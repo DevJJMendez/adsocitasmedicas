@@ -1,16 +1,18 @@
-Estoy presentando el siguiente problema a la hora de logearme al sistema
+Tengo un problema con esta condicion
 ```php
-SQLSTATE[42S22]: Column not found: 1054 Unknown column 'third_data.id_third_data' in 'where clause'
-SELECT
-  *
-FROM
-  `third_data`
-WHERE
-  `third_data`.`id_third_data` = 1
-  AND `third_data`.`id_third_data` IS NOT NULL
-limit
-  1
+<td>
+@if ($medicalEntity->id_status = 1)
+    <span class="fw-bolder rounded bg-success text-white p-2">
+        {{ $medicalEntity->status->commonAttribute->name }}
+    </span>
+@else()
+    <span class="fw-bolder rounded bg-error text-white p-2">
+        {{ $medicalEntity->status->commonAttribute->name }}
+    </span>
+@endif
+</td>
 ```
+Por algun motivo las $medicalEntity->id_status = 2 las muestra en bg-success
 
 en teoria para ingresar al sistema debo proporcionar el email y password lo cuales se encuentran el la tabla users pero users tiene una relacion con third_data:
 ```php

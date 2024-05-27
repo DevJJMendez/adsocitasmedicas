@@ -8,6 +8,7 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
+use App\Models\Medical_Entities;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,17 +19,9 @@ Auth::routes();
 Route::middleware(['auth', 'check_user_status'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
-//Users Route
+
 Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
-// Medical Entity Route
-Route::group(['prefix' => 'medical-entities'], function () {
-    Route::get('', [MedicalEntityController::class, 'index'])->name('medical.entities.view');
-    Route::get('/create', [MedicalEntityController::class, 'create'])->name('create.view');
-    Route::post('createnewentity', [MedicalEntityController::class, 'store'])->name('create');
-    Route::get('{id}/edit', [MedicalEntityController::class, 'edit'])->name('edit.view');
-    Route::put('update/{medicalEntity}', [MedicalEntityController::class, 'update'])->name('update');
-    Route::put('delete/{medicalEntity}', [MedicalEntityController::class, 'delete'])->name('delete');
-});
+Route::resource('medical-entities', MedicalEntityController::class);
 
 // medicos route
 Route::group(['prefix' => 'medicos'], function () {

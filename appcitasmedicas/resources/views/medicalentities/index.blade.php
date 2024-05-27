@@ -7,7 +7,7 @@
                     <h3 class="mb-0">Entidades Médicas</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('create.view') }}" class="btn btn-sm btn-primary">Agregar nueva entidad
+                    <a href="{{ route('medical-entities.create') }}" class="btn btn-sm btn-primary">Agregar nueva entidad
                         médica</a>
                 </div>
             </div>
@@ -17,62 +17,72 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Nit</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Email</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telefono</th>
                         <th scope="col">Dirección</th>
+                        <th scope="col">Tipo</th>
                         <th scope="col">Estado</th>
 
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr>
-                            @foreach ($medicalEntity as $medicalEntities)
+                        @foreach ($medicalEntities as $medicalEntity)
                             <td>
-                                {{ $medicalEntities->nit }}
+                                {{ $medicalEntity->nit }}
                             </td>
                             <td>
-                                {{ $medicalEntities->number_phone }}
+                                {{ $medicalEntity->business_name }}
                             </td>
                             <td>
-                                {{ $medicalEntities->medicalentitytype ? $medicalEntities->medicalentitytype->name : 'N/A' }}
+                                {{ $medicalEntity->email }}
                             </td>
                             <td>
-                                {{ $medicalEntities->email }}
+                                {{ $medicalEntity->number_phone }}
                             </td>
                             <td>
-                                {{ $medicalEntities->business_name }}
+                                {{ $medicalEntity->address }}
                             </td>
                             <td>
-                                {{ $medicalEntities->address }}
+                                @if ($medicalEntity->id_entity_type == 1)
+                                    {{ $medicalEntity->entityType->commonAttribute->name }}
+                                @else
+                                    {{ $medicalEntity->entityType->commonAttribute->name }}
+                                @endif
                             </td>
                             <td>
-                                {{ $medicalEntities->statutype ? $medicalEntities->statutype->name : 'N/A' }}
+                                @if ($medicalEntity->id_status == 1)
+                                    <span class="fw-bolder rounded bg-success text-white p-2">
+                                        {{ $medicalEntity->status->commonAttribute->name }}
+                                    </span>
+                                @else
+                                    <span class="fw-bolder rounded bg-danger text-white p-2">
+                                        {{ $medicalEntity->status->commonAttribute->name }}
+                                    </span>
+                                @endif
                             </td>
                             <td>
-
                                 <form
-                                    action="{{ route('delete', ['medicalEntity' => $medicalEntities->medical_entity_id]) }}"
+                                    action="{{ route('medical-entities.destroy', ['medical_entity' => $medicalEntity->medical_entity_id]) }}"
                                     method="POST">
                                     @csrf
-                                    @method('PUT')
-                                    <a href="{{ route('edit.view', $medicalEntities->medical_entity_id) }}"
+                                    @method('DELETE')
+                                    <a href="{{ route('medical-entities.edit', ['medical_entity' => $medicalEntity->medical_entity_id]) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar
                                     </a>
                                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                 </form>
                             </td>
-                        </tr>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
         <div class="card-body">
-            {{ $medicalEntity->links() }}
+            {{ $medicalEntities->links() }}
         </div>
     </div>
 @endsection

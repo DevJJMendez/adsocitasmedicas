@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -119,7 +120,7 @@
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
                                     <span class="mb-0 text-sm  font-weight-bold" style="text-transform: uppercase">
-                                        {{ auth()->user()->thirdDataUser->first_name }}
+                                        {{ auth()->user()->thirdData->name }}
                                     </span>
                                     <br>
                                 </div>

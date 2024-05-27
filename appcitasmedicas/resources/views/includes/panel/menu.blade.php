@@ -45,7 +45,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('medical.entities.view') }}">
+            <a class="nav-link " href="{{ route('medical-entities.index') }}">
                 <i class="fas fa-bed text-warning"></i> Entidades Médicas
             </a>
         </li>

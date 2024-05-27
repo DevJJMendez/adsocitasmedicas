@@ -11,27 +11,29 @@ use Illuminate\Support\Str;
                     <h3 class="mb-0">Actualizar entidad médica</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('medical.entities.view') }}" class="btn btn-sm btn-success">
+                    <a href="{{ route('medical-entities.index') }}" class="btn btn-sm btn-success">
                         <i class="fas fa-chevron-left"> Regresar</i>
                     </a>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('update', ['medicalEntity' => $entity->medical_entity_id]) }}" method="POST">
+            <form action="{{ route('medical-entities.update', ['medical_entity' => $medical_entity->medical_entity_id]) }}"
+                method="POST">
                 @csrf
                 @method('PUT')
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="entity_type_id">Tipo de entidad médica</label>
-                        @error('entity_type_id')
+                        <label class="input-group-text" for="id_entity_type">Tipo de entidad médica</label>
+                        @error('id_entity_type')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <select class="custom-select" name="entity_type_id">
-                        @foreach ($entityType as $detail_id => $name)
-                            <option value="{{ $detail_id }}" @if ($detail_id == $entity->entity_type_id) selected @endif>
-                                {{ $name }}</option>
+                    <select class="custom-select" name="id_entity_type">
+                        @foreach ($entityType as $entityTypes)
+                            <option value="{{ $entityTypes->entity_type_id }}"
+                                @if ($entityTypes->entity_type_id == $entityTypes->entity_type_id) selected @endif>
+                                {{ $entityTypes->commonAttribute->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -40,44 +42,47 @@ use Illuminate\Support\Str;
                     @error('business_name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="business_name" value="{{ $entity->business_name }}">
+                    <input class="form-control" type="text" name="business_name"
+                        value="{{ $entityTypes->business_name }}">
                 </div>
                 <div class="form-group">
                     <label for="nit">NIT</label>
                     @error('nit')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="nit" value="{{ $entity->nit }}" maxlength="9">
+                    <input class="form-control" type="text" name="nit" value="{{ $entityTypes->nit }}"
+                        maxlength="9">
                 </div>
                 <div class="form-group">
                     <label for="number_phone">Número de contacto</label>
                     @error('number_phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="number" name="number_phone" value="{{ $entity->number_phone }}">
+                    <input class="form-control" type="number" name="number_phone"
+                        value="{{ $entityTypes->number_phone }}">
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="email" value="{{ $entity->email }}">
+                    <input class="form-control" type="text" name="email" value="{{ $entityTypes->email }}">
                 </div>
                 <div class="form-group">
                     <label for="address">Dirección</label>
                     @error('address')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="text" name="address" value="{{ $entity->address }}">
+                    <input class="form-control" type="text" name="address" value="{{ $entityTypes->address }}">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="statu_type_id">Estado</label>
+                        <label class="input-group-text" for="id_status">Estado</label>
                     </div>
-                    <select class="custom-select" name="statu_type_id">
-                        @foreach ($statuType as $detail_id => $name)
-                            <option value="{{ $detail_id }}" @if ($detail_id == $entity->statu_type_id) selected @endif>
-                                {{ $name }}</option>
+                    <select class="custom-select" name="id_status">
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->status_id }}" @if ($status->status_id == $status->status_id) selected @endif>
+                                {{ $status->commonAttribute->name }}</option>
                         @endforeach
                     </select>
                 </div>
