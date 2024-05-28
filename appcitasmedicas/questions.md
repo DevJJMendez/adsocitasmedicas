@@ -1,63 +1,52 @@
-Estoy teniendo un problema entre los modelos Third_Data y Medical_Entities, te mostrare las migraciones y modelos y luego te mostrare el problema
+Necesito validar el campo de fecha de nacimiento en base a otro campo el cual es el tipo de documento:
+
+por ejemplo si la eleccion es la primera (1) la fecha que ingresen no debe ser inferior a 2006
+
 ```php
-Schema::create('third_data', function (Blueprint $table) {
-            $table->unsignedSmallInteger('third_data_id', true);
-            $table->unsignedTinyInteger('id_document_type')->nullable();
-            $table->foreign('id_document_type')->references('document_type_id')->on('document_types')->onDelete('set null');
-            $table->string('identification_number', 12)->unique();
-            $table->string('name', 30);
-            $table->string('last_name', 30);
-            $table->string('number_phone', 30)->unique();
-            $table->dateTime('birth_date');
-            $table->unsignedTinyInteger('id_gender')->nullable();
-            $table->foreign('id_gender')->references('gender_id')->on('genders')->onDelete('set null');
-            $table->string('address', 100)->nullable();
-            $table->unsignedTinyInteger('id_medical_entity')->nullable();
-            $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities')->onDelete('set null');
-            $table->unsignedTinyInteger('id_status')->default('1')->nullable();
-            $table->foreign('id_status')->references('status_id')->on('statuses')->onDelete('set null');
-            $table->unsignedTinyInteger('id_specialty')->nullable();
-            $table->foreign('id_specialty')->references('specialty_id')->on('specialties')->onDelete('set null');
-            $table->timestamps();
-        });
-class Third_Data extends Model
+class PacienteRequest extends FormRequest
 {
-    use HasFactory;
-    protected $table = 'third_data';
-    protected $primaryKey = 'third_data_id';
-    protected $guarded = [];
+    public function authorize(): bool
+    {
+        return true;
+    }
+    public function rules(): array
+    {
+        return [
+            'birth_date' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'birth_date.required' => 'Debe ingresar una fecha de nacimiento',
+        ];
+    }
+}
 
-    public function medicalEntity(): BelongsTo
-    {
-        return $this->belongsTo(Medical_Entities::class, 'id_medical_entity', 'medical_entity_id');
-    }
-}
-Schema::create('medical_entities', function (Blueprint $table) {
-            $table->unsignedTinyInteger('medical_entity_id', true);
-            $table->string('business_name', 100);
-            $table->string('nit', 9);
-            $table->string('number_phone', 30);
-            $table->string('email', 100);
-            $table->unsignedTinyInteger('id_entity_type')->nullable();
-            $table->foreign('id_entity_type')->references('entity_type_id')->on('entity_types')->onDelete('set null');
-            $table->string('address', 50);
-            $table->unsignedTinyInteger('id_status')->default('1')->nullable();
-            $table->foreign('id_status')->references('status_id')->on('statuses')->onDelete('set null');
-            $table->timestamps();
-        });
-class Medical_Entities extends Model
-{
-    use HasFactory;
-    protected $table = 'medical_entities';
-    protected $primaryKey = 'medical_entity_id';
-    protected $guarded = [];
-    public function thirdData(): HasMany
-    {
-        return $this->hasMany(Third_Data::class, 'id_medical_entity', 'medical_entity_id');
-    }
-}
+{{-- tipo de documento --}}
+                    <div class="form-group col-md-6">
+                        <label for="id_document_type">Tipo de Documento</label>
+                        <select name="id_document_type" class="form-control" required>
+                            @forelse ($documentTypes as $documentType)
+                                <option value="{{ $documentType->document_type_id }}">
+                                    {{ $documentType->commonAttribute->name }}
+                                </option>
+                            @empty
+                                <option value="">No data found</option>
+                            @endforelse
+                        </select>
+                    </div>
+
+{{-- fecha de nacimiento --}}
+                    <div class="form-group col-md-6">
+                        <label for="birth_date">Fecha de Nacimiento</label>
+                        <input type="date" id="birth_date" name="birth_date" class="form-control"
+                            value="{{ old('birth_date') }}">
+                        @error('birth_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
 ```
+¿como puedo lograrlo?
 
-Segun el analisis que hice, era el siguiente un registro de Third_Data podia tener un Medical_Entities y Medical_Entities podria estar en muchos registros de Third_Data, por lo que opte por una relacion de uno a muchos, pero estuve haciendo pruebas y la relacion thirdData->medicalEntity me retorna null
-
-Saca tus conclusiones y ayudame a arreglar el error
+ademas, segun mi analisis habria que aplicar un solucion escalable ya que no es muy bueno tener que estar cada año cambiando la fecha  

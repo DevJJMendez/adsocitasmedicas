@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRequest;
 use App\Models\Document_Type_View;
+use App\Models\DocumentType;
+use App\Models\Gender;
 use App\Models\Gender_View;
 use App\Models\Medical_Entities;
 use App\Models\Third_Data;
@@ -50,39 +52,36 @@ class PacienteController extends Controller
             'thirdData.medicalEntity.EntityType.commonAttribute' => function ($query) {
                 $query->select('common_attribute_id', 'name');
             },
-        ])->select('id', 'email', 'id_third_data')->paginate(10);
+        ])->select('id', 'email', 'id_third_data')->latest()->paginate(10);
         return view('pacientes.index', compact('patients'));
     }
     public function create()
     {
-        // $documentType = Document_Type_View::pluck('name', 'detail_id');
-        // $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
-        // $genderType = Gender_View::pluck('name', 'detail_id');
-        // return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType', ));
+        $medicalEntities = Medical_Entities::where('id_status', 1)->select('medical_entity_id', 'business_name')->get();
+        $documentTypes = DocumentType::select('document_type_id', 'id_common_attribute')->with(['commonAttribute'])->get();
+        $genderTypes = Gender::select('gender_id', 'id_common_attribute')->with(['commonAttribute'])->get();
+        return view('pacientes.create', compact(['medicalEntities', 'documentTypes', 'genderTypes']));
     }
     public function store(PacienteRequest $pacienteRequest)
     {
-
         $thirdData = Third_Data::create([
-            'document_type_id' => $pacienteRequest->document_type_id,
+            'id_document_type' => $pacienteRequest->id_document_type,
             'identification_number' => $pacienteRequest->identification_number,
-            'first_name' => $pacienteRequest->first_name,
-            'second_name' => $pacienteRequest->second_name,
-            'sur_name' => $pacienteRequest->sur_name,
-            'second_sur_name' => $pacienteRequest->second_sur_name,
+            'name' => $pacienteRequest->name,
+            'last_name' => $pacienteRequest->last_name,
             'number_phone' => $pacienteRequest->number_phone,
             'birth_date' => $pacienteRequest->birth_date,
-            'gender_type_id' => $pacienteRequest->gender_type_id,
+            'id_gender' => $pacienteRequest->id_gender,
             'address' => $pacienteRequest->address,
             'id_medical_entity' => $pacienteRequest->id_medical_entity
         ]);
         User::create([
-            'third_data_id' => $thirdData->data_id,
+            'id_third_data' => $thirdData->third_data_id,
             'email' => $pacienteRequest->email,
             'password' => bcrypt($pacienteRequest->password),
         ])->assignRole('Paciente');
         notify()->success('Paciente agregado correctamente', 'Agregar Paciente');
-        return redirect()->route('paciente.view');
+        return redirect()->route('patients.index');
     }
     public function edit($id)
     {
@@ -103,13 +102,13 @@ class PacienteController extends Controller
         ]);
         $tercero->update([
             'identification_number' => $pacienteRequest->identification_number,
-            'first_name' => $pacienteRequest->first_name,
-            'second_name' => $pacienteRequest->second_name,
+            'name' => $pacienteRequest->name,
+            'last_name' => $pacienteRequest->last_name,
             'sur_name' => $pacienteRequest->sur_name,
             'second_sur_name' => $pacienteRequest->second_sur_name,
             'number_phone' => $pacienteRequest->number_phone,
             'birth_date' => $pacienteRequest->birth_date,
-            'gender_type_id' => $pacienteRequest->gender_type_id,
+            'id_gender' => $pacienteRequest->id_gender,
             'address' => $pacienteRequest->address,
             'id_medical_entity' => $pacienteRequest->id_medical_entity
         ]);

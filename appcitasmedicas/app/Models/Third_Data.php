@@ -11,7 +11,22 @@ class Third_Data extends Model
     use HasFactory;
     protected $table = 'third_data';
     protected $primaryKey = 'third_data_id';
-    protected $guarded = [];
+    protected $fillable = [
+        'third_data_id',
+        'id_document_type',
+        'identification_number',
+        'name',
+        'last_name',
+        'number_phone',
+        'birth_date',
+        'address',
+        'id_gender',
+        'id_medical_entity',
+        'id_status',
+        'id_specialty',
+        'created_at',
+        'updated_at',
+    ];
     public function documentType(): BelongsTo
     {
         return $this->belongsTo(DocumentType::class, 'id_document_type', 'document_type_id');

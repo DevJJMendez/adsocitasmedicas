@@ -51,13 +51,22 @@
                                 {{ $patient->thirdData->medicalEntity ? $patient->thirdData->medicalEntity->EntityType->commonAttribute->name : 'null' }}
                             </td>
                             <td>
-                                {{ $patient->thirdData->status->commonAttribute->name }}
+                                @if ($patient->thirdData->id_status == 1)
+                                    <span class="fw-bolder rounded bg-success text-white p-2">
+                                        {{ $patient->thirdData->status->commonAttribute->name }}
+                                    </span>
+                                @else
+                                    <span class="fw-bolder rounded bg-danger text-white p-2">
+                                        {{ $patient->thirdData->status->commonAttribute->name }}
+                                    </span>
+                                @endif
                             </td>
                             <td>
-                                <form action="{{ route('patients.destroy', ['patient' => $patient->id]) }}" method="POST">
+                                <form action="{{ route('patients.destroy', ['patient' => $patient->third_data_id]) }}"
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('patients.edit', ['patient' => $patient->id]) }}"
+                                    <a href="{{ route('patients.edit', ['patient' => $patient->third_data_id]) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar
                                     </a>
