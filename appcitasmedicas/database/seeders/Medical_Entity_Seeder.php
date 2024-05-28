@@ -13,159 +13,143 @@ class Medical_Entity_Seeder extends Seeder
         Medical_Entities::create([
             'business_name' => 'HOSPITAL SAN MARCO',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '01800083703',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'ANASWAYUU',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000962780',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'ASOCIACIÓN INDÍGENA DEL CAUCA',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '01800093095',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'ASOCIACION MUTUAL',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000116882',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
         Medical_Entities::create([
             'business_name' => 'COMPENSAR',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '01800099202',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'SANITAS',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000117636',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'SERVICIO OCCIDENTAL DE SALUD',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000938777',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'HOSPITAL SURAMERICANA',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000519519',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'FUNDACIÓN SALUD MIA',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000980001',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'HOSPITAL NUEVO HORIZONTE',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000930100',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Barranquilla',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'SALUD TOTAL',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '01800018524',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Carrera 100a No. 63A-92',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
         Medical_Entities::create([
             'business_name' => 'Fundacion Santa Fe',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000765874',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Cr 65 11-50',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'Hospital Pablo Tobon',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '0180006547830',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Carrera 16 No. 16-31',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'Clinica Los Andes',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000234563',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Calle 1 # 4-66-727',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'Clinica Colsanitas',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '0180009874566',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Troncal No. 22B 105',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
 
         Medical_Entities::create([
             'business_name' => 'Hospital San Jose',
             'nit' => fake()->numberBetween(100000000, 999999999),
-            'number_phone' => '018000625341',
+            'number_phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'id_entity_type' => fake()->numberBetween(1, 2),
-            'address' => 'Avenida 68 # 49A-47',
-            'id_status' => 1,
+            'address' => fake()->streetAddress(),
         ]);
     }
 }

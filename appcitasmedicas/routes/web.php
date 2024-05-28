@@ -22,6 +22,7 @@ Route::middleware(['auth', 'check_user_status'])->group(function () {
 
 Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
 Route::resource('medical-entities', MedicalEntityController::class);
+Route::resource('patients', PacienteController::class);
 
 // medicos route
 Route::group(['prefix' => 'medicos'], function () {
@@ -33,15 +34,6 @@ Route::group(['prefix' => 'medicos'], function () {
     Route::delete('/deleteMedico/{medico}', [MedicoController::class, 'deleteMedico'])->name('delete.medico');
 });
 
-// pacientes route
-Route::group(['prefix' => 'pacientes'], function () {
-    Route::get('', [PacienteController::class, 'index'])->name('paciente.view');
-    Route::get('/create', [PacienteController::class, 'create'])->name('create.paciente');
-    Route::post('/createNewPaciente', [PacienteController::class, 'createNewPaciente'])->name('create.new.paciente');
-    Route::get('/editPaciente/{paciente}', [PacienteController::class, 'edit'])->name('edit.paciente.view');
-    Route::put('/updatePaciente/{paciente}', [PacienteController::class, 'updatePaciente'])->name('update.paciente');
-    Route::delete('/deletePaciente/{paciente}', [PacienteController::class, 'deletePaciente'])->name('delete.paciente');
-});
 
 //roles route
 Route::resource('roles', RoleController::class)->names('admin.roles');

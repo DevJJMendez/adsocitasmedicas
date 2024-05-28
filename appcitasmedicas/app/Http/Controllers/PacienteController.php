@@ -19,20 +19,48 @@ class PacienteController extends Controller
     }
     public function index()
     {
-        $pacienteRol = Role::where('name', 'Paciente')->first();
-        $pacientes = $pacienteRol->users()->whereHas('thirdDataUser', function ($query) {
-            $query->where('statu_type_id', 1);
-        })->paginate(10);
-        return view('pacientes.index', compact('pacientes'));
+        $patients = User::role(['Paciente'])->with([
+            'thirdData' => function ($query) {
+                $query->select('third_data_id', 'id_document_type', 'identification_number', 'name', 'last_name', 'number_phone', 'birth_date', 'id_gender', 'address', 'id_medical_entity', 'id_status');
+            },
+            'thirdData.documentType' => function ($query) {
+                $query->select('document_type_id', 'id_common_attribute');
+            },
+            'thirdData.documentType.commonAttribute' => function ($query) {
+                $query->select('common_attribute_id', 'name');
+            },
+            'thirdData.status' => function ($query) {
+                $query->select('status_id', 'id_common_attribute');
+            },
+            'thirdData.status.commonAttribute' => function ($query) {
+                $query->select('common_attribute_id', 'name');
+            },
+            'thirdData.gender' => function ($query) {
+                $query->select('gender_id', 'id_common_attribute');
+            },
+            'thirdData.gender.commonAttribute' => function ($query) {
+                $query->select('common_attribute_id', 'name');
+            },
+            'thirdData.medicalEntity' => function ($query) {
+                $query->select('medical_entity_id', 'business_name', 'id_entity_type');
+            },
+            'thirdData.medicalEntity.EntityType' => function ($query) {
+                $query->select('entity_type_id', 'id_common_attribute');
+            },
+            'thirdData.medicalEntity.EntityType.commonAttribute' => function ($query) {
+                $query->select('common_attribute_id', 'name');
+            },
+        ])->select('id', 'email', 'id_third_data')->paginate(10);
+        return view('pacientes.index', compact('patients'));
     }
     public function create()
     {
-        $documentType = Document_Type_View::pluck('name', 'detail_id');
-        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
-        $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType', ));
+        // $documentType = Document_Type_View::pluck('name', 'detail_id');
+        // $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
+        // $genderType = Gender_View::pluck('name', 'detail_id');
+        // return view('pacientes.create', compact('documentType', 'medicalEntity', 'genderType', ));
     }
-    public function createNewPaciente(PacienteRequest $pacienteRequest)
+    public function store(PacienteRequest $pacienteRequest)
     {
 
         $thirdData = Third_Data::create([
@@ -58,15 +86,15 @@ class PacienteController extends Controller
     }
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $tercero = $user->thirdDataUser;
+        // $user = User::findOrFail($id);
+        // $tercero = $user->thirdDataUser;
 
-        $documentType = Document_Type_View::pluck('name', 'detail_id');
-        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
-        $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('pacientes.edit', compact('user', 'tercero', 'documentType', 'medicalEntity', 'genderType'));
+        // $documentType = Document_Type_View::pluck('name', 'detail_id');
+        // $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
+        // $genderType = Gender_View::pluck('name', 'detail_id');
+        // return view('pacientes.edit', compact('user', 'tercero', 'documentType', 'medicalEntity', 'genderType'));
     }
-    public function updatePaciente($id, PacienteRequest $pacienteRequest)
+    public function update($id, PacienteRequest $pacienteRequest)
     {
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;
@@ -88,7 +116,7 @@ class PacienteController extends Controller
         notify()->success('Paciente editado correctamente', 'Editar Paciente');
         return redirect()->route('paciente.view');
     }
-    public function deletePaciente($id)
+    public function destroy($id)
     {
         $user = User::findOrFail($id);
         $tercero = $user->thirdDataUser;

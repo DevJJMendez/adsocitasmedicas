@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
             EntityTypeSeeder::class,
             DocumentTypeSeeder::class,
             Medical_Entity_Seeder::class,
-            ThirdDataSeeder::class,
+            AdminSeeder::class,
+            SpecialtySeeder::class,
+            MedicoSeeder::class,
+            PacienteSeeder::class,
         ]);
     }
 }

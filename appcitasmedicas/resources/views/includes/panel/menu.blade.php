@@ -39,7 +39,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('paciente.view') }}">
+            <a class="nav-link " href="{{ route('patients.index') }}">
                 <i class="fas fa-bed text-warning"></i> Pacientes
             </a>
         </li>
