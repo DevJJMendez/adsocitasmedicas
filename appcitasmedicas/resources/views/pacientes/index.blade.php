@@ -32,6 +32,7 @@
                     @forelse ($patients as $patient)
                         <tr>
                             <td colspan="2">
+                                {{ $patient->thirdData->third_data_id }}
                                 {{ $patient->thirdData->name }}
                                 {{ $patient->thirdData->last_name }}
                             </td>
@@ -62,11 +63,12 @@
                                 @endif
                             </td>
                             <td>
-                                <form action="{{ route('patients.destroy', ['patient' => $patient->third_data_id]) }}"
+                                <form
+                                    action="{{ route('patients.destroy', ['patient' => $patient->thirdData->third_data_id]) }}"
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('patients.edit', ['patient' => $patient->third_data_id]) }}"
+                                    <a href="{{ route('patients.edit', ['patient' => $patient->thirdData->third_data_id]) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar
                                     </a>

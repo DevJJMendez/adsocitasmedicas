@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRequest;
+use App\Http\Requests\PatientUpdateRequest;
 use App\Models\Document_Type_View;
 use App\Models\DocumentType;
 use App\Models\Gender;
@@ -83,34 +84,29 @@ class PacienteController extends Controller
         notify()->success('Paciente agregado correctamente', 'Agregar Paciente');
         return redirect()->route('patients.index');
     }
-    public function edit($id)
+    public function edit(Third_Data $patient)
     {
-        // $user = User::findOrFail($id);
-        // $tercero = $user->thirdDataUser;
-
-        // $documentType = Document_Type_View::pluck('name', 'detail_id');
-        // $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
-        // $genderType = Gender_View::pluck('name', 'detail_id');
-        // return view('pacientes.edit', compact('user', 'tercero', 'documentType', 'medicalEntity', 'genderType'));
+        $medicalEntities = Medical_Entities::where('id_status', 1)->select('medical_entity_id', 'business_name')->get();
+        $documentTypes = DocumentType::select('document_type_id', 'id_common_attribute')->with(['commonAttribute'])->get();
+        $genderTypes = Gender::select('gender_id', 'id_common_attribute')->with(['commonAttribute'])->get();
+        return view('pacientes.edit', compact(['patient', 'medicalEntities', 'documentTypes', 'genderTypes']));
     }
-    public function update($id, PacienteRequest $pacienteRequest)
+    public function update(Third_Data $patient, PatientUpdateRequest $patientUpdateRequest)
     {
-        $user = User::findOrFail($id);
-        $tercero = $user->thirdDataUser;
-        $user->update([
-            'email' => $pacienteRequest->email,
+        $patient->update([
+            'identification_number' => $patientUpdateRequest->identification_number,
+            'name' => $patientUpdateRequest->name,
+            'last_name' => $patientUpdateRequest->last_name,
+            'number_phone' => $patientUpdateRequest->number_phone,
+            'birth_date' => $patientUpdateRequest->birth_date,
+            'id_gender' => $patientUpdateRequest->id_gender,
+            'address' => $patientUpdateRequest->address,
+            'id_medical_entity' => $patientUpdateRequest->id_medical_entity,
+            'id_status' => $patientUpdateRequest->id_status
         ]);
-        $tercero->update([
-            'identification_number' => $pacienteRequest->identification_number,
-            'name' => $pacienteRequest->name,
-            'last_name' => $pacienteRequest->last_name,
-            'sur_name' => $pacienteRequest->sur_name,
-            'second_sur_name' => $pacienteRequest->second_sur_name,
-            'number_phone' => $pacienteRequest->number_phone,
-            'birth_date' => $pacienteRequest->birth_date,
-            'id_gender' => $pacienteRequest->id_gender,
-            'address' => $pacienteRequest->address,
-            'id_medical_entity' => $pacienteRequest->id_medical_entity
+        $patient->user()->update([
+            'email' => $patientUpdateRequest->email,
+            'password' => bcrypt($patientUpdateRequest->password),
         ]);
         notify()->success('Paciente editado correctamente', 'Editar Paciente');
         return redirect()->route('paciente.view');
