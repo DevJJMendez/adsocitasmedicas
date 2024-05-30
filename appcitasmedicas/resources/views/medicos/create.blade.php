@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('create.new.medico') }}" method="POST">
+            <form action="{{ route('medicos.store') }}" method="POST">
                 @csrf
                 <div class="form-row">
                     <div class="form-group  col-md-6">
@@ -162,7 +162,7 @@ use Illuminate\Support\Str;
                         @enderror
                         <select id="id_specialty" name="id_specialty" class="form-control">
                             @forelse ($specialties as $specialtie)
-                                <option value="{{ $specialtie-> id_specialty }}">{{$specialtie-> name }}</option>
+                                <option value="{{ $specialtie->id_specialty }}">{{ $specialtie->name }}</option>
                             @empty
                                 <option value="#">No data found</option>
                             @endforelse

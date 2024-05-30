@@ -59,8 +59,9 @@ use Illuminate\Support\Str;
                     @error('number_phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="form-control" type="number" name="number_phone"
-                        value="{{ $medical_entity->number_phone }}">
+                    <input class="form-control" type="text" name="number_phone"
+                        value="{{ $medical_entity->number_phone }}"
+                        {{ old('number_phone', $medical_entity->number_phone) }}>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>

@@ -1,43 +1,24 @@
-Teniendo en cuenta este metodo, el cual aplica buenas practicas:
+Refactoriza esta consulta teniendo en cuenta lo siguiente:
+Buenas practicas, rendimiento, evitar N+1
 
 ```php
-public function update(Third_Data $patient, PatientUpdateRequest $patientUpdateRequest)
-    {
-        DB::beginTransaction();
-        try {
-            $patient->fill($patientUpdateRequest->only([
-                'id_document_type',
-                'identification_number',
-                'name',
-                'last_name',
-                'number_phone',
-                'birth_date',
-                'id_gender',
-                'address',
-                'id_medical_entity',
-                'id_status',
-            ]));
-            if ($patient->isDirty()) {
-                $patient->save();
-            }
-            $user = $patient->user;
-            if ($user) {
-                $user->fill($patientUpdateRequest->only(['email']));
-                $user->password = bcrypt($patientUpdateRequest->password);
-                if ($user->isDirty()) {
-                    $user->save();
-                }
-            }
-            DB::commit();
-            notify()->success('Paciente editado correctamente', 'Editar Paciente');
-            return redirect()->route('patients.index');
-        } catch (Exception $exception) {
-            dd($exception);
-            DB::rollBack();
-            notify()->error('Error al editar el paciente', 'Editar Paciente');
-            return redirect()->back()->withErrors(['error' => 'Error al editar el paciente: ' . $exception->getMessage()]);
-        }
-    }
+$patients = User::role(['Paciente'])
+    ->with([
+        'thirdData:id,third_data_id,id_document_type,identification_number,name,last_name,number_phone,birth_date,id_gender,address,id_medical_entity,id_status',
+        'thirdData.documentType:id,document_type_id,id_common_attribute',
+        'thirdData.documentType.commonAttribute:id,common_attribute_id,name',
+        'thirdData.status:id,status_id,id_common_attribute',
+        'thirdData.status.commonAttribute:id,common_attribute_id,name',
+        'thirdData.gender:id,gender_id,id_common_attribute',
+        'thirdData.gender.commonAttribute:id,common_attribute_id,name',
+        'thirdData.medicalEntity:id,medical_entity_id,business_name,id_entity_type',
+        'thirdData.medicalEntity.EntityType:id,entity_type_id,id_common_attribute',
+        'thirdData.medicalEntity.EntityType.commonAttribute:id,common_attribute_id,name',
+    ])
+    ->select('id', 'email', 'id_third_data')
+    ->latest()
+    ->paginate(10);
+
 ```
 Crea el metodo destroy
 

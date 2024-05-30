@@ -19,19 +19,24 @@ class MedicoController extends Controller
     }
     public function index()
     {
-        $medicoRol = Role::where('name', 'Doctor')->first();
-        $medicos = $medicoRol->users()->with('thirdDataUser')->paginate(10);
+        $medicos = User::role('Doctor')->with([
+            'thirdData:third_data_id,id_document_type,identification_number,name,last_name,number_phone,id_gender,address,id_specialty,id_status',
+            'thirdData.documentType:document_type_id,id_common_attribute',
+            'thirdData.documentType.commonAttribute:common_attribute_id,name',
+            'thirdData.status:status_id,id_common_attribute',
+            'thirdData.status.commonAttribute:common_attribute_id,name',
+            'thirdData.gender:gender_id,id_common_attribute',
+            'thirdData.gender.commonAttribute:common_attribute_id,name',
+            'thirdData.medicalEntity.EntityType.commonAttribute:common_attribute_id,name',
+        ])->select('id', 'email', 'id_third_data')->latest()->get();
+        // dd($medicos);
         return view('medicos.index', compact('medicos'));
     }
     public function create()
     {
-        $specialties = Specialty::select(['specialty_id', 'name'])->get();
-        $documentType = Document_Type_View::pluck('name', 'detail_id');
-        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
-        $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('medicos.create', compact('documentType', 'medicalEntity', 'genderType', 'specialties'));
+        return view('medicos.create');
     }
-    public function createNewMedico(MedicoRequest $medicoRequest)
+    public function store(MedicoRequest $medicoRequest)
     {
         $thirdData = Third_Data::create([
             //Cedula de ciudadania
@@ -63,7 +68,7 @@ class MedicoController extends Controller
         $genderType = Gender_View::pluck('name', 'detail_id');
         return view('medicos.edit', compact('medicos', 'tercero', 'documentType', 'medicalEntity', 'genderType'));
     }
-    public function updateMedico($id, MedicoRequest $medicosRequest)
+    public function update($id, MedicoRequest $medicosRequest)
     {
         $medicos = User::findOrFail($id);
         $tercero = $medicos->thirdDataUser;
@@ -85,7 +90,7 @@ class MedicoController extends Controller
         notify()->success('Medico editado correctamente', 'Editar Medico');
         return redirect()->route('medicos.view');
     }
-    public function deleteMedico($id)
+    public function destroy($id)
     {
         $medicos = User::findOrFail($id);
         $tercero = $medicos->thirdDataUser;

@@ -34,7 +34,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('medico.view') }}">
+            <a class="nav-link " href="{{ route('medicos.index') }}">
                 <i class="fas fa-stethoscope text-info"></i> Médicos
             </a>
         </li>
