@@ -32,7 +32,6 @@
                     @forelse ($patients as $patient)
                         <tr>
                             <td colspan="2">
-                                {{ $patient->thirdData->third_data_id }}
                                 {{ $patient->thirdData->name }}
                                 {{ $patient->thirdData->last_name }}
                             </td>

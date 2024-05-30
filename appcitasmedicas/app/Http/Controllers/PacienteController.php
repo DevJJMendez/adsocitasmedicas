@@ -9,8 +9,11 @@ use App\Models\DocumentType;
 use App\Models\Gender;
 use App\Models\Gender_View;
 use App\Models\Medical_Entities;
+use App\Models\Status;
 use App\Models\Third_Data;
 use App\Models\User;
+use Exception;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Termwind\Components\Dd;
 
@@ -86,37 +89,55 @@ class PacienteController extends Controller
     }
     public function edit(Third_Data $patient)
     {
+        $statuses = Status::whereIn('status_id', [1, 2])->select('status_id', 'id_common_attribute')->with(['commonAttribute'])->get();
         $medicalEntities = Medical_Entities::where('id_status', 1)->select('medical_entity_id', 'business_name')->get();
         $documentTypes = DocumentType::select('document_type_id', 'id_common_attribute')->with(['commonAttribute'])->get();
         $genderTypes = Gender::select('gender_id', 'id_common_attribute')->with(['commonAttribute'])->get();
-        return view('pacientes.edit', compact(['patient', 'medicalEntities', 'documentTypes', 'genderTypes']));
+        return view('pacientes.edit', compact(['patient', 'medicalEntities', 'documentTypes', 'genderTypes', 'statuses']));
     }
     public function update(Third_Data $patient, PatientUpdateRequest $patientUpdateRequest)
     {
-        $patient->update([
-            'identification_number' => $patientUpdateRequest->identification_number,
-            'name' => $patientUpdateRequest->name,
-            'last_name' => $patientUpdateRequest->last_name,
-            'number_phone' => $patientUpdateRequest->number_phone,
-            'birth_date' => $patientUpdateRequest->birth_date,
-            'id_gender' => $patientUpdateRequest->id_gender,
-            'address' => $patientUpdateRequest->address,
-            'id_medical_entity' => $patientUpdateRequest->id_medical_entity,
-            'id_status' => $patientUpdateRequest->id_status
-        ]);
-        $patient->user()->update([
-            'email' => $patientUpdateRequest->email,
-            'password' => bcrypt($patientUpdateRequest->password),
-        ]);
-        notify()->success('Paciente editado correctamente', 'Editar Paciente');
-        return redirect()->route('paciente.view');
+        DB::beginTransaction();
+        try {
+            $patient->fill($patientUpdateRequest->only([
+                'id_document_type',
+                'identification_number',
+                'name',
+                'last_name',
+                'number_phone',
+                'birth_date',
+                'id_gender',
+                'address',
+                'id_medical_entity',
+                'id_status',
+            ]));
+            if ($patient->isDirty()) {
+                $patient->save();
+            }
+            $user = $patient->user;
+            if ($user) {
+                $user->fill($patientUpdateRequest->only(['email']));
+                $user->password = bcrypt($patientUpdateRequest->password);
+                if ($user->isDirty()) {
+                    $user->save();
+                }
+            }
+            DB::commit();
+            notify()->success('Paciente editado correctamente', 'Editar Paciente');
+            return redirect()->route('patients.index');
+        } catch (Exception $exception) {
+            dd($exception);
+            DB::rollBack();
+            notify()->error('Error al editar el paciente', 'Editar Paciente');
+            return redirect()->back()->withErrors(['error' => 'Error al editar el paciente: ' . $exception->getMessage()]);
+        }
     }
-    public function destroy($id)
+    public function destroy(Third_Data $patient)
     {
-        $user = User::findOrFail($id);
-        $tercero = $user->thirdDataUser;
-        if ($tercero->statu_type_id == 1) {
-            $tercero->update(['statu_type_id' => 2]);
+        // $user = User::findOrFail($id);
+        // $tercero = $user->thirdDataUser;
+        if ($patient->id_status == 1) {
+            $patient->update(['id_status' => 2]);
             $message = "Eliminado";
         }
         notify()->error("El paciente ha sido {$message} satisfactoriamente", "{$message} Paciente");

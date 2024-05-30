@@ -33,7 +33,8 @@ use Illuminate\Support\Str;
                         @foreach ($entityTypes as $entityType)
                             <option value="{{ $entityType->entity_type_id }}"
                                 {{ $medical_entity->id_entity_type == $entityType->entity_type_id ? 'selected' : '' }}>
-                                {{ $entityType->commonAttribute->name }}</option>
+                                {{ $entityType->commonAttribute->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>

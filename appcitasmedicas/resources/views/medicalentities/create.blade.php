@@ -27,7 +27,9 @@ use Illuminate\Support\Str;
                     </div>
                     <select class="custom-select" name="id_entity_type">
                         @foreach ($entityType as $entityTypes)
-                            <option value="{{ $entityTypes->entity_type_id }}">{{ $entityTypes->commonAttribute->name }}
+                            <option value="{{ $entityTypes->entity_type_id }}"
+                                {{ old('id_entity_type') == $entityTypes->entity_type_id ? 'selected' : '' }}>
+                                {{ $entityTypes->commonAttribute->name }}
                             </option>
                         @endforeach
                     </select>

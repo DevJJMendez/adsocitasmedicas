@@ -25,7 +25,8 @@ use Illuminate\Support\Str;
                     <label for="id_medical_entity">Entidad Médica</label>
                     <select name="id_medical_entity" class="form-control" required>
                         @forelse ($medicalEntities as $medicalEntity)
-                            <option value="{{ $medicalEntity->medical_entity_id }}">
+                            <option value="{{ $medicalEntity->medical_entity_id }}"
+                                {{ old('id_medical_entity') == $medicalEntity->medical_entity_id ? 'selected' : '' }}>
                                 {{ $medicalEntity->business_name }}
                             </option>
                         @empty
@@ -40,7 +41,8 @@ use Illuminate\Support\Str;
                         <label for="id_document_type">Tipo de Documento</label>
                         <select name="id_document_type" class="form-control" required>
                             @forelse ($documentTypes as $documentType)
-                                <option value="{{ $documentType->document_type_id }}">
+                                <option value="{{ $documentType->document_type_id }}"
+                                    {{ old('id_document_type') == $documentType->document_type_id ? 'selected' : '' }}>
                                     {{ $documentType->commonAttribute->name }}
                                 </option>
                             @empty
@@ -120,7 +122,8 @@ use Illuminate\Support\Str;
                         <label for="id_gender">Género</label>
                         <select id="id_gender" name="id_gender" class="form-control">
                             @forelse ($genderTypes as $genderType)
-                                <option value="{{ $genderType->gender_id }}">
+                                <option value="{{ $genderType->gender_id }}"
+                                    {{ old('id_gender') == $genderType->gender_id ? 'selected' : '' }}>
                                     {{ $genderType->commonAttribute->name }}
                                 </option>
                             @empty

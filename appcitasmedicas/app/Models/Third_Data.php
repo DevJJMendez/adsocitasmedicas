@@ -24,8 +24,6 @@ class Third_Data extends Model
         'id_medical_entity',
         'id_status',
         'id_specialty',
-        'created_at',
-        'updated_at',
     ];
     public function documentType(): BelongsTo
     {
