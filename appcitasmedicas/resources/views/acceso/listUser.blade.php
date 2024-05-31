@@ -1,9 +1,5 @@
 @extends('layouts.panel')
-
 @section('content')
-
-
-
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="row align-items-center">
@@ -20,7 +16,6 @@
             <div class="alert alert-success">
                 {{session('info')}}
             </div>
-
         @endif
         </div>
         <div class="table-responsive">
@@ -32,22 +27,17 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Email</th>
                 <th scope="col">Rol</th>
-
                 <th colspan="2">Acciones</th>
-
             </tr>
             </thead>
             <tbody>
-
                 @foreach ($usersWithRoles  as $user)
-
-
               <tr>
                 <th >
                   {{ $user->id}}
                 </th>
                 <th >
-                 {{ $user->thirdDataUser->first_name}}
+                 {{ $user->thirdData->name}}
                 </td>
                 <td>
                  {{ $user->email}}
@@ -66,26 +56,10 @@
                         </a>
                         {{-- <button type="submit" class="btn btn-sm btn-danger">Eliminar</button> --}}
                     </form>
-
                 </td>
-
-
-
               </tr>
               @endforeach
             </tbody>
           </table>
-
-
-
-
-
-
-
       </div>
-
-
-
-
-
 @endsection

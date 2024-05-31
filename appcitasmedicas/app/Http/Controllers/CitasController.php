@@ -18,7 +18,7 @@ class CitasController extends Controller
         $specialty = Specialty::select('specialty_id', 'name')->get();
         //variable para mostrar medicos.
         $medicoRol = Role::where('name', 'Doctor')->first();
-        $medicos = $medicoRol->users()->with('thirdDataUser.specialty')->get();
+        $medicos = $medicoRol->users()->with('thirdData.specialty')->get();
         return view('citas.citas', compact('specialty', 'medicos', 'n_cita'));
     }
     public function create()
@@ -29,7 +29,7 @@ class CitasController extends Controller
         $specialty = Specialty::select('specialty_id', 'name')->get();
         //variable para mostrar medicos.
         $medicoRol = Role::where('name', 'Doctor')->first();
-        $medicos = $medicoRol->users()->with('thirdDataUser.specialty')->get();
+        $medicos = $medicoRol->users()->with('thirdData.specialty')->get();
         return view('citas.create', compact('specialty', 'medicos', 'n_cita'));
     }
     public function store(AppointmentRequest $appointmentRequest)

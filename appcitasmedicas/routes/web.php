@@ -8,7 +8,6 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
-use App\Models\Medical_Entities;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
