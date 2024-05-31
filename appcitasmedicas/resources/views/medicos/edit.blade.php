@@ -17,15 +17,15 @@ use Illuminate\Support\Str;
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('medicos.update') }}" method="POST">
+            <form action="{{ route('medicos.update', ['medico' => $medico->third_data_id]) }}" method="POST">
                 @csrf
                 <div class="form-row">
                     <div class="form-group  col-md-6">
-                        <label for="document_type_id">Tipo de Documento</label>
-                        <select name="document_type_id" class="form-control" required>
-                            @forelse ($documentType as $detail_id => $name)
-                                <option value="{{ $detail_id }}">
-                                    {{ $name }}
+                        <label for="id_document_type">Tipo de Documento</label>
+                        <select name="id_document_type" class="form-control" required>
+                            @forelse ($documentTypes as $documentType)
+                                <option value="{{ $documentType->document_type_id }}">
+                                    {{ $documentType->commonAttribute->name }}
                                 </option>
                             @empty
                                 <option value="">No data found</option>
@@ -52,11 +52,11 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="text" id="first_name" name="first_name" class="form-control"
-                            placeholder="Ingrese su primer nombre" value="{{ old('first_name') }}">
+                            placeholder="Nombre del medico" value="{{ old('first_name') }}">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="sur_name">Primer Apellido</label>
+                        <label for="last_name">Apellido</label>
                         @error('sur_name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -82,9 +82,9 @@ use Illuminate\Support\Str;
                     <div class="form-group col-md-6">
                         <label for="id_medical_entity">Entidad Médica</label>
                         <select name="id_medical_entity" class="form-control" required>
-                            @forelse ($medicalEntity as $medicalEntities)
-                                <option value="{{ $medicalEntities->medical_entity_id }}">
-                                    {{ $medicalEntities->business_name }}
+                            @forelse ($medicalEntities as $medicalEntity)
+                                <option value="{{ $medicalEntity->medical_entity_id }}">
+                                    {{ $medicalEntity->business_name }}
                                 </option>
                             @empty
                                 <option value="">No data found</option>
@@ -102,8 +102,10 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <select id="gender_type_id" name="gender_type_id" class="form-control">
-                            @forelse ($genderType as $detaild_id => $name)
-                                <option value="{{ $detail_id }}">{{ $name }}</option>
+                            @forelse ($genders as $gender)
+                                <option value="{{ $gender->gender_id }}">
+                                    {{ $gender->commonAttribute->name }}
+                                </option>
                             @empty
                                 <option value="#">No data found</option>
                             @endforelse
@@ -156,6 +158,18 @@ use Illuminate\Support\Str;
                     {{-- ESPECIALIDAD --}}
                     <div class="form-group col-md-6">
                         <label for="id_specialty">Especialidad</label>
+                        @error('id_specialty')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <select id="id_specialty" name="id_specialty" class="form-control">
+                            @forelse ($genders as $gender)
+                                <option value="{{ $gender->gender_id }}">
+                                    {{ $gender->commonAttribute->name }}
+                                </option>
+                            @empty
+                                <option value="#">No data found</option>
+                            @endforelse
+                        </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-sm btn-primary">Editar Médico</button>

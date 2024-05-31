@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="col text-right">
-                    <a href="{{ route('medical-entities.create') }}" class="btn btn-sm btn-primary">Agregar nuevo médico</a>
+                    <a href="{{ route('medicos.create') }}" class="btn btn-sm btn-primary">Agregar nuevo médico</a>
                 </div>
 
             </div>
@@ -47,10 +47,12 @@
                                 {{ $medico->thirdData->status ? $medico->thirdData->status->commonAttribute->name : 'No Status' }}
                             </td>
                             <td>
-                                <form action="{{ route('medicos.destroy', ['medico' => $medico->id]) }}" method="POST">
+                                <form
+                                    action="{{ route('medicos.destroy', ['medico' => $medico->thirdData->third_data_id]) }}"
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('medicos.edit', ['medico' => $medico->id]) }}"
+                                    <a href="{{ route('medicos.edit', ['medico' => $medico->thirdData->third_data_id]) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar
                                     </a>

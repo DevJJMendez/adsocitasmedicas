@@ -6,32 +6,30 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MedicoRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-
-            'identification_number' =>'required',
-            'first_name' =>'required',
-            'sur_name' =>'required',
-            'number_phone' =>'required',
-            'birth_date' =>'required',
-            'address' =>'required',
-            'password' =>'required',
-
-
+            'identification_number' => 'required',
+            'name' => 'required',
+            'last_name' => 'required',
+            'number_phone' => 'required',
+            'birth_date' => [
+                'required',
+                'before_or_equal:today',
+                'after_or_equal:1925-01-01',
+                function ($attribute, $value, $fail) {
+                    $idDocumentType = $this->id_document_type;
+                    if ($idDocumentType == 1 && strtotime($value) >= strtotime('2006-01-01')) {
+                        $fail('La fecha de nacimiento no puede ser posterior a 2006 para este tipo de documento');
+                    }
+                }
+            ],
+            'address' => 'required',
+            'password' => 'required',
         ];
     }
     public function messages()
@@ -49,8 +47,6 @@ class MedicoRequest extends FormRequest
             'password.required' => 'Debe ingresar una contraseña',
             'birth_date.required' => 'Debe ingresar una fecha de nacimiento',
             'address.required' => 'Debe ingresar una dirección',
-
-
         ];
     }
 }

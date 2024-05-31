@@ -1,24 +1,15 @@
-Refactoriza esta consulta teniendo en cuenta lo siguiente:
-Buenas practicas, rendimiento, evitar N+1
+¿Que puede estar mal en la siguiente validacion?
 
 ```php
-$patients = User::role(['Paciente'])
-    ->with([
-        'thirdData:id,third_data_id,id_document_type,identification_number,name,last_name,number_phone,birth_date,id_gender,address,id_medical_entity,id_status',
-        'thirdData.documentType:id,document_type_id,id_common_attribute',
-        'thirdData.documentType.commonAttribute:id,common_attribute_id,name',
-        'thirdData.status:id,status_id,id_common_attribute',
-        'thirdData.status.commonAttribute:id,common_attribute_id,name',
-        'thirdData.gender:id,gender_id,id_common_attribute',
-        'thirdData.gender.commonAttribute:id,common_attribute_id,name',
-        'thirdData.medicalEntity:id,medical_entity_id,business_name,id_entity_type',
-        'thirdData.medicalEntity.EntityType:id,entity_type_id,id_common_attribute',
-        'thirdData.medicalEntity.EntityType.commonAttribute:id,common_attribute_id,name',
-    ])
-    ->select('id', 'email', 'id_third_data')
-    ->latest()
-    ->paginate(10);
-
+'birth_date' => [
+                
+                function ($attribute, $value, $fail) {
+                    $idDocumentType = $this->id_document_type;
+                    if ($idDocumentType == 1 && strtotime($value) >= strtotime('2006-01-01')) {
+                        $fail('La fecha de nacimiento no puede ser posterior a 2006 para este tipo de documento');
+                    }
+                }
+            ],
 ```
 Crea el metodo destroy
 

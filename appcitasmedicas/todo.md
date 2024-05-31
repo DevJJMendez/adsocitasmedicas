@@ -1,1 +1,1 @@
-- Arreglar PatientUpdateRequest
+- Modulo Medicos: Editar, Eliminar
