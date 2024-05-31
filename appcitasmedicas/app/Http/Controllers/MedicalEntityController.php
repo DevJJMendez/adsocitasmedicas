@@ -78,12 +78,14 @@ class MedicalEntityController extends Controller
     }
     public function destroy(Medical_Entities $medical_entity)
     {
-        if ($medical_entity->id_status == 2) {
-            $medical_entity->update(['id_status' => 1]);
-        } else {
+        if ($medical_entity->id_status == 1) {
             $medical_entity->update(['id_status' => 2]);
+            notify()->warning('La entidad médica se desactivo correctamente', 'Desactivada');
+            return back();
+        } else {
+            $medical_entity->update(['id_status' => 1]);
+            notify()->success('La entidad médica ha sido activada correctamente', 'Activada');
+            return back();
         }
-        notify()->success('El estado de la entidad médica se actualizo correctamente', 'Estado cambiado');
-        return redirect()->route('medical-entities.index');
     }
 }

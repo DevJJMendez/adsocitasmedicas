@@ -108,7 +108,7 @@ class PacienteController extends Controller
                 'birth_date',
                 'id_gender',
                 'address',
-                'id_medical_entity',
+                'id_specialty',
                 'id_status',
             ]));
             if ($patient->isDirty()) {
@@ -126,7 +126,6 @@ class PacienteController extends Controller
             notify()->success('Paciente editado correctamente', 'Editar Paciente');
             return redirect()->route('patients.index');
         } catch (Exception $exception) {
-            dd($exception);
             DB::rollBack();
             notify()->error('Error al editar el paciente', 'Editar Paciente');
             return redirect()->back()->withErrors(['error' => 'Error al editar el paciente: ' . $exception->getMessage()]);
@@ -134,13 +133,14 @@ class PacienteController extends Controller
     }
     public function destroy(Third_Data $patient)
     {
-        // $user = User::findOrFail($id);
-        // $tercero = $user->thirdDataUser;
         if ($patient->id_status == 1) {
             $patient->update(['id_status' => 2]);
-            $message = "Eliminado";
+            notify()->error("El paciente ha sido desactivado correctamente", "Desactivado");
+            return back();
+        } else {
+            $patient->update(['id_status' => 1]);
+            notify()->error("El paciente ha sido activado correctamente", "Activado");
+            return back();
         }
-        notify()->error("El paciente ha sido {$message} satisfactoriamente", "{$message} Paciente");
-        return back();
     }
 }

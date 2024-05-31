@@ -13,10 +13,11 @@ class MedicoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id_document_type' => 'required',
             'identification_number' => 'required',
-            'name' => 'required',
-            'last_name' => 'required',
-            'number_phone' => 'required',
+            'name' => 'required|string',
+            'last_name' => 'required|string',
+            'number_phone' => 'required||unique:third_data,number_phone',
             'birth_date' => [
                 'required',
                 'before_or_equal:today',
@@ -28,25 +29,34 @@ class MedicoRequest extends FormRequest
                     }
                 }
             ],
+            'id_gender' => 'required',
+            'id_specialty' => 'required',
             'address' => 'required',
-            'password' => 'required',
+            'password' => 'nullable|string|min:4',
         ];
     }
     public function messages()
     {
         return [
             'identification_number.required' => 'Debe ingresar el número de identificación',
-            'first_name.required' => 'Debe ingresar el primer nombre',
-            'sur_name.required' => 'Debe ingresar el primer apellido',
+            'name.required' => 'Debe ingresar el nombre',
+            'name.string' => 'Solo debe contener letras',
+            'last_name.required' => 'Debe ingresar el apellido',
+            'last_name.string' => 'Solo debe contener letras',
 
             'number_phone.required' => 'Debe ingresar un número telefonico',
-            // 'number_phone.numeric' => 'Solo debe contener números',
+            'number_phone.unique' => 'El número telefonico ya existe',
+            'number_phone.numeric' => 'Solo debe contener números',
+
+            'address.required' => 'Debe ingresar una dirección',
 
             'email.required' => 'Debe ingresar un correo electronico',
             'email.email' => 'Debe ingresar un correo electronico valido',
             'password.required' => 'Debe ingresar una contraseña',
+
             'birth_date.required' => 'Debe ingresar una fecha de nacimiento',
-            'address.required' => 'Debe ingresar una dirección',
+            'birth_date.before_or_equal' => 'La fecha de nacimiento no puede ser mayor a la fecha actual',
+            'birth_date.after_or_equal' => 'La fecha de nacimiento no puede ser menor al año 1925',
         ];
     }
 }

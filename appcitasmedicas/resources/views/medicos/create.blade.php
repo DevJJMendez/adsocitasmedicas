@@ -26,7 +26,8 @@ use Illuminate\Support\Str;
                         <label for="id_document_type">Tipo de Documento</label>
                         <select name="id_document_type" class="form-control">
                             @forelse ($documentTypes as $documentType)
-                                <option value="{{ $documentType->id_document_type }}">
+                                <option value="{{ $documentType->document_type_id }}" 
+                                    {{ old('id_document_type') == $documentType->document_type_id ? 'selected' : '' }}>
                                     {{ $documentType->commonAttribute->name }}
                                 </option>
                             @empty
@@ -102,7 +103,8 @@ use Illuminate\Support\Str;
                         @enderror
                         <select id="id_gender" name="id_gender" class="form-control">
                             @forelse ($genderTypes as $genderType)
-                                <option value="{{ $genderType->gender_id }}">
+                                <option value="{{ $genderType->gender_id }}"
+                                    {{ old('id_gender') == $genderType->gender_id ? 'selected' : '' }}>
                                     {{ $genderType->commonAttribute->name }}
                                 </option>
                             @empty
@@ -154,7 +156,8 @@ use Illuminate\Support\Str;
                         @enderror
                         <select id="id_specialty" name="id_specialty" class="form-control">
                             @forelse ($specialties as $specialty)
-                                <option value="{{ $specialty->specialty_id }}">
+                                <option value="{{ $specialty->specialty_id }}"
+                                    {{ old('id_specialty') == $specialty->specialty_id ? 'selected' : '' }}>
                                     {{ $specialty->name }}
                                 </option>
                             @empty

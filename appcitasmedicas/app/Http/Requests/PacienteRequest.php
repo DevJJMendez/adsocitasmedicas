@@ -17,7 +17,7 @@ class PacienteRequest extends FormRequest
             'identification_number' => 'required',
             'name' => 'required|string',
             'last_name' => 'required|string',
-            'number_phone' => 'required|unique:third_data,number_phone',
+            'number_phone' => 'required|unique:third_data,number_phone|numeric',
 
             'birth_date' => [
                 'required',
@@ -30,7 +30,6 @@ class PacienteRequest extends FormRequest
                     }
                 }
             ],
-
             'address' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
@@ -41,20 +40,20 @@ class PacienteRequest extends FormRequest
         return [
             'identification_number.required' => 'Debe ingresar el número de identificación',
 
-            'name.required' => 'Debe ingresar el primer nombre',
+            'name.required' => 'Debe ingresar el nombre',
             'name.string' => 'Solo debe contener letras',
-            'last_name.required' => 'Debe ingresar el primer apellido',
+            'last_name.required' => 'Debe ingresar el apellido',
             'last_name.string' => 'Solo debe contener letras',
 
             'number_phone.required' => 'Debe ingresar un número telefonico',
-            // 'number_phone.numeric' => 'Solo debe contener números',
+            'number_phone.unique' => 'El número telefonico ya existe',
+            'number_phone.numeric' => 'Solo debe contener números',
 
             'address.required' => 'Debe ingresar una dirección',
 
             'email.required' => 'Debe ingresar un correo electronico',
             'email.email' => 'Debe ingresar un correo electronico valido',
             'email.unique' => 'El correo electronico ya existe',
-
             'password.required' => 'Debe ingresar una contraseña',
 
             'birth_date.required' => 'Debe ingresar una fecha de nacimiento',

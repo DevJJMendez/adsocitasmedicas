@@ -16,18 +16,25 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Auth::routes();
+
 Route::middleware(['auth', 'check_user_status'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
+//roles route
+Route::resource('roles', RoleController::class)->names('admin.roles');
+Route::resource('permisos', PermisoController::class)->names('admin.permisos');
+
+Route::group(['prefix' => 'register'], function () {
+    Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
+    Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
+});
 Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'destroy')->names('asignar');
 Route::resource('medical-entities', MedicalEntityController::class);
 Route::resource('patients', PacienteController::class);
 Route::resource('medicos', MedicoController::class);
 
-//roles route
-Route::resource('roles', RoleController::class)->names('admin.roles');
-Route::resource('permisos', PermisoController::class)->names('admin.permisos');
+
 
 // citas route
 Route::group(['prefix' => 'citas'], function () {
@@ -38,7 +45,3 @@ Route::group(['prefix' => 'citas'], function () {
     Route::put('/cancelar-cita/{appointment_id}', [CitasController::class, 'cancelarCita'])->name('cancelar.cita');
 });
 
-Route::group(['prefix' => 'register'], function () {
-    Route::get('', [RegisterController::class, 'showRegisterForm'])->name('register-form-view');
-    Route::post('/new-user', [RegisterController::class, 'createUser'])->name('new-user');
-});

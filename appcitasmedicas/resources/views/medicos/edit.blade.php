@@ -19,12 +19,14 @@ use Illuminate\Support\Str;
         <div class="card-body">
             <form action="{{ route('medicos.update', ['medico' => $medico->third_data_id]) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="form-row">
                     <div class="form-group  col-md-6">
                         <label for="id_document_type">Tipo de Documento</label>
                         <select name="id_document_type" class="form-control" required>
                             @forelse ($documentTypes as $documentType)
-                                <option value="{{ $documentType->document_type_id }}">
+                                <option value="{{ $documentType->document_type_id }}"
+                                    {{ $medico->id_document_type == $documentType->document_type_id ? 'selected' : '' }}>
                                     {{ $documentType->commonAttribute->name }}
                                 </option>
                             @empty
@@ -40,28 +42,28 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="text" name="identification_number" class="form-control"
-                            placeholder="Ingrese su número de identificación" value="{{ old('identification_number') }}">
+                            placeholder="Ingrese su número de identificación" value="{{ old('identification_number', $medico->identification_number) }}">
                     </div>
                 </div>
 
                 <div class="form-row">
                     {{-- NOMBRE --}}
                     <div class="form-group col-md-6">
-                        <label for="first_name">Nombre del medico</label>
-                        @error('first_name')
+                        <label for="name">Nombre del medico</label>
+                        @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" id="first_name" name="first_name" class="form-control"
-                            placeholder="Nombre del medico" value="{{ old('first_name') }}">
+                        <input type="text" id="name" name="name" class="form-control"
+                            placeholder="Nombre del medico" value="{{ old('name', $medico->name) }}">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="last_name">Apellido</label>
-                        @error('sur_name')
+                        @error('last_name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="text" id="sur_name" name="sur_name" class="form-control"
-                            placeholder="Ingrese su primer apellido" value="{{ old('sur_name') }}">
+                        <input type="text" id="last_name" name="last_name" class="form-control"
+                            placeholder="Ingrese su primer apellido" value="{{ old('last_name', $medico->last_name) }}">
                     </div>
 
                 </div>
@@ -75,16 +77,17 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="text" id="email" name="email" class="form-control"
-                            placeholder="Ingrese un correo electrónico" value="{{ old('email') }}">
+                            placeholder="Ingrese un correo electrónico" value="{{ old('email', $medico->user->email) }}">
                     </div>
 
 
                     <div class="form-group col-md-6">
-                        <label for="id_medical_entity">Entidad Médica</label>
-                        <select name="id_medical_entity" class="form-control" required>
-                            @forelse ($medicalEntities as $medicalEntity)
-                                <option value="{{ $medicalEntity->medical_entity_id }}">
-                                    {{ $medicalEntity->business_name }}
+                        <label for="id_status">Estado</label>
+                        <select name="id_status" class="form-control" required>
+                            @forelse ($statuses as $status)
+                                <option value="{{ $status->status_id }}"
+                                    {{ $medico->id_status == $status->status_id ? 'selected' : '' }}>
+                                    {{ $status->commonAttribute->name }}    
                                 </option>
                             @empty
                                 <option value="">No data found</option>
@@ -97,13 +100,14 @@ use Illuminate\Support\Str;
                 <div class="form-row">
                     {{-- GENERO --}}
                     <div class="form-group col-md-6">
-                        <label for="gender_type_id">Género</label>
-                        @error('gender_type_id')
+                        <label for="id_gender">Género</label>
+                        @error('id_gender')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <select id="gender_type_id" name="gender_type_id" class="form-control">
+                        <select id="id_gender" name="id_gender" class="form-control">
                             @forelse ($genders as $gender)
-                                <option value="{{ $gender->gender_id }}">
+                                <option value="{{ $gender->gender_id }}"
+                                    {{ $medico->gender_type_id == $gender->gender_id ? 'selected' : '' }}>
                                     {{ $gender->commonAttribute->name }}
                                 </option>
                             @empty
@@ -120,7 +124,7 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="text" id="address" name="address" class="form-control"
-                            placeholder="Ingrese su dirección" value="{{ old('address') }}">
+                            placeholder="Ingrese su dirección" value="{{ old('address', $medico->address) }}">
                     </div>
                 </div>
 
@@ -132,9 +136,10 @@ use Illuminate\Support\Str;
                         @error('birth_date')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="date" id="birth_date" name="birth_date" class="form-control"
-                            value="{{ old('birth_date') }}">
+                        <input type="datetime" id="birth_date" name="birth_date" class="form-control"
+                            value="{{ old('birth_date', $medico->birth_date) }}">
                     </div>
+
                     {{-- TELEFONO --}}
                     <div class="form-group col-md-6">
                         <label for="number_phone">Número de Teléfono</label>
@@ -142,7 +147,7 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="tel" id="number_phone" name="number_phone" class="form-control"
-                            placeholder="Ingrese su número de teléfono" value="{{ old('number_phone') }}">
+                            placeholder="Ingrese su número de teléfono" value="{{ old('number_phone', $medico->number_phone) }}">
                     </div>
                 </div>
                 <div class="form-row">
@@ -153,7 +158,7 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="text" id="password" name="password" class="form-control"
-                            placeholder="Ingrese su una contraseña" value="{{ old('password') }}">
+                            placeholder="Nueva contraseña" value="{{ old('password') }}">
                     </div>
                     {{-- ESPECIALIDAD --}}
                     <div class="form-group col-md-6">
@@ -162,9 +167,10 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <select id="id_specialty" name="id_specialty" class="form-control">
-                            @forelse ($genders as $gender)
-                                <option value="{{ $gender->gender_id }}">
-                                    {{ $gender->commonAttribute->name }}
+                            @forelse ($specialties as $specialty)
+                                <option value="{{ $specialty->specialty_id }}"
+                                    {{ $medico->id_specialty == $specialty->specialty_id ? 'selected' : '' }}>
+                                    {{ $specialty->name }}
                                 </option>
                             @empty
                                 <option value="#">No data found</option>
