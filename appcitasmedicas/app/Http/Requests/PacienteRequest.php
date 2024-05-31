@@ -6,46 +6,60 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PacienteRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            'identification_number' =>'required',
-            'first_name' =>'required',
-            'sur_name' =>'required',
-            'number_phone' =>'required',
-            'birth_date' =>'required',
-            'address' =>'required',
+            'id_document_type' => 'required',
+            'identification_number' => 'required',
+            'name' => 'required|string',
+            'last_name' => 'required|string',
+            'number_phone' => 'required|unique:third_data,number_phone',
 
+            'birth_date' => [
+                'required',
+                'before_or_equal:today',
+                'after_or_equal:1925-01-01',
+                function ($attribute, $value, $fail) {
+                    $idDocumentType = $this->id_document_type;
+                    if ($idDocumentType == 2 && strtotime($value) < strtotime('2006-01-01')) {
+                        $fail('La fecha de nacimiento no puede ser anterior a 2006 para este tipo de documento.');
+                    }
+                }
+            ],
+
+            'address' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
         ];
     }
     public function messages()
     {
         return [
             'identification_number.required' => 'Debe ingresar el número de identificación',
-            'first_name.required' => 'Debe ingresar el primer nombre',
-            'sur_name.required' => 'Debe ingresar el primer apellido',
+
+            'name.required' => 'Debe ingresar el primer nombre',
+            'name.string' => 'Solo debe contener letras',
+            'last_name.required' => 'Debe ingresar el primer apellido',
+            'last_name.string' => 'Solo debe contener letras',
 
             'number_phone.required' => 'Debe ingresar un número telefonico',
             // 'number_phone.numeric' => 'Solo debe contener números',
 
+            'address.required' => 'Debe ingresar una dirección',
+
             'email.required' => 'Debe ingresar un correo electronico',
             'email.email' => 'Debe ingresar un correo electronico valido',
+            'email.unique' => 'El correo electronico ya existe',
+
             'password.required' => 'Debe ingresar una contraseña',
+
             'birth_date.required' => 'Debe ingresar una fecha de nacimiento',
-            'address.required' => 'Debe ingresar una dirección',
+            'birth_date.before_or_equal' => 'La fecha de nacimiento no puede ser mayor a la fecha actual',
+            'birth_date.after_or_equal' => 'La fecha de nacimiento no puede ser menor al año 1925',
         ];
     }
 }

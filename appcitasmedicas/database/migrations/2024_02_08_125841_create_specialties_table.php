@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('specialties', function (Blueprint $table) {
-            $table->tinyIncrements('specialty_id')->unsigned();
+            $table->unsignedTinyInteger('specialty_id', true);
             $table->string('name', 100);
             $table->timestamps();
         });

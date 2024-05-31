@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 @section('content')
-    {{-- @dd($pacientes) --}}
+    {{-- @dd($patients) --}}
     <div class="card shadow">
         <div class="card-header border-0">
             <div class="row align-items-center">
@@ -8,7 +8,7 @@
                     <h3 class="mb-0">Pacientes</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('create.paciente') }}" class="btn btn-sm btn-primary">Agregar nuevo paciente</a>
+                    <a href="{{ route('patients.create') }}" class="btn btn-sm btn-primary">Agregar nuevo paciente</a>
                 </div>
             </div>
         </div>
@@ -17,44 +17,57 @@
             <table class="table align-items-center table-flush" style="text-transform: uppercase">
                 <thead class="thead-light">
                     <tr>
-
                         <th scope="col">Nombres</th>
-
                         <th scope="col"></th>
                         <th>telefono</th>
                         <th>Email</th>
                         <th>Genero</th>
                         <th>Entidad Médica</th>
-
+                        <th>Tipo Entidad Médica</th>
+                        <th>Estado</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($pacientes as $paciente)
+                    @forelse ($patients as $patient)
                         <tr>
-
                             <td colspan="2">
-                                {{ $paciente->thirdDataUSer->first_name }}
-                                {{ $paciente->thirdDataUSer->sur_name }}
+                                {{ $patient->thirdData->name }}
+                                {{ $patient->thirdData->last_name }}
                             </td>
                             <td>
-                                {{ $paciente->thirdDataUSer->number_phone }}
+                                {{ $patient->thirdData->number_phone }}
                             </td>
                             <td>
-                                {{ $paciente->email }}
+                                {{ $patient->email }}
                             </td>
                             <td>
-                                {{ $paciente->thirdDataUser->gender->name }}
-                            </td>
-
-                            <td>
-                                {{ $paciente->thirdDataUser->entity_medical->business_name }}
+                                {{ $patient->thirdData->gender->commonAttribute->name }}
                             </td>
                             <td>
-                                <form action="{{ route('delete.paciente', ['paciente' => $paciente->id]) }}" method="POST">
+                                {{ $patient->thirdData->medicalEntity ? $patient->thirdData->medicalEntity->business_name : 'null' }}
+                            </td>
+                            <td>
+                                {{ $patient->thirdData->medicalEntity ? $patient->thirdData->medicalEntity->EntityType->commonAttribute->name : 'null' }}
+                            </td>
+                            <td>
+                                @if ($patient->thirdData->id_status == 1)
+                                    <span class="fw-bolder rounded bg-success text-white p-2">
+                                        {{ $patient->thirdData->status->commonAttribute->name }}
+                                    </span>
+                                @else
+                                    <span class="fw-bolder rounded bg-danger text-white p-2">
+                                        {{ $patient->thirdData->status->commonAttribute->name }}
+                                    </span>
+                                @endif
+                            </td>
+                            <td>
+                                <form
+                                    action="{{ route('patients.destroy', ['patient' => $patient->thirdData->third_data_id]) }}"
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('edit.paciente.view', ['paciente' => $paciente->id]) }}"
+                                    <a href="{{ route('patients.edit', ['patient' => $patient->thirdData->third_data_id]) }}"
                                         class="btn btn-sm btn-primary">
                                         Editar
                                     </a>
@@ -75,7 +88,7 @@
             </table>
         </div>
         <div class="card-body">
-            {{ $pacientes->links() }}
+            {{ $patients->links() }}
         </div>
     </div>
 @endsection

@@ -22,18 +22,18 @@ class Appointments extends Model
     ];
     public function patient(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_patient');
+        return $this->belongsTo(User::class, 'id_patient', 'id');
     }
     public function doctor(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_doctor');
+        return $this->belongsTo(User::class, 'id_doctor', 'id');
     }
     public function specialty(): BelongsTo
     {
         return $this->belongsTo(Specialty::class, 'id_specialty', 'specialty_id');
     }
-    public function statutype(): HasOne
+    public function status(): BelongsTo
     {
-        return $this->hasOne(Statu_View::class, 'detail_id', 'statu_type_id');
+        return $this->belongsTo(Status::class, 'id_status', 'status_id');
     }
 }

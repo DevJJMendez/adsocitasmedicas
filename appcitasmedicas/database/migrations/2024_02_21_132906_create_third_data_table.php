@@ -8,28 +8,23 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('third_data', function (Blueprint $table) {
-            $table->smallIncrements('data_id')->unsigned();
-            // Tipo de documento
-            $table->string('document_type_id', 2)->nullable();
-            $table->string('identification_number', 12)->nullable();
-            $table->string('first_name', 30)->nullable();
-            $table->string('second_name', 30)->nullable();
-            $table->string('sur_name', 30)->nullable();
-            $table->string('second_sur_name', 30)->nullable();
-            $table->string('number_phone', 30)->nullable();
-            $table->dateTime('birth_date')->nullable();
-            // Tipo de genero
-            $table->string('gender_type_id')->nullable();
+            $table->unsignedSmallInteger('third_data_id', true);
+            $table->unsignedTinyInteger('id_document_type')->nullable();
+            $table->foreign('id_document_type')->references('document_type_id')->on('document_types')->onDelete('set null');
+            $table->string('identification_number', 12)->unique();
+            $table->string('name', 30);
+            $table->string('last_name', 30);
+            $table->string('number_phone', 30)->unique();
+            $table->dateTime('birth_date');
+            $table->unsignedTinyInteger('id_gender')->nullable();
+            $table->foreign('id_gender')->references('gender_id')->on('genders')->onDelete('set null');
             $table->string('address', 100)->nullable();
-            // Entidades medicas
-            $table->tinyInteger('id_medical_entity')->unsigned();
-            $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities');
-            // Estado
-            $table->string('statu_type_id')->default('1');
-            // Especialidad
-            $table->tinyInteger('id_specialty')->unsigned()->nullable();
-            $table->foreign('id_specialty')->references('specialty_id')->on('specialties');
-
+            $table->unsignedTinyInteger('id_medical_entity')->nullable();
+            $table->foreign('id_medical_entity')->references('medical_entity_id')->on('medical_entities')->onDelete('set null');
+            $table->unsignedTinyInteger('id_status')->default('1')->nullable();
+            $table->foreign('id_status')->references('status_id')->on('statuses')->onDelete('set null');
+            $table->unsignedTinyInteger('id_specialty')->nullable();
+            $table->foreign('id_specialty')->references('specialty_id')->on('specialties')->onDelete('set null');
             $table->timestamps();
         });
     }

@@ -7,17 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('details', function (Blueprint $table) {
-            $table->tinyIncrements('detail_id')->unsigned();
-            $table->unsignedTinyInteger('id_header');
-            $table->foreign('id_header')->references('header_id')->on('headers');
-            $table->string('value', 40);
+        Schema::create('common_attributes', function (Blueprint $table) {
+            $table->unsignedTinyInteger('common_attribute_id', true);
+            $table->string('name', 50);
             $table->string('nomenclature', 4)->nullable();
             $table->timestamps();
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('details');
+        Schema::dropIfExists('common_attributes');
     }
 };

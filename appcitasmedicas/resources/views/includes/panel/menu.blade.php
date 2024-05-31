@@ -34,18 +34,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('medico.view') }}">
+            <a class="nav-link " href="{{ route('medicos.index') }}">
                 <i class="fas fa-stethoscope text-info"></i> Médicos
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('paciente.view') }}">
+            <a class="nav-link " href="{{ route('patients.index') }}">
                 <i class="fas fa-bed text-warning"></i> Pacientes
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('medical.entities.view') }}">
+            <a class="nav-link " href="{{ route('medical-entities.index') }}">
                 <i class="fas fa-bed text-warning"></i> Entidades Médicas
             </a>
         </li>

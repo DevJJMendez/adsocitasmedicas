@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -17,7 +18,11 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $guarded = [];
+    protected $fillable = [
+        'email',
+        'password',
+        'id_third_data',
+    ];
     protected $hidden = [
         'password',
         'remember_token',
@@ -26,20 +31,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function thirdDataUser(): BelongsTo
+    public function thirdData(): BelongsTo
     {
-        return $this->belongsTo(Third_Data::class, 'third_data_id', 'data_id');
+        return $this->belongsTo(Third_Data::class, 'id_third_data', 'third_data_id');
     }
     public function patientAppointments(): HasMany
     {
-        return $this->hasMany(Appointments::class, 'id_patient');
+        return $this->hasMany(Appointments::class, 'id_patient', 'id');
     }
     public function doctorAppointments(): HasMany
     {
-        return $this->hasMany(Appointments::class, 'id_doctor');
-    }
-    public function tercero()
-    {
-        return $this->hasOne(Third_Data::class, 'data_id');
+        return $this->hasMany(Appointments::class, 'id_doctor', 'id');
     }
 }

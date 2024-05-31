@@ -15,9 +15,9 @@ class CheckUserStatus
             $user = Auth::user();
 
             // Verifica si el usuario tiene registros en la tabla third_data
-            if ($user->thirdDataUser) {
+            if ($user->thirdData) {
                 // Verifica el estado del usuario en la tabla third_data
-                if ($user->thirdDataUser->statu_type_id == 1) {
+                if ($user->thirdData->id_status = 1) {
                     // Si el estado es 1, permite el acceso
                     return $next($request);
                 } else {
@@ -29,7 +29,6 @@ class CheckUserStatus
                 return redirect()->back()->with('error', 'No tienes permiso para acceder.');
             }
         }
-
         // Si el usuario no está autenticado, redirecciona a la página de inicio de sesión
         return redirect()->route('login');
     }

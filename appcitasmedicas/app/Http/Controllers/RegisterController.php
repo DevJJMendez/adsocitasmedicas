@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
-use App\Models\Document_Type_View;
-use App\Models\Gender_View;
+use App\Models\DocumentType;
+use App\Models\Gender;
 use App\Models\Medical_Entities;
 use App\Models\Third_Data;
 use App\Models\User;
@@ -13,33 +12,40 @@ class RegisterController extends Controller
 {
     public function showRegisterForm()
     {
-
-        $documentType = Document_Type_View::pluck('name', 'detail_id');
-        $medicalEntity = Medical_Entities::select('medical_entity_id', 'business_name')->get();
-        $genderType = Gender_View::pluck('name', 'detail_id');
-        return view('auth.register', compact('documentType', 'medicalEntity', 'genderType', ));
+        $documentTypes = DocumentType::select(['document_type_id', 'id_common_attribute'])->with([
+            'commonAttribute' => function ($query) {
+                $query->select([
+                    'common_attribute_id',
+                    'name'
+                ]);
+            }
+        ])->get();
+        $genders = Gender::select(['gender_id', 'id_common_attribute'])->with([
+            'commonAttribute' => function ($query) {
+                $query->select(['common_attribute_id', 'name']);
+            }
+        ])->get();
+        $medicalEntities = Medical_Entities::select('medical_entity_id', 'business_name')->where(['id_status' => 1])->get();
+        return view('auth.register', compact(['documentTypes', 'medicalEntities', 'genders']));
     }
     public function createUser(RegisterRequest $registerRequest)
     {
         $thirdData = Third_Data::create([
-            'document_type_id' => $registerRequest->document_type_id,
+            'id_document_type' => $registerRequest->id_document_type,
             'identification_number' => $registerRequest->identification_number,
-            'first_name' => $registerRequest->first_name,
-            'second_name' => $registerRequest->second_name,
-            'sur_name' => $registerRequest->sur_name,
-            'second_sur_name' => $registerRequest->second_sur_name,
+            'name' => $registerRequest->name,
+            'last_name' => $registerRequest->last_name,
             'number_phone' => $registerRequest->number_phone,
             'birth_date' => $registerRequest->birth_date,
-            'gender_type_id' => $registerRequest->gender_type_id,
+            'id_gender' => $registerRequest->id_gender,
             'address' => $registerRequest->address,
             'id_medical_entity' => $registerRequest->id_medical_entity
         ]);
         User::create([
-            'third_data_id' => $thirdData->data_id,
+            'id_third_data' => $thirdData->third_data_id,
             'email' => $registerRequest->email,
             'password' => $registerRequest->password,
         ])->assignRole('Paciente');
-
         return redirect()->route('login');
     }
 }
