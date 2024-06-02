@@ -32,15 +32,5 @@ Route::resource('users', AsignarRol::class)->only('index', 'edit', 'update', 'de
 Route::resource('medical-entities', MedicalEntityController::class);
 Route::resource('patients', PacienteController::class);
 Route::resource('medicos', MedicoController::class);
-
-
-
-// citas route
-Route::group(['prefix' => 'citas'], function () {
-    Route::get('', [CitasController::class, 'index'])->name('citas.view');
-    Route::get('/nueva-cita', [CitasController::class, 'create'])->name('create.cita');
-    Route::post('/crearcita', [CitasController::class, 'store'])->name('crear.cita');
-    Route::get('/citas-agendadas', [CitasController::class, 'mostrarCitasAgendadas'])->name('citas.agendadas');
-    Route::put('/cancelar-cita/{appointment_id}', [CitasController::class, 'cancelarCita'])->name('cancelar.cita');
-});
-
+Route::resource('appointments', CitasController::class);
+Route::get('get-doctors-by-specialty/{specialtyId}', [CitasController::class, 'getDoctorsBySpecialty']);

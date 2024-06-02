@@ -13,8 +13,8 @@
             <table class="table align-items-center table-flush" style="text-transform: uppercase">
                 <thead class="thead-light">
                     <tr>
-                      <th scope="col">Medico</th>
-                      <th scope="col">Especialidad</th>
+                        <th scope="col">Medico</th>
+                        <th scope="col">Especialidad</th>
                         <th scope="col">Fecha y Hora</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Opciones</th>
@@ -24,7 +24,7 @@
                     @forelse ($citas as $cita)
                         <tr>
                             <td>
-                                {{$cita->doctor->tercero->first_name}} {{$cita->doctor->tercero->second_name}} 
+                                {{ $cita->doctor->tercero->first_name }} {{ $cita->doctor->tercero->second_name }}
                             </td>
                             <td>
                                 {{ $cita->specialty->name }}
@@ -47,7 +47,8 @@
                         <tr>
                             <th>
                                 <span>
-                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a href="{{ route('create.cita') }}">¿DESEA AGENDAR UNA CITA?</a>
+                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a href="{{ route('create.cita') }}">¿DESEA
+                                        AGENDAR UNA CITA?</a>
                                 </span>
                             </th>
                         </tr>

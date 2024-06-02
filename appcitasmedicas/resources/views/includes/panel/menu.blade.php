@@ -60,24 +60,24 @@
     @endcan
     @can('Paciente')
         <li class="nav-item  active ">
-            <a class="nav-link" href="{{ route('create.cita') }}">
+            <a class="nav-link" href="{{ route('appointments.create') }}">
                 <i class="ni ni-calendar-grid-58"></i> Agendar Cita
             </a>
         </li>
         <li class="nav-item  active ">
-            <a class="nav-link" href="{{ route('citas.agendadas') }}">
+            <a class="nav-link" href="{{ route('appointments.index') }}">
                 <i class="ni ni-calendar-grid-58"></i> Citas Agendadas
             </a>
         </li>
         <li class="nav-item  active ">
-            <a class="nav-link" href="{{ route('citas.view') }}">
+            <a class="nav-link" href="{{ route('appointments.index') }}">
                 <i class="ni ni-calendar-grid-58"></i> Calendario de Citas
             </a>
         </li>
     @endcan
     {{-- logout --}}
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('citas.view') }}"
+        <a class="nav-link" href="{{ route('appointments.index') }}"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
             <i class="fas fa-sign-in-alt"></i> Cerrar Sesión
         </a>
