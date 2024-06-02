@@ -21,8 +21,8 @@ use Illuminate\Support\Str;
             <select name="id_specialty" class="form-control" required id="specialtySelect">
                 <option value="">Seleccione una especialidad</option>
                 @forelse ($specialties as $specialty)
-                    <option value="{{ $specialty->specialty_id }}">
-                        {{ $specialty->specialty_id }}
+                    <option value="{{ $specialty->specialty_id }}"
+                        {{ old('id_specialty') == $specialty->specialty_id ? 'selected' : '' }}>
                         {{ $specialty->name }}
                     </option>
                 @empty
@@ -68,8 +68,8 @@ use Illuminate\Support\Str;
                                 '<option value="">Elige un doctor</option>');
                             $.each(data, function(key, value) {
                                 $('#doctorSelect').append('<option value="' + value
-                                    .third_data_id + '">' + value.name + ' ' + value
-                                    .last_name + '</option>');
+                                    .user_id + '">' + value.name + ' ' + value
+                                    .user_id + '</option>');
                             });
                         }
                     });

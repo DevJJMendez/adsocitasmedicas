@@ -21,17 +21,26 @@ class CitasController extends Controller
     }
     public function getDoctorsBySpecialty($specialtyId)
     {
-        $doctors = Third_Data::where('id_specialty', $specialtyId)->whereHas('user', function ($query) {
-            $query->role('Doctor');
-        })->select('third_data_id', 'name', 'last_name')->get();
+        $doctors = Third_Data::where('id_specialty', $specialtyId)
+            ->whereHas('user', function ($query) {
+                $query->role('Doctor');
+            })
+            ->with('user:id,id_third_data') // Añadir la relación con el User para obtener su id
+            ->select('third_data_id', 'name', 'last_name')
+            ->get()
+            ->map(function ($doctor) {
+                return [
+                    'user_id' => $doctor->user->id,
+                    'name' => $doctor->name,
+                    'last_name' => $doctor->last_name,
+                ];
+            });
         return response()->json($doctors);
     }
     public function store(AppointmentRequest $appointmentRequest)
     {
-        // metodo para crear registros
-        // $appointmentRequest nos ayuda a validar los datos enviados en la request
         Appointments::create([
-            'id_patient' => $appointmentRequest->id_patient,
+            'id_patient' => auth()->user()->id,
             'id_specialty' => $appointmentRequest->id_specialty,
             'id_doctor' => $appointmentRequest->id_doctor,
             'appointment_date' => $appointmentRequest->appointment_date,
