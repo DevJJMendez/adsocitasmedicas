@@ -21,24 +21,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($citas as $cita)
+                    @forelse ($userAppointments as $userAppointment)
                         <tr>
                             <td>
-                                {{ $cita->doctor->tercero->first_name }} {{ $cita->doctor->tercero->second_name }}
+                                {{ $userAppointment->doctor->thirdData->name }}
+                                {{ $userAppointment->doctor->thirdData->last_name }}
                             </td>
                             <td>
-                                {{ $cita->specialty->name }}
+                                {{ $userAppointment->specialty->name }}
                             </td>
                             <td>
-                                {{ $cita->appointment_date }}
+                                {{ $userAppointment->appointment_date }}
                             </td>
                             <td>
-                                {{ $cita->statuType->name }}
+                                {{ $userAppointment->status->commonAttribute->name }}
                             </td>
                             <td>
-                                <form action="{{ route('cancelar.cita', $cita->appointment_id) }}" method="POST">
+                                <form
+                                    action="{{ route('appointments.destroy', ['appointment' => $userAppointment->appointment_id]) }}"
+                                    method="POST">
                                     @csrf
-                                    @method('PUT')
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Cancelar cita</button>
                                 </form>
                             </td>
@@ -47,7 +50,8 @@
                         <tr>
                             <th>
                                 <span>
-                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a href="{{ route('create.cita') }}">¿DESEA
+                                    USTED NO TIENE CITAS MEDICAS AGENDADAS - <a
+                                        href="{{ route('appointments.create') }}">¿DESEA
                                         AGENDAR UNA CITA?</a>
                                 </span>
                             </th>

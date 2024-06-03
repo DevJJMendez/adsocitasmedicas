@@ -6,13 +6,19 @@ use App\Http\Requests\AppointmentRequest;
 use App\Models\Appointments;
 use App\Models\Specialty;
 use App\Models\Third_Data;
-use Spatie\Permission\Models\Role;
+use Exception;
 
 class CitasController extends Controller
 {
     public function index()
     {
-        return view('citas.index');
+        $userAppointments = Appointments::with([
+            'specialty:specialty_id,name',
+            'doctor.thirdData:third_data_id,name,last_name',
+            'status:status_id,id_common_attribute',
+            'status.commonAttribute:common_attribute_id,name',
+        ])->where('id_patient', auth()->user()->id)->select(['appointment_id', 'id_specialty', 'id_doctor', 'appointment_date', 'id_status'])->get();
+        return view('citas.index', compact('userAppointments'));
     }
     public function create()
     {
@@ -21,20 +27,15 @@ class CitasController extends Controller
     }
     public function getDoctorsBySpecialty($specialtyId)
     {
-        $doctors = Third_Data::where('id_specialty', $specialtyId)
-            ->whereHas('user', function ($query) {
-                $query->role('Doctor');
-            })
-            ->with('user:id,id_third_data') // Añadir la relación con el User para obtener su id
-            ->select('third_data_id', 'name', 'last_name')
-            ->get()
-            ->map(function ($doctor) {
-                return [
-                    'user_id' => $doctor->user->id,
-                    'name' => $doctor->name,
-                    'last_name' => $doctor->last_name,
-                ];
-            });
+        $doctors = Third_Data::where('id_specialty', $specialtyId)->whereHas('user', function ($query) {
+            $query->role('Doctor');
+        })->with('user:id,id_third_data')->select('third_data_id', 'name', 'last_name')->get()->map(function ($doctor) {
+            return [
+                'user_id' => $doctor->user->id,
+                'name' => $doctor->name,
+                'last_name' => $doctor->last_name,
+            ];
+        });
         return response()->json($doctors);
     }
     public function store(AppointmentRequest $appointmentRequest)
@@ -48,21 +49,13 @@ class CitasController extends Controller
         notify()->success('Cita agendar correctamente', 'Agendar Cita');
         return redirect()->route('appointments.index');
     }
-    // public function show()
-    // {
-    //     // obtengo el Id del usuario logueado
-    //     $userId = auth()->user()->id;
-    //     // Obtengo las citas medicas que tiene el usuario logueado
-    //     $citas = Appointments::with('doctor', 'specialty', 'statutype')->where('id_patient', $userId)->whereIn('statu_type_id', [3, 4])->get();
-    //     return view('citas.index', compact('citas'));
-    // }
-    // El paciente no puede aplazar citas
-    public function destroy($appointment_id)
+    public function update(Appointments $appointment)
     {
-        // Obtenemos la cita por su id
-        $citaId = Appointments::findOrFail($appointment_id);
-        // actualizamos el estado de la cita
-        $citaId->update(['statu_type_id' => 5]);
+
+    }
+    public function destroy(Appointments $appointment)
+    {
+        $appointment->delete();
         notify()->success('Cita cancelada correctamente', 'Cancelar cita');
         return redirect()->route('appointments.index');
     }
