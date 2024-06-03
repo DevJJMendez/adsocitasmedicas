@@ -10,7 +10,7 @@
     @can('Administrador')
         <li class="nav-item  active ">
             <a class="nav-link   " href="{{ route('asignar.index') }}">
-                <i class="fas fa-user-cog text-black"></i> Usuarios
+                <i class="fas fa-user-cog text-black"></i>Usuarios
             </a>
         </li>
 
@@ -53,8 +53,8 @@
 
     @can('Doctor')
         <li class="nav-item  active ">
-            <a class="nav-link" href="">
-                <i class="far fa-calendar-alt"></i> Citas Agendadas
+            <a class="nav-link" href="{{ route('list-doctor-appointments') }}">
+                <i class="far fa-calendar-alt"></i>Citas Agendadas
             </a>
         </li>
     @endcan

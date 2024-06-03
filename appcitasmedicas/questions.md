@@ -1,17 +1,13 @@
-Explicame este codigo, ¿que hace? ¿para que sirve?
+Al presionar este button:
 ```php
-->map(function ($doctor) {
-                return [
-                    'user_id' => $doctor->user->id,
-                    'name' => $doctor->name,
-                    'last_name' => $doctor->last_name,
-                ];
+<td>
+        <button type="" class="btn btn-sm btn-warning">Ver dictamen</button>
+</td>
 ```
+Necesito mostrar un modal el cual va a mostrar una informacion proveniento de la base de datos
 Ayudame a corregirlo
 
-Pero estoy recibiendo el siguiente error:
-
-SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`branchmain`.`appointments`, CONSTRAINT `appointments_id_doctor_foreign` FOREIGN KEY (`id_doctor`) REFERENCES `users` (`id`))
+ayudame a hacerlo
 
 
 

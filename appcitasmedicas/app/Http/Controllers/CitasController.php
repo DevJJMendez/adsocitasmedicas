@@ -20,6 +20,27 @@ class CitasController extends Controller
         ])->where('id_patient', auth()->user()->id)->select(['appointment_id', 'id_specialty', 'id_doctor', 'appointment_date', 'id_status'])->get();
         return view('citas.index', compact('userAppointments'));
     }
+    public function listDoctorAppointments()
+    {
+        $doctorAppointments = Appointments::with([
+            'specialty:specialty_id,name',
+            'patient.thirdData:third_data_id,name,last_name',
+            'doctor.thirdData:third_data_id,name,last_name',
+            'status:status_id,id_common_attribute',
+            'status.commonAttribute:common_attribute_id,name',
+        ])->where('id_doctor', auth()->user()->id)->select(['appointment_id', 'id_specialty', 'id_patient', 'id_doctor', 'appointment_date', 'id_status'])->get();
+        return view('medicos.appointments', compact('doctorAppointments'));
+    }
+    public function getDictamen($appointment_id)
+    {
+        $appointment = Appointments::find($appointment_id);
+        if ($appointment) {
+            return response()->json(['dictamen' => $appointment->medical_evaluation], 200);
+        } else {
+            return response()->json(['error' => 'Cita no encontrada'], 404);
+        }
+    }
+
     public function create()
     {
         $specialties = Specialty::select('specialty_id', 'name')->get();

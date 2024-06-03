@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
                 </div>
                 <div class="col text-right">
                     <a href="{{ route('medicos.index') }}" class="btn btn-sm btn-success">
-                        <i class="fas fa-chevron-left"> Regresar</i>
+                        <i class="fas fa-chevron-left">Regresar</i>
                     </a>
                 </div>
             </div>
@@ -26,7 +26,7 @@ use Illuminate\Support\Str;
                         <label for="id_document_type">Tipo de Documento</label>
                         <select name="id_document_type" class="form-control">
                             @forelse ($documentTypes as $documentType)
-                                <option value="{{ $documentType->document_type_id }}" 
+                                <option value="{{ $documentType->document_type_id }}"
                                     {{ old('id_document_type') == $documentType->document_type_id ? 'selected' : '' }}>
                                     {{ $documentType->commonAttribute->name }}
                                 </option>

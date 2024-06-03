@@ -33,4 +33,6 @@ Route::resource('medical-entities', MedicalEntityController::class);
 Route::resource('patients', PacienteController::class);
 Route::resource('medicos', MedicoController::class);
 Route::resource('appointments', CitasController::class);
+route::get('list-doctor-appointments', [CitasController::class, 'listDoctorAppointments'])->name('list-doctor-appointments');
 Route::get('get-doctors-by-specialty/{specialtyId}', [CitasController::class, 'getDoctorsBySpecialty']);
+Route::get('/get-dictamen/{id}', [CitasController::class, 'getDictamen']);
