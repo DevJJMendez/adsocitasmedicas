@@ -14,7 +14,7 @@ class PacienteSeeder extends Seeder
         $thirddata = Third_Data::create([
             'id_document_type' => fake()->numberBetween(1, 4),
             'identification_number' => fake()->numberBetween(100000000, 999999999),
-            'name' => fake()->firstName(),
+            'name' => 'Paciente',
             'last_name' => fake()->lastName(),
             'number_phone' => fake()->phoneNumber(),
             'birth_date' => fake()->date(),
@@ -24,14 +24,14 @@ class PacienteSeeder extends Seeder
         ]);
         User::create([
             'id_third_data' => $thirddata['third_data_id'],
-            'email' => fake()->email(),
+            'email' => 'paciente@gmail.com',
             'password' => bcrypt('1234'),
         ])->assignRole('Paciente');
 
         $thirddata = Third_Data::create([
             'id_document_type' => fake()->numberBetween(1, 4),
             'identification_number' => fake()->numberBetween(100000000, 999999999),
-            'name' => fake()->firstName(),
+            'name' => 'Paciente2',
             'last_name' => fake()->lastName(),
             'number_phone' => fake()->phoneNumber(),
             'birth_date' => fake()->date(),
@@ -41,7 +41,7 @@ class PacienteSeeder extends Seeder
         ]);
         User::create([
             'id_third_data' => $thirddata['third_data_id'],
-            'email' => fake()->email(),
+            'email' => 'paciente2@gmail.com',
             'password' => bcrypt('1234'),
         ])->assignRole('Paciente');
 

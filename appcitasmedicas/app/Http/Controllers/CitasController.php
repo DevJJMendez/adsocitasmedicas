@@ -7,6 +7,7 @@ use App\Models\Appointments;
 use App\Models\Specialty;
 use App\Models\Third_Data;
 use Exception;
+use Illuminate\Http\Request;
 
 class CitasController extends Controller
 {
@@ -30,6 +31,20 @@ class CitasController extends Controller
             'status.commonAttribute:common_attribute_id,name',
         ])->where('id_doctor', auth()->user()->id)->select(['appointment_id', 'id_specialty', 'id_patient', 'id_doctor', 'appointment_date', 'id_status'])->get();
         return view('medicos.appointments', compact('doctorAppointments'));
+    }
+    public function storeOpinion(Request $request)
+    {
+        $request->validate([
+            'medical_evaluation' => 'required|string',
+        ]);
+        $appointment = Appointments::find($request->appointment_id);
+        if ($appointment) {
+            $appointment->update([
+                'medical_evaluation' => $request->medical_evaluation,
+                'id_status' => 4,
+            ]);
+            return redirect()->back();
+        }
     }
     public function getDictamen($appointment_id)
     {
@@ -69,6 +84,10 @@ class CitasController extends Controller
         ]);
         notify()->success('Cita agendar correctamente', 'Agendar Cita');
         return redirect()->route('appointments.index');
+    }
+    public function show(Appointments $appointment)
+    {
+
     }
     public function update(Appointments $appointment)
     {

@@ -61,7 +61,7 @@ use Illuminate\Support\Str;
                 var specialtyId = $(this).val();
                 if (specialtyId) {
                     $.ajax({
-                        url: '/get-doctors-by-specialty/' + specialtyId,
+                        url: '/doctor-appointments/get-doctors-by-specialty/' + specialtyId,
                         type: 'GET',
                         success: function(data) {
                             $('#doctorSelect').empty().append(

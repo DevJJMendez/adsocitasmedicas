@@ -18,6 +18,7 @@ class Appointments extends Model
         'id_specialty',
         'id_doctor',
         'appointment_date',
+        'medical_evaluation',
         'id_status'
     ];
     public function patient(): BelongsTo

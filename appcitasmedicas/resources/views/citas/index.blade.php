@@ -15,7 +15,7 @@
                     <tr>
                         <th scope="col">Medico</th>
                         <th scope="col">Especialidad</th>
-                        <th scope="col">Fecha y Hora</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Opciones</th>
                         <th scope="col">Dictamen Médico</th>
