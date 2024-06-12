@@ -72,8 +72,15 @@ class MedicoController extends Controller
         $medicalEntities = Medical_Entities::where('id_status', 1)->select('medical_entity_id', 'business_name')->get();
         $documentTypes = DocumentType::whereIn('document_type_id', [1, 4])->select('document_type_id', 'id_common_attribute')->with(['commonAttribute'])->get();
         $genders = Gender::select('gender_id', 'id_common_attribute')->with(['commonAttribute'])->get();
+
+        // Formatear la fecha de nacimiento
+        if ($medico->birth_date) {
+            $medico->birth_date = \Carbon\Carbon::parse($medico->birth_date)->format('Y-m-d');
+        }
+
         return view('medicos.edit', compact(['medico', 'specialties', 'statuses', 'medicalEntities', 'documentTypes', 'genders']));
     }
+
     public function update(Third_Data $medico, MedicoRequest $medicoRequest)
     {
         DB::beginTransaction();

@@ -133,13 +133,13 @@ use Illuminate\Support\Str;
                 </div>
 
                 <div class="form-row">
-                    {{-- Fecha de Nacimiento --}}
+                    {{-- FECHA DE NACIMIENTO --}}
                     <div class="form-group col-md-6">
                         <label for="birth_date">Fecha de Nacimiento</label>
                         @error('birth_date')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="datetime" id="birth_date" name="birth_date" class="form-control"
+                        <input type="date" id="birth_date" name="birth_date" class="form-control"
                             value="{{ old('birth_date', $patient->birth_date) }}">
                     </div>
 

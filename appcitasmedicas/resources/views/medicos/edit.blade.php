@@ -42,7 +42,8 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="text" name="identification_number" class="form-control"
-                            placeholder="Ingrese su número de identificación" value="{{ old('identification_number', $medico->identification_number) }}">
+                            placeholder="Ingrese su número de identificación"
+                            value="{{ old('identification_number', $medico->identification_number) }}">
                     </div>
                 </div>
 
@@ -87,7 +88,7 @@ use Illuminate\Support\Str;
                             @forelse ($statuses as $status)
                                 <option value="{{ $status->status_id }}"
                                     {{ $medico->id_status == $status->status_id ? 'selected' : '' }}>
-                                    {{ $status->commonAttribute->name }}    
+                                    {{ $status->commonAttribute->name }}
                                 </option>
                             @empty
                                 <option value="">No data found</option>
@@ -136,9 +137,10 @@ use Illuminate\Support\Str;
                         @error('birth_date')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <input type="datetime" id="birth_date" name="birth_date" class="form-control"
+                        <input type="date" id="birth_date" name="birth_date" class="form-control"
                             value="{{ old('birth_date', $medico->birth_date) }}">
                     </div>
+
 
                     {{-- TELEFONO --}}
                     <div class="form-group col-md-6">
@@ -147,7 +149,8 @@ use Illuminate\Support\Str;
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <input type="tel" id="number_phone" name="number_phone" class="form-control"
-                            placeholder="Ingrese su número de teléfono" value="{{ old('number_phone', $medico->number_phone) }}">
+                            placeholder="Ingrese su número de teléfono"
+                            value="{{ old('number_phone', $medico->number_phone) }}">
                     </div>
                 </div>
                 <div class="form-row">

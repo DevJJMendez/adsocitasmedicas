@@ -10,14 +10,16 @@ class MedicoRequest extends FormRequest
     {
         return true;
     }
-    public function rules(): array
+    public function rules()
     {
+        $medicoId = $this->route('medico')->third_data_id;
+
         return [
             'id_document_type' => 'required',
             'identification_number' => 'required',
             'name' => 'required|string',
             'last_name' => 'required|string',
-            'number_phone' => 'required||unique:third_data,number_phone',
+            'number_phone' => 'required|unique:third_data,number_phone,' . $medicoId . ',third_data_id',
             'birth_date' => [
                 'required',
                 'before_or_equal:today',
@@ -35,6 +37,8 @@ class MedicoRequest extends FormRequest
             'password' => 'nullable|string|min:4',
         ];
     }
+
+
     public function messages()
     {
         return [

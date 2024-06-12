@@ -93,6 +93,12 @@ class PacienteController extends Controller
         $medicalEntities = Medical_Entities::where('id_status', 1)->select('medical_entity_id', 'business_name')->get();
         $documentTypes = DocumentType::select('document_type_id', 'id_common_attribute')->with(['commonAttribute'])->get();
         $genderTypes = Gender::select('gender_id', 'id_common_attribute')->with(['commonAttribute'])->get();
+
+        // Formatear la fecha de nacimiento
+        if ($patient->birth_date) {
+            $patient->birth_date = \Carbon\Carbon::parse($patient->birth_date)->format('Y-m-d');
+        }
+
         return view('pacientes.edit', compact(['patient', 'medicalEntities', 'documentTypes', 'genderTypes', 'statuses']));
     }
     public function update(Third_Data $patient, PatientUpdateRequest $patientUpdateRequest)
